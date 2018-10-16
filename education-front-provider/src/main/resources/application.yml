@@ -1,0 +1,19 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: front-provider
+  datasource:
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.31.10:3306/education?useUnicode=true&characterEncoding=utf-8
+    username: root
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka/
+
+
+
