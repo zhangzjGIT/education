@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
+<script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
+<script src="../EasyUI/jquery.easyui.min.js"></script>
+<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<script src="../EasyUI/util-js.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="editUserForm">
+         <table align="center">
+             <tr>
+                 <td>用户姓名:</td>
+                 <td>
+                 	<input type='text' name='userName' th:field="${editUser.userName}" />
+                 	<input type='hidden' name='userId' th:field="${editUser.userId}" />
+                 </td>
+             </tr>
+             <tr>
+                 <td>登录帐号:</td>
+                 <td><input type='text' name='loginNumber' th:field="${editUser.loginNumber}"/></td>
+             </tr>
+             <tr>
+                 <td>登录密码:</td>
+                 <td><input type='text' name='password' th:field="${editUser.password}"/></td>
+             </tr>
+         </table>
+     </form>
+</body>
+</html>

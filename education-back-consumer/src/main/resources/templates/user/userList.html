@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
+<script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
+<script src="../EasyUI/jquery.easyui.min.js"></script>
+<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<script src="../EasyUI/util-js.js"></script>
+<title>Insert title here</title>
+</head>
+   <body>
+    <table id="showUserTable"></table>
+    <div id="toolbar2">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="toAddUser()">新增</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="toEdit()">修改</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="deleteUser()">删除</a>
+                     用户姓名：<input class="easyui-textbox" type="search" id="searchUserName"> 
+    	<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="searchUserPage()">搜索</a>
+    </div>
+    <div id="addUserInfo"></div>
+    <div id="editUserInfo"></div>
+<script type="text/javascript">
+	$(function(){
+		searchUserPage();
+	})
+	function searchUserPage(){
+		$("#showUserTable").datagrid({
+            url:'queryUserList',
+            rownumbers:true,
+            fitColumns:true,
+            selectOnCheck:false,
+		    checkOnSelect:false,
+		    singleSelect:true,
+		    fit:true,
+            pagination:true,
+            pageSize:5,
+            pageList:[5,10,15],
+            pageNumber:1,
+            toolbar:'#toolbar2',
+            queryParams:{
+		    	 userName:$("#searchUserName").val()
+		    },
+            columns:[
+                [
+                {field:'userName',title:'用户姓名'},
+                {field:'loginNumber',title:'登录帐号'},
+                {field:'password',title:'登录密码'},
+              ]
+            ]
+        })
+	}
+	function toAddUser(){
+		$('#addUserInfo').dialog({    
+		    title: '新增用户信息',
+		    href:"toAddUser",
+		    width: 300,    
+		    height: 300,    
+		    modal: false,
+		    buttons:[{
+				text:'保存',
+				handler:function(){
+					$.ajax({
+						url:'addUser',
+						type:'post',
+						data:$('#addUserForm').serialize(),
+						success:function(){
+							$('#addUserInfo').dialog("close");
+							searchUserPage();
+							$.messager.show({
+								title:'我的消息',
+								msg:'新增用户信息成功',
+								timeout:2000,
+								showType:'slide'
+							});
+						}
+					})
+				}
+			},{
+				text:'关闭',
+				handler:function(){
+					$('#addUserInfo').dialog("close");
+				}
+			}]
+		});    
+	}
+	function toEdit(){
+		var userInfo = $('#showUserTable').datagrid('getSelected');
+		var userId = userInfo.userId;
+		$('#editUserInfo').dialog({    
+		    title: '修改用户信息',
+		    href:"toEditUser?userId="+userId,
+		    width: 300,    
+		    height: 300,    
+		    modal: false,
+		    buttons:[{
+				text:'保存',
+				handler:function(){
+					$.ajax({
+						url:'editUser',
+						type:'post',
+						data:$('#editUserForm').serialize(),
+						success:function(){
+							$('#editUserInfo').dialog("close");
+							searchUserPage();
+							$.messager.show({
+								title:'我的消息',
+								msg:'修改用户信息成功',
+								timeout:2000,
+								showType:'slide'
+							});
+						}
+					})
+				}
+			},{
+				text:'关闭',
+				handler:function(){
+					$('#editUserInfo').dialog("close");
+				}
+			}]
+		});
+	}
+	function deleteUser(){
+		var userInfo = $('#showUserTable').datagrid('getSelected');
+		var userId = userInfo.userId;
+		$.ajax({
+			url:'deleteUser',
+			type:'post',
+			data:{userId:userId},
+			success:function(){
+				searchUserPage();
+				$.messager.show({
+					title:'我的消息',
+					msg:'删除用户信息成功',
+					timeout:2000,
+					showType:'slide'
+				});
+			}
+		})
+	}
+	
+</script>
+</body>
+
+</html>

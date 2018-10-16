@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.user.UserMapper">
+
+    <select id="queryUserLoginInfo" parameterType="string" resultType="com.jk.model.user.UserBean">
+	    select * from t_user
+	    where loginNumber = #{value}
+    </select>
+
+    <select id="queryUserCount" parameterType="com.jk.model.user.UserBean" resultType="int">
+        select count(*) from
+        (select tu.*,GROUP_CONCAT(tr.roleName) as roleName from t_user tu
+        left join t_user_role tur on tu.userId = tur.userId
+        left join t_role tr on tur.roleId = tr.roleId
+        where 1=1
+        <if test="userBean.userName !=null and userBean.userName !=''">
+            and tu.userName like "%${userBean.userName}%"
+        </if>
+        group by tu.userName)a
+    </select>
+
+    <select id="queryUserList" parameterType="com.jk.model.user.UserBean" resultType="com.jk.model.user.UserBean">
+        select * from t_user where 1=1
+        <if test="userBean.userName !=null and userBean.userName !=''">
+            and userName like "%${userBean.userName}%"
+        </if>
+        limit #{userBean.startIndex},#{userBean.rows}
+    </select>
+
+    <insert id="addUser" parameterType="com.jk.model.user.UserBean">
+	    insert into t_user (userName,loginNumber,password)
+	    values (#{userName},#{loginNumber},#{password})
+    </insert>
+
+    <select id="queryUserById" parameterType="int" resultType="com.jk.model.user.UserBean" >
+	    select * from t_user where userId = #{value}
+	</select>
+
+    <update id="editUser" parameterType="com.jk.model.user.UserBean">
+	  	update t_user
+	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password}
+	    where userId = #{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from t_user where userId = #{value}
+    </delete>
+
+</mapper>

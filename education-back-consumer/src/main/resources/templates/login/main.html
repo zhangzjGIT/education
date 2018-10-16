@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
+<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
+<script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
+<script src="../EasyUI/jquery.easyui.min.js"></script>
+<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
+<script src="../EasyUI/util-js.js"></script>
+<title>idea主页面</title>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',title:'标题',split:true" style="height:100px;">
+		<center><h1>springCloud增删改查作业</h1></center>
+    </div>   
+    <div data-options="region:'west',title:'导航',split:true" style="width:250px;">
+    	<ul class="easyui-tree" id="myTree"></ul>
+		<center><h3><a id="toUserTab" >用户列表</a></h3></center>
+    </div>   
+    <div data-options="region:'center'">
+    	<div id="myTabs" class="easyui-tabs" data-options="fit:true">   
+		    <div title="欢迎" style="padding:20px;display:none;">   
+		        <h1>欢迎使用</h1>    
+		    </div>   
+		   
+		</div>  
+    </div> 
+<script type="text/javascript">
+	$("#toUserTab").click(function(){
+        if($('#myTabs').tabs('exists',"用户列表")){
+            $('#myTabs').tabs('select',"用户列表")
+        }else{
+            $('#myTabs').tabs('add',{
+                title:"用户列表",
+                href:"toUserPage",
+                closable:true,
+                tools:[{
+                    iconCls:'icon-mini-refresh',
+                    handler:function(){
+                        alert('refresh');
+                    }
+                }]
+            });
+        }
+	})
+    /*$(function(){
+		$("#myTree").tree({
+			url:'../user/queryNavTreeByUserIdZzj.do',
+			lines:true,
+			parentField:'pid',
+			onClick:function(node){
+				if(undefined == node.children || node.children.length <= 0){
+					var flag = $('#myTabs').tabs('exists',node.text);
+					if(flag){
+						$('#myTabs').tabs('select',node.text)
+					}else{
+						$('#myTabs').tabs('add',{
+							title:node.text,
+							content:createFrame(node.url),
+							closable:true,
+							tools:[
+								{
+									iconCls:'icon-mini-refresh',
+									handler:function(){
+										var selectTab = $('#myTabs').tabs('getSelected');
+										$('#myTabs').tabs('update',{
+											tab:selectTab,
+											options:{
+												content:createFrame(node.url)
+											}
+										});
+									}
+								}
+							]
+						})
+					}
+				}
+			}
+		})
+		
+	})
+	function createFrame(url){
+	   return '<iframe border="0" scrolling="yes" frameborder="0"  src="'+ url + '" style="width:99.9%;height:99.5%;"></iframe>';  
+	}*/
+</script>
+</body>
+
+</html>
