@@ -1,10 +1,11 @@
 package com.jk.service.user;
 
 import com.jk.mapper.user.UserMapper;
+
 import com.jk.model.ResultPage;
 import com.jk.model.user.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
