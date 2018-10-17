@@ -15,8 +15,5 @@
         <module name="education-front-provider" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="education-front-server" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
