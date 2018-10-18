@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.education.EduMapper">
+
+    <select id="queryVideoList"  resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_course t2
+      where t1.id =t2.classId
+    </select>
+
+
+    <select id="searchmany" parameterType="String" resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_course t2
+      where t1.id =t2.classId and t1.classType = #{search}
+    </select>
+
+
+    <select id="searchList" parameterType="String" resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_course t2
+      where t1.id =t2.classId
+        <if test="search!=null and search!=''">
+            and t1.name like  '%${search}%' or  t2.courseName like '%${search}%'
+        </if>
+    </select>
+
+
+
+</mapper>
