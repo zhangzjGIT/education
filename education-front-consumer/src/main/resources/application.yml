@@ -11,7 +11,9 @@ spring:
       cache: false
       prefix: classpath:/templates/
       suffix: .html
-
+ribbon:
+  eureka:
+    enabled: true
 #feign:
 #  hystrix:
 #    enabled: true

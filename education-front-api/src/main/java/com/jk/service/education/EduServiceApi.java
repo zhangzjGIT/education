@@ -4,6 +4,7 @@ import com.jk.model.education.ClassBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ import java.util.List;
 public interface EduServiceApi {
     @RequestMapping(value = "/queryVideoList",method = RequestMethod.POST)
     List<ClassBean> queryVideoList(@RequestBody ClassBean classBean);
+
+    @RequestMapping(value = "/searchList",method = RequestMethod.POST)
+    List<ClassBean> searchList(@RequestParam(value = "search")String search);
 }

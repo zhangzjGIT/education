@@ -73,7 +73,7 @@
         </a>
         <!-- 默认搜索词 -->
         <input type="text" id="js_keyword" maxlength="38" class="mod-search__input" placeholder="搜索课程" />
-        <a id="js_search" href="javascript:void(0)" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
+        <a id="search" href="javascript:search()" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
       </div>
       <div id="js-searchhot" class="header-index-hot">
         <div class="header-index-hot--history">
@@ -156,6 +156,7 @@
         <a href="javascript:void(0);" class="js-close-sale-tips"><i class="icon-font i-close-s" title="不再提醒"></i></a>
       </div> -->
     </div>
+  </div>
 </header>
 
     
@@ -206,7 +207,7 @@
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1002" title="设计·创作"
+            <a href="" title="设计·创作"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1002">
               <h2>设计·创作</h2>
             </a>
@@ -214,7 +215,7 @@
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1003" title="语言·留学"
+            <a href="" title="语言·留学"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1003">
               <h2>语言·留学</h2>
             </a>
@@ -230,7 +231,7 @@
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1005" title="升学·考研"
+            <a href="" title="升学·考研"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1005">
               <h2>升学·考研</h2>
             </a>
@@ -238,7 +239,7 @@
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1006" title="兴趣·生活"
+            <a href="" title="兴趣·生活"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1006">
               <h2>兴趣·生活</h2>
             </a>
@@ -417,7 +418,7 @@
 
         <a href="//ke.qq.com/course/119808" target="_blank" class="item-img-link" data-ispkg="0" data-id="119808" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&ver1=119808&ver3=1.1" cors-name="course">
             
-                <img src="//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLDK5MZy6hTSrVFV5upUiaw4fsRrSOTJPESDNlF4c0IAYrcW4Yw6oTxot2u8XkE5Jelc/356" alt="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;"/>
+                <img th:src="${user.img}" alt="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;"/>
             
             
         </a>
@@ -431,7 +432,7 @@
         <h4 class="item-tt">
  	        
 
-            <a href="//ke.qq.com/course/119808" target="_blank" class="item-tt-link" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course">Linux运维及云计算年薪30W入门经典教程【马哥亲讲】</a>
+            <a href="//ke.qq.com/course/119808" target="_blank" class="item-tt-link" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${user.courseName}"></span>【<span class="item-status-step" th:text="${user.name}"></span>】</a>
             
         </h4>
         
@@ -439,18 +440,18 @@
         
         <div class="item-line item-line--middle">
             <span class="line-cell item-user">
-                2077人最近报名
+                <span class="item-status-step" th:text="${user.stuCount}"></span>人最近报名
             </span>
 
             <span class="item-source">
                 
-                <a href="//mage.ke.qq.com" target="_blank" class="item-source-link" title="马哥教育" rel="nofollow" report-tdw="action=Coursecard_Courseregister-clk&ver1=119808&ver3=1.1">马哥教育</a>
+                <a href="//mage.ke.qq.com" target="_blank" class="item-source-link" title="马哥教育" rel="nofollow" report-tdw="action=Coursecard_Courseregister-clk&ver1=119808&ver3=1.1"> <span class="item-status-step" th:text="${user.name}"></span></a>
             </span>
             </span>
         </div>
         
         <div class="item-line item-line--bottom">
-            <span class="line-cell item-price free">免费</span>
+            <span class="line-cell item-price free" th:text="${user.groupPrice}"></span>
             
             
             
@@ -698,6 +699,14 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
+</script>
+<script>
+    function search(){
+        var aa = $("#js_keyword").val();
+
+        location.href="../user/searchList?search="+aa;
+    }
+
 </script>
 
 </body>

@@ -31,6 +31,13 @@ public class EduController {
        md.put("list",list);
         return "list";
     }
+
+    @RequestMapping("searchList")
+    public String searchList(String search, ModelMap md){
+        List<ClassBean> list =  eduService.searchList(search);
+        md.put("list",list);
+        return "list";
+    }
     @RequestMapping("toinfo")
     public String toinfo(){
 
@@ -40,4 +47,6 @@ public class EduController {
     public String tomain(){
         return "index";
     }
+
+
 }
