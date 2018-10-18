@@ -38,6 +38,12 @@ public class EduController {
         md.put("list",list);
         return "list";
     }
+    @RequestMapping("searchmany")
+    public String searchmany(String search, ModelMap md){
+        List<ClassBean> list =  eduService.searchmany(search);
+        md.put("list",list);
+        return "list";
+    }
     @RequestMapping("toinfo")
     public String toinfo(){
 

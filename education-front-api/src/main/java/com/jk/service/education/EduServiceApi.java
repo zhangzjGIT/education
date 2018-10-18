@@ -19,4 +19,7 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/searchList",method = RequestMethod.POST)
     List<ClassBean> searchList(@RequestParam(value = "search")String search);
+
+    @RequestMapping(value = "/searchmany",method = RequestMethod.POST)
+    List<ClassBean> searchmany(@RequestParam(value = "search")String search);
 }

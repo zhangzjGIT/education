@@ -173,7 +173,7 @@
 <!--面包屑展示区域-->
 
 <nav class="mod-breadcrumbs mod-list-breadcrumbs js-breadcrumbs">
-  <a href="/course/list?" class="mod-breadcrumbs__nav" title="全部课程">全部课程</a>
+  <a href="javascript:searchmany(0)" class="mod-breadcrumbs__nav" title="全部课程">全部课程</a>
   <span class="mod-breadcrumbs__arrow">&nbsp;<i class="icon-font i-v-right"></i>&nbsp;</span>
 
   <!--这里是面包屑引导条-->
@@ -194,12 +194,12 @@
           <dt>全部课程</dt>
           <dd class="curr_all">
             <label></label>
-            <a href="/course/list" title="腾讯课堂全部在线课程"  report-tdw="action=classify-f&ver3=0"><h2>全部</h2></a>
+            <a href="javascript:searchmany(0)" title="腾讯课堂全部在线课程"  report-tdw="action=classify-f&ver3=0"><h2>全部</h2></a>
           </dd>
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1001" title="IT·互联网"
+            <a href="javascript:searchmany(1)" title="IT·互联网"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1001">
               <h2>IT·互联网</h2>
             </a>
@@ -207,7 +207,7 @@
           
           <dd class="">
             <label></label>
-            <a href="" title="设计·创作"
+            <a href="javascript:searchmany(2)" title="设计·创作"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1002">
               <h2>设计·创作</h2>
             </a>
@@ -215,7 +215,7 @@
           
           <dd class="">
             <label></label>
-            <a href="" title="语言·留学"
+            <a href="javascript:searchmany(3)" title="语言·留学"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1003">
               <h2>语言·留学</h2>
             </a>
@@ -223,7 +223,7 @@
           
           <dd class="">
             <label></label>
-            <a href="/course/list?mt=1004" title="职业·考证"
+            <a href="javascript:searchmany(4)" title="职业·考证"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1004">
               <h2>职业·考证</h2>
             </a>
@@ -231,7 +231,7 @@
           
           <dd class="">
             <label></label>
-            <a href="" title="升学·考研"
+            <a href="javascript:searchmany(5)" title="升学·考研"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1005">
               <h2>升学·考研</h2>
             </a>
@@ -239,7 +239,7 @@
           
           <dd class="">
             <label></label>
-            <a href="" title="兴趣·生活"
+            <a href="javascript:searchmany(6)" title="兴趣·生活"
               report-tdw="module=hotword&action=filter&platform=1&ver1=1006">
               <h2>兴趣·生活</h2>
             </a>
@@ -705,6 +705,10 @@ var _hmt = _hmt || [];
         var aa = $("#js_keyword").val();
 
         location.href="../user/searchList?search="+aa;
+    }
+    function searchmany(num){
+        alert(num)
+        location.href="../user/searchmany?search="+num;
     }
 
 </script>
