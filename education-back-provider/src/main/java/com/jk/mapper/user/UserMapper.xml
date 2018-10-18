@@ -2,6 +2,81 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.user.UserMapper">
 
+    <select id="queryUserByLoginNumer" resultType="com.jk.model.user.UserBean">
+        select * from t_user where userName = #{userName}
+    </select>
+
+    <insert id="addRoleNav" parameterType="list">
+        insert into t_nav_role (id,roleId,navId) values 
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.roleId},#{item.navId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteRoleNav">
+        delete from t_nav_role where roleId = #{value}
+    </delete>
+
+    <select id="queryNavIdListByRoleId" parameterType="int" resultType="com.jk.model.user.NavRoleBean">
+        select * from t_nav_role where roleId = #{value}
+    </select>
+
+    <select id="queryRoleNavTree" parameterType="int" resultType="com.jk.model.user.NavBean">
+        select * from t_nav where pid = #{value}
+    </select>
+
+    <!-- 根据角色Id修改角色信息 -->
+    <update id="updateRole">
+        update t_role set roleName = #{roleName} where roleId = #{roleId}
+    </update>
+
+    <!-- 根据Id查询角色表的一条信息 -->
+    <select id="getRoleInfoById" resultType="com.jk.model.user.RoleBean">
+        select * from t_role where roleId = #{roleId}
+    </select>
+
+    <!-- 根据Id删除角色表的信息 -->
+    <delete id="deleteRole">
+        delete from t_role where roleId = #{roleId}
+    </delete>
+
+    <!-- 新增角色表 -->
+    <insert id="addRole">
+        insert into t_role
+        (roleName)
+        values (#{roleName});
+    </insert>
+
+    <!-- 分页查询角色表的所有信息 -->
+    <select id="getRolePage" parameterType="com.jk.model.user.RoleBean" resultType="com.jk.model.user.RoleBean">
+        select * from t_role
+        <where>
+            <if test="roleBean.roleName !=null and roleBean.roleName !=''">
+                and roleName like "%${roleBean.roleName}%"
+            </if>
+        </where>
+         limit #{roleBean.startIndex},#{roleBean.rows}
+    </select>
+
+    <!-- 查询角色表的总条数 -->
+    <select id="getRolePageCount" parameterType="com.jk.model.user.RoleBean" resultType="int">
+        select count(*) from t_role
+        <where>
+            <if test="roleBean.roleName !=null and roleBean.roleName !=''">
+                and roleName like "%${roleBean.roleName}%"
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据用户Id查询出所对应的权限树 -->
+    <select id="queryNavTreeByUserId" parameterType="int" resultType="com.jk.model.user.NavBean">
+        SELECT distinct tn.id,tn.text,tn.pid,tn.url from t_nav tn
+			LEFT JOIN t_nav_role trn on tn.id = trn.navId
+			LEFT JOIN t_role tr on tr.roleId = trn.roleId
+			LEFT JOIN t_user_role tur on tr.roleId =tur.roleId
+		where tur.userId = #{userId}
+    </select>
+
     <select id="queryUserLoginInfo" parameterType="string" resultType="com.jk.model.user.UserBean">
 	    select * from t_user
 	    where loginNumber = #{value}
@@ -37,7 +112,7 @@
 	</select>
 
     <update id="editUser" parameterType="com.jk.model.user.UserBean">
-	  	update t_user
+-- 	  	update t_user
 	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password}
 	    where userId = #{userId}
     </update>
