@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.deils.DeilsMapper">
+    <update id="updateCollect">
+        update t_course set status = 2 where courseId=#{courseId}
+    </update>
 
-
-
+    <select id="querydeils" resultType="com.jk.model.education.CourseBean">
+      select * from t_course where courseId=#{courseId}
+    </select>
+    <select id="queryuser" resultType="com.jk.model.education.User">
+        select * from x_user where id=#{userId}
+    </select>
 </mapper>

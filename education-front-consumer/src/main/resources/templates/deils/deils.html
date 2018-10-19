@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0031)https://ke.qq.com/course/130952 -->
-<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<title>  架构师培养计划【动sa脑学院】_腾讯课堂</title>
+	<title> 【动sa脑学院】_莘莘学子课堂</title>
 	<link rel="canonical" href="https://ke.qq.com/course/130952">
 
 	<link rel="stylesheet" href="../aa_files/common.9d8f74fe.css"/>
@@ -34,92 +34,31 @@
 			<div class="mod-search">
 				<a class="mod-search-dropdown">
 					<span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程<i class="icon-font i-v-bottom-small"></i></span>
-					<span class="mod-search-dropdown-item" style="display: none;" data-type="agency">机构<i class="icon-font i-v-bottom-small"></i></span>
 				</a>
 				<!-- 默认搜索词 -->
-				<input type="text" id="js_keyword" maxlength="38" class="mod-search__input" placeholder="腾讯课堂大师班">
+				<input type="text" id="js_keyword" maxlength="38" class="mod-search__input" placeholder="月薪过万就找我">
 				<a id="js_search" href="javascript:void(0)" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
 			</div>
-			<div id="js-searchhot" class="header-index-hot">
-				<div class="header-index-hot--history" style="display: none;">
-					<p class="hot-list-tt">
-						历史搜索
-						<span class="btn-clear-history js-clear-history"><i class="icon-font i-delete"></i>清空</span>
-					</p>
-					<div class="hot-word-list"></div>
-				</div>
-				<!-- 搜索历史及搜索热词 -->
-				<div class="header-index-hot--default"> <p class="hot-list-tt">热门搜索</p> <div class="hot-word-list">  <a class="hot-word-item" target="_blank" href="javascript:;" title="腾讯课堂设计大师班" report-tdw="module=hotword&amp;action=recommend&amp;platform=1&amp;obj1=腾讯课堂设计大师班&amp;obj2=-1"> 腾讯课堂设计大师班 </a>  <a class="hot-word-item" target="_blank" href="javascript:;" title="腾讯自研前端课" report-tdw="module=hotword&amp;action=recommend&amp;platform=1&amp;obj1=腾讯自研前端课&amp;obj2=-1"> 腾讯自研前端课 </a>  <a class="hot-word-item" target="_blank" href="javascript:;" title="PS" report-tdw="module=hotword&amp;action=recommend&amp;platform=1&amp;obj1=PS&amp;obj2=-1"> PS </a>  <a class="hot-word-item" target="_blank" href="javascript:;" title="java" report-tdw="module=hotword&amp;action=recommend&amp;platform=1&amp;obj1=java&amp;obj2=-1"> java </a>  </div></div></div>
-			<div id="js-searchAssociation" class="header-index-hot"></div>
 		</div>
 		<div class="header-index-text">
-			<div class="header-index-join dropdown-wrap" style="display: none" report-hover="module=join&amp;position=cooperate" report-attr="module=join&amp;position=cooperate">
-				<p class="join-tt dropdown-tt">开课/合作</p>
-				<ul class="join-list dropdown-list">
-					<li><a href="https://ke.qq.com/agency/personal/intro.html" title="个人开课" target="_blank" report-attr="module=join&amp;position=personal">个人开课</a></li>
-					<li><a href="https://ke.qq.com/agency/join/index.html" title="机构开课" target="_blank" report-attr="module=join&amp;position=institution">机构开课</a></li>
-					<li><a href="https://ke.qq.com/sale.html" rel="nofollow" title="分销课程 " target="_blank" report-attr="module=join&amp;position=distribution">分销课程</a></li>
-					<li><a href="https://ke.qq.com/cates/cooperation/index.html" rel="nofollow" title="企业合作" target="_blank" report-attr="module=join&amp;position=business">企业合作</a></li>
-				</ul>
-			</div>
-			<div class="header-index-download dropdown-wrap" report-hover="module=download&amp;position=download" report-attr="module=download&amp;position=download">
-				<p class="download-tt dropdown-tt">下载</p>
-				<ul class="download-list dropdown-list">
-					<li><a href="https://ke.qq.com/download/pcapp.html" title="Win客户端" target="_blank" report-attr="module=download&amp;position=windownload">Win客户端</a></li>
-					<li><a href="https://ke.qq.com/download/macapp.html" title="Mac客户端" target="_blank" report-attr="module=download&amp;position=macdownload">Mac客户端</a></li>
-					<li><a href="https://ke.qq.com/download/app.html" title="App客户端 " target="_blank" report-attr="module=download&amp;position=appdownload">App客户端</a></li>
-				</ul>
-			</div>
-			<div class="header-index-private-msgs" style="">
-				<a href="javascript:void(0)" rel="nofollow" title="私信">
-					私信
-					<span class="red-point" style="display: none;"></span>
-				</a>
-			</div>
 			<!-- 登录相关组件 -->
 			<div id="js-mod-header-login" class="mod-header__wrap-login mod-header__wrap-logined">
 				<!-- 新版登录 个人 -->
 				<div class="mod-header_wrap-user dropdown-wrap" id="js_logout_outer" style="display: block;">
 					<p class="mod-header__user-name dropdown-tt">
 						<a href="https://ke.qq.com/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
-							<img alt="头像" class="mod-header__user-avatar js-avatar" src="../aa_files/g"/>
+							<img alt="头像" class="mod-header__user-avatar js-avatar" th:src="${us.img}"/>
 							<i class="icon-account js-account i-qq"></i>
 							<span class="mod-header__user-operation-title js-username" title="ㄱ青春的梦ㅎ">ㄱ青春的梦ㅎ</span>
 						</a>
 					</p>
 					<ul class="mod-header__user-operations dropdown-list">
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=plan" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=signup" class="mod-header__user-operation js-signup" rel="nofollow" report-attr="module=personalcenter&amp;position=orders&amp;ver1=topbar">全部订单</a></li>
-						<li class="mod-header__mailbox hide"><a href="https://ke.qq.com/agency/mailbox/index.html#sid=msg" class="mod-header__user-operation" rel="nofollow">消息管理</a></li>
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=fav" class="mod-header__user-operation js-fav" rel="nofollow" report-attr="module=personalcenter&amp;position=collection&amp;ver1=topbar">收藏</a></li>
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=coupon" class="mod-header__user-operation js-coupon" rel="nofollow" report-attr="module=personalcenter&amp;position=coupon&amp;ver1=topbar">优惠券</a></li>
+						<li><a href="../deils/collect" class="mod-header__user-operation js-fav" rel="nofollow" report-attr="module=personalcenter&amp;position=collection&amp;ver1=topbar">收藏</a></li>
 						<li><a href="https://ke.qq.com/user/index/index.html#sid=contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
-						<li><a href="javascript:void(0)" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
+						<li><a href="../deils/quitId" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
 					</ul>
 				</div>
-				<div class="mod-header_live-tip triangle">
-					<p></p>
-					<span class="btn-s btn-outline">我知道了</span>
-				</div>
-				<!-- 新版登录 机构 -->
-				<div class="mod-header_wrap-user mod-header_wrap-user-org dropdown-wrap" id="js_logout_outer_agency">
-					<p class="mod-header__user-name dropdown-tt">
-						<a href="https://ke.qq.com/agency/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=topbar" report-attr="module=personalcenter&amp;position=topbar">
-							<span class="mod-header__user-operation-title js-agency-op">机构管理</span>
-						</a>
-					</p>
-					<ul class="mod-header__user-operations dropdown-list">
-						<li class="mod-header__mailbox hide"><a href="https://ke.qq.com/agency/mailbox/index.html#sid=msg" class="mod-header__user-operation" rel="nofollow">消息管理</a></li>
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=plan" class="mod-header__user-operation js-course-plan" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-						<li><a href="javascript:void(0)" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
-					</ul>
-				</div>
-				<a href="javascript:void(0)" class="mod-header__link-login js-login-op" id="js_login" data-hook="login" rel="nofollow" report-attr="module=login&amp;position=topbar">登录</a>
 			</div>
-			<!-- <div class="header-index-tips hide" id="js-header-sale-tips">
-              转发即可赚钱！分享课程赚佣金
-              <a href="javascript:void(0);" class="js-close-sale-tips"><i class="icon-font i-close-s" title="不再提醒"></i></a>
-            </div> -->
 		</div>
 	</div></header>
 
@@ -142,45 +81,30 @@
 
 <section class="section-feature section--course-banner">
 	<div class="course-banner inner-center clearfix">
-		<!--面包屑-->
-		<nav class="breadcrumb inner-center">
-			<a class="breadcrumb-item" href="https://ke.qq.com/course/list">全部课程</a>
-			<i class="icon-font i-v-right"></i>
-
-			<a class="breadcrumb-item" href="https://ke.qq.com/course/list?mt=1001">IT·互联网</a>
-			<i class="icon-font i-v-right"></i>
-
-
-			<a class="breadcrumb-item" href="https://ke.qq.com/course/list?mt=1001&amp;st=2004">前端开发</a>
-			<i class="icon-font i-v-right"></i>
-
-
-			<a class="breadcrumb-item" href="https://ke.qq.com/course/list?mt=1001&amp;st=2004&amp;tt=3321">前端开发</a>
-			<i class="icon-font i-v-right"></i>
-
-			<a class="breadcrumb-item item--tt" href="https://ke.qq.com/course/130952">阿里前端p6架构师培养计划【动脑学院】</a>
-		</nav>
 		<div id="js-imgtext" class="imgtext-course imgtext-course--free" auto-test="mod_course_imgtext">
 
 			<div class="img-left--wrap" auto-test="mod_course_imgtext_left">
-				<img class="img-left" onerror="this.src=&#39;//9.url.cn/edu/edu_modules/edu-ui/img/nohash/img-err2.png&#39;;this.onerror=null;" src="../aa_files/510" alt="阿里前端p6架构师培养计划【动脑学院】" width="510" height="286"/>
-				<div id="js-banner-cover" class="banner-cover" style="display: block;"><div class="banner-cover-video"> <a class="banner-cover-play js-expr-btn" href="javascript:void(0);"> <i class="icon-play"></i> </a></div></div>
-
-
-
-			</div>
+			<img class="img-left" onerror="this.src=&#39;//9.url.cn/edu/edu_modules/edu-ui/img/nohash/img-err2.png&#39;;this.onerror=null;" src="../aa_files/510"  width="510" height="286"/>
+				<div id="js-banner-cover" class="banner-cover" style="display: block;">
+                    <div class="banner-cover-video">
+                        <a class="banner-cover-play js-expr-btn" href="javascript:void(0);">
+                            <i class="icon-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
 			<div class="text-right " auto-test="mod_course_imgtext_right">
 
-				<h1 class="page-tt"><span class="title-main">阿里前端p6架构师培养计划【动脑学院】</span><span class="title-label"></span></h1>
+				<h1 class="page-tt"><span class="title-main"> <input   th:value="${cl.courseName}" size="2" style="border:none"></span><span class="title-label"></span></h1>
 				<div class="tt-below-line">
                     <span id="js-statistics-apply" class="line-item statistics-apply">
-                        最近在学 9543人
+                        最近在学 <input   th:value="${cl.stuCount}" size="2" style="border:none"> 人
                     </span>
 
 					<i class="icon-sep"></i>
 					<span class="line-item statistics-apply">
-                        累计报名 <span class="apply-num js-apply-num">7万</span>人
+                        累计报名 <input   th:value="${cl.allCount}" size="2" style="border:none">人
                     </span>
 
 					<i class="icon-sep"></i>
@@ -221,14 +145,9 @@
 				<!-- 价格 -->
 				<div class="js-course-price normal-course course-price course-price--free active" data-termid="100146108">
 					<p class="course-price-info free">
-						<span class="price free">免费</span>
+						<span class="price free">免费 </span>
 					</p>
 				</div>
-				<p class="mod-tip hide" id="js-mod-tip">
-					<i class="icon-font i-alert mod-tip-icon"></i>
-					<span class="js-tip-des">本班因教学质量问题暂时不能报名。</span>
-					<a href="https://ke.qq.com/faq.html#id=5" title="查看详情">查看详情</a>
-				</p>
 
 				<div class="oper-bar" id="js_btn_bar" auto-test="mod_oper_bar">
 					<!--
@@ -280,11 +199,28 @@
 
 				<div class="tabs-content" id="js_basic_tab">
 					<div class="guide-bd">
+						<div class="teacher-list">
+
+							<div class="teacher-item">
+								<a href="https://ke.qq.com/teacher/3282340593" class="img-left 3282340593" target="_blank"><img src="../aa_files/saved_resource(3)" alt="Carman"></a>
+								<div class="text-right">
+									<h4 class="text-tt">
+										<a class="tt-link js-teacher-name" href="https://ke.qq.com/teacher/3282340593" title="Carman" target="_blank">
+											Carman
+										</a>
+									</h4>
+									<div class="text-intro js-teacher-intro" title="14年IT工作经验，精通JAVA编程语言、Struts、Hibernate、Spring框架集成；深入理解框架技术原理，能完成自定义框架的开发；熟悉HTML、JS、AJAX等常用WEB页面技术；熟悉基于JS的框架，如jQuery。精通SQL Server、MySQL等数据库系统；熟悉Oracle数据库；有十余年计算机软件开发职业培训教学经验。">14年IT工作经验，精通JAVA编程语言、Struts、Hibernate、Spring框架集成；深入理解框架技术原理，能完成自定义框架...</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="guide-bd">
 						<table class="tb-course">
 							<tbody>
 								<tr>
-									<th>简　　介</th>
-									<td>bootstrap、angularJS、react、nodejs等企业级框架入门到项目实战。名师全程指导，课程讲解、巩固、项目实战双维度教学模式，带你进入高新企业。</td>
+									<th>简　介</th>
+									<td><span th:text="${cl.info}"></span> </td>
 								</tr>
 							</tbody>
 						</table>
@@ -396,158 +332,73 @@
 	<div class="inner-center">
 		<h3 class="section-tt">老师还为你推荐了以下几门课程</h3>
 		<div class="section-bd course-card-list-single-wrap">
-
 			<ul class="course-card-list" auto-test="">
-
 				<li class="course-card-item" data-report-position="1">
-
 					<a href="https://ke.qq.com/course/155896" target="_blank" class="item-img-link" data-ispkg="0" data-id="155896" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=155896&amp;ver3=1.1" cors-name="course">
-
 						<img src="../aa_files/356" alt="Java架构师—企业级开发专题课程【动脑学院】" title="Java架构师—企业级开发专题课程【动脑学院】" class="item-img" width="220" height="124" onerror="this.src=&#39;//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png&#39;;this.onerror=null;"/>
-
-
 					</a>
-
-
 					<h4 class="item-tt">
-
-
 						<a href="https://ke.qq.com/course/155896" target="_blank" class="item-tt-link" title="Java架构师—企业级开发专题课程【动脑学院】" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=155896&amp;ver3=1.1" cors-name="course">Java架构师—企业级开发专题课程【动脑学院】</a>
-
 					</h4>
-
-
-
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price">¥6880.00</span>
-
-
-
 						<span class="line-cell item-user item-user--right">
                     3118人购买
                 </span>
-
 					</div>
 				</li>
-
 				<li class="course-card-item" data-report-position="2">
-
 					<a href="https://ke.qq.com/course/131889" target="_blank" class="item-img-link" data-ispkg="0" data-id="131889" data-index="2" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=131889&amp;ver3=1.2" cors-name="course">
-
 						<img src="../aa_files/356(1)" alt="JAVA高级开发/高并发分布式架构/搜索引擎/性能优化【动脑学院】" title="JAVA高级开发/高并发分布式架构/搜索引擎/性能优化【动脑学院】" class="item-img" width="220" height="124" onerror="this.src=&#39;//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png&#39;;this.onerror=null;"/>
-
-
 					</a>
-
-
 					<h4 class="item-tt">
-
-
 						<a href="https://ke.qq.com/course/131889" target="_blank" class="item-tt-link" title="JAVA高级开发/高并发分布式架构/搜索引擎/性能优化【动脑学院】" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=131889&amp;ver3=1.2" cors-name="course">JAVA高级开发/高并发分布式架构/搜索引擎/性能优化【动脑学院】</a>
-
 					</h4>
-
-
-
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price free">免费</span>
-
-
-
 						<span class="line-cell item-user item-user--right">
                     2320人最近报名
                 </span>
-
 					</div>
 				</li>
-
 				<li class="course-card-item" data-report-position="3">
-
 					<a href="https://ke.qq.com/course/145929" target="_blank" class="item-img-link" data-ispkg="0" data-id="145929" data-index="3" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=145929&amp;ver3=1.3" cors-name="course">
-
 						<img src="../aa_files/356(2)" alt="高级前端开发晋升专题班【动脑学院】" title="高级前端开发晋升专题班【动脑学院】" class="item-img" width="220" height="124" onerror="this.src=&#39;//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png&#39;;this.onerror=null;"/>
-
-
 					</a>
-
-
 					<h4 class="item-tt">
-
-
 						<a href="https://ke.qq.com/course/145929" target="_blank" class="item-tt-link" title="高级前端开发晋升专题班【动脑学院】" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=145929&amp;ver3=1.3" cors-name="course">高级前端开发晋升专题班【动脑学院】</a>
-
 					</h4>
-
-
-
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price">¥6180.00</span>
-
-
-
 						<span class="line-cell item-user item-user--right">
                     1496人购买
                 </span>
-
 					</div>
 				</li>
-
 				<li class="course-card-item" data-report-position="4">
-
 					<a href="https://ke.qq.com/course/298278" target="_blank" class="item-img-link" data-ispkg="0" data-id="298278" data-index="4" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=298278&amp;ver3=1.4" cors-name="course">
-
 						<img src="../aa_files/356(3)" alt="微信小程序开发进阶秘籍" title="微信小程序开发进阶秘籍" class="item-img" width="220" height="124" onerror="this.src=&#39;//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png&#39;;this.onerror=null;"/>
-
-
 					</a>
-
-
 					<h4 class="item-tt">
-
-
 						<a href="https://ke.qq.com/course/298278" target="_blank" class="item-tt-link" title="微信小程序开发进阶秘籍" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=298278&amp;ver3=1.4" cors-name="course">微信小程序开发进阶秘籍</a>
-
 					</h4>
-
-
-
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price free">免费</span>
-
-
-
 						<span class="line-cell item-user item-user--right">
                     200人最近报名
                 </span>
-
 					</div>
 				</li>
-
 				<li class="course-card-item" data-report-position="5">
-
 					<a href="https://ke.qq.com/course/287763" target="_blank" class="item-img-link" data-ispkg="0" data-id="287763" data-index="5" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=287763&amp;ver3=1.5" cors-name="course">
-
 						<img src="../aa_files/356(4)" alt="Javascript全栈实训班" title="Javascript全栈实训班" class="item-img" width="220" height="124" onerror="this.src=&#39;//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png&#39;;this.onerror=null;"/>
-
-
 					</a>
-
-
 					<h4 class="item-tt">
-
-
 						<a href="https://ke.qq.com/course/287763" target="_blank" class="item-tt-link" title="Javascript全栈实训班" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=287763&amp;ver3=1.5" cors-name="course">Javascript全栈实训班</a>
-
 					</h4>
-
-
-
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price">¥3880.00</span>
-
-
-
-						<span class="line-cell item-user item-user--right">
+                        <span class="line-cell item-user item-user--right">
                     19人购买
                 </span>
 
@@ -563,13 +414,9 @@
 
 <!--包含尾部进来-->
 <footer class="footer">
-	<i class="icon-font i-logo" title="腾讯课堂_专业的在线教育平台"></i>
 	<p>Copyright © 2018 Tencent. All Rights Reserved.</p>
-	<p>深圳市腾讯计算机系统有限公司 版权所有 | <a href="https://ke.qq.com/proService.html" target="_blank" rel="nofollow">腾讯课堂服务协议</a> | <a href="https://ke.qq.com/sitemap.html" target="_blank">站点地图</a> | <a href="https://ke.qq.com/tort.html" target="_blank">侵权投诉</a> | <a href="http://support.qq.com/write.shtml?fid=1042" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="https://ke.qq.com/faq.html" target="_blank">帮助</a></p>
+	<p>计算机系统有限公司 版权所有 | <a  target="_blank" rel="nofollow">莘莘学子服务协议</a> | <a  target="_blank">站点地图</a> | <a  target="_blank">侵权投诉</a> | <a  rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a  target="_blank">帮助</a></p>
 </footer>
 
-<iframe name="tencent_iframe" id="tencent_iframe" style="display: none;" src="../aa_files/saved_resource(15).html">
-
-</iframe>
 </body>
 </html>
