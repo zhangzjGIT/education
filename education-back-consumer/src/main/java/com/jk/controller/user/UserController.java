@@ -203,6 +203,7 @@ public class UserController {
         }
     }
 
+    //普通的登陆注册
     @RequestMapping("userLogin")
     @ResponseBody
     public HashMap<String, Object> userLogin(UserBean userBean, String imgCode, HttpServletRequest request){
