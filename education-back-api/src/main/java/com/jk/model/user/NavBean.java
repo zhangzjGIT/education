@@ -16,6 +16,26 @@ public class NavBean {
 
  private List<NavBean> children;
 
+ private Integer parentId;
+
+ private Integer childrenId;
+
+ public Integer getParentId() {
+  return parentId;
+ }
+
+ public void setParentId(Integer parentId) {
+  this.parentId = parentId;
+ }
+
+ public Integer getChildrenId() {
+  return childrenId;
+ }
+
+ public void setChildrenId(Integer childrenId) {
+  this.childrenId = childrenId;
+ }
+
  public Boolean getChecked() {
   return checked;
  }

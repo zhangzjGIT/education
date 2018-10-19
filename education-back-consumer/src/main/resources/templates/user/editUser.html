@@ -1,35 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
-<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
-<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
-<script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
-<script src="../EasyUI/jquery.easyui.min.js"></script>
-<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
-<script src="../EasyUI/util-js.js"></script>
-<title>Insert title here</title>
+    <meta charset="utf-8"/>
+    <title>新增广告</title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+
 </head>
 <body>
-	<form id="editUserForm">
-         <table align="center">
-             <tr>
-                 <td>用户姓名:</td>
-                 <td>
-                 	<input type='text' name='userName' th:field="${editUser.userName}" />
-                 	<input type='hidden' name='userId' th:field="${editUser.userId}" />
-                 </td>
-             </tr>
-             <tr>
-                 <td>登录帐号:</td>
-                 <td><input type='text' name='loginNumber' th:field="${editUser.loginNumber}"/></td>
-             </tr>
-             <tr>
-                 <td>登录密码:</td>
-                 <td><input type='text' name='password' th:field="${editUser.password}"/></td>
-             </tr>
-         </table>
-     </form>
+<script src="../layui/layui.js"></script>
+<script src="../layui/lay/modules/upload.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
+
+
+<form class="layui-form" id="edituserform" >
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户姓名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="userName" th:value="${editUser.userName}" lay-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input">
+            <input type="hidden" id="userId" th:value="${editUser.userId}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">登陆账号</label>
+        <div class="layui-input-inline">
+            <input type="text" name="loginNumber" th:value="${editUser.loginNumber}" lay-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="text" name="password" th:value="${editUser.password}" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+   <div class="layui-form-item">
+        <div class="layui-input-block"><!---->
+            <button class="layui-btn"  onclick="editFrom()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+
+
+</form>
+
+<script>
+    function editFrom() {
+        var userId = $('#userId').val();
+        $.ajax({
+            url:'/user/editUser?userId='+userId,
+            dataType:'json',
+            type:'post',
+            data:$('#edituserform').serialize(),
+            success:function(){
+                parent.reloadData();
+            }
+        })
+    }
+</script>
 </body>
 </html>

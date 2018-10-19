@@ -1,5 +1,6 @@
 package com.jk.controller.user;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jk.model.ResultPage;
 import com.jk.model.user.NavBean;
 import com.jk.model.user.RoleBean;
@@ -11,13 +12,17 @@ import com.jk.utils.SessionUserUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -45,9 +51,23 @@ public class UserController {
     }
 
     //shiro登录验证
+  /*@RequestMapping("/userlogin")
+  public String loginFail(HttpServletRequest request) {
+   // 获取到当前认证器所抛出的异常类的类名
+   String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
+   if (UnknownAccountException.class.getName().equals(exceptionClassName)
+     || AuthenticationException.class.getName().equals(exceptionClassName)) {
+    request.setAttribute("flag", "账号不存在");
+   }
+   if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
+    request.setAttribute("flag", "密码错误");
+   }
+   return "login/login2";
+  }*/
+
     @RequestMapping(value ="/userlogin")
     @ResponseBody
-    public HashMap<String, Object> userLogin(UserBean user){
+    public HashMap<String, Object> userLogin(UserBean user,HttpServletRequest request){
         HashMap<String, Object> result = new HashMap<String, Object>();
         if(user.getUserName()==""){
             result.put("message", "请填写用户名");
@@ -73,8 +93,16 @@ public class UserController {
             return result;
         }
         result.put("message", "SUCCESS");
+
         return result;
     }
+
+  @RequestMapping(value = "/logout")
+  public String logout(HttpServletRequest request) {
+   HttpSession session = request.getSession();
+   session.removeAttribute(session.getId());
+   return "login/login2";
+  }
 
     @RequestMapping("/toMain")
     public String toMain(){
@@ -152,8 +180,10 @@ public class UserController {
     //根据用户Id查询左边菜单树
     @RequestMapping("queryNavTreeByUserId")
     @ResponseBody
-    public List<NavBean> queryNavTreeByUserId(HttpServletRequest request){
-        Integer userId = SessionUserUtil.getUserId(request);
+    public List<NavBean> queryNavTreeByUserId(){
+        Session  session=  SecurityUtils.getSubject().getSession();
+        UserBean userBean = (UserBean) session.getAttribute(session.getId());
+        Integer userId = userBean.getUserId();
         List<NavBean> navs = userServiceApi.queryNavTreeByUserId(userId);
         return navs;
     }
@@ -206,8 +236,12 @@ public class UserController {
 
     //跳转到首页面(easyui前台展示)
     @RequestMapping("toLayout")
-    public String toLayout(){
-        return "login/main";
+    public String toLayout(ModelMap mm){
+     Session session = SecurityUtils.getSubject().getSession();
+     UserBean users = (UserBean) session.getAttribute(session.getId());
+     String userName = users.getUserName();
+     mm.put("name",userName);
+     return "login/main";
     }
 
     //查询用户信息
@@ -230,14 +264,6 @@ public class UserController {
         return roles;
     }
 
-    //分页查询用户表的所有信息
-    @RequestMapping("queryUserList")
-    @ResponseBody
-    public ResultPage queryUserList(UserBean userBean){
-        ResultPage resultPage =userServiceApi.queryUserList(userBean);
-        return resultPage;
-    }
-
     //跳转到新增用户页面
     @RequestMapping("toAddUser")
     public String toAddUser(){
@@ -247,9 +273,13 @@ public class UserController {
     //新增一条信息到用户列表
     @RequestMapping("addUser")
     @ResponseBody
-    public String addUser(UserBean userBean){
-        userServiceApi.addUser(userBean);
-        return "{}";
+    public Boolean addUser(UserBean userBean){
+     try {
+      userServiceApi.addUser(userBean);
+     }catch (Exception e){
+       return false;
+     }
+       return true;
     }
 
     //跳转到修改页面
@@ -263,9 +293,14 @@ public class UserController {
     //修改用户信息
     @RequestMapping("editUser")
     @ResponseBody
-    public String editUser(UserBean userBean){
-        userServiceApi.editUser(userBean);
-        return "{}";
+    public Boolean editUser(UserBean userBean){
+      try {
+       userServiceApi.editUser(userBean);
+      }catch (Exception e){
+       e.printStackTrace();
+       return false;
+      }
+        return true;
     }
 
     //删除用户信息
@@ -275,5 +310,28 @@ public class UserController {
         userServiceApi.deleteUser(userId);
         return "{}";
     }
+
+
+ //分页查询用户表的所有信息
+ @RequestMapping("queryUserListAndLimit")
+ @ResponseBody
+ public String queryUserListAndLimit (@RequestParam(value="page",defaultValue="1",required=true)int page, @RequestParam(value="limit",defaultValue="10",required=true)int limit){
+
+  Map<String,Object> map= userServiceApi.queryUserListAndLimit(page,limit);
+  List<UserBean> list = (List<UserBean>) map.get("rows");
+  int count= (int) map.get("total");
+
+  //list转成json
+//		 JSONArray array =new JSONArray();
+  JSONObject obj=new JSONObject();
+  //前台通过key值获得对应的value值
+  obj.put("code", 0);
+  obj.put("msg", "");
+  obj.put("count",count);
+  obj.put("data",list);
+  return obj.toString();
+
+ }
+
 
 }

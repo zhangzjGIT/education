@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>登录</title>
-    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-1.9.1.min.js"></script>
     <style>
         body {
             background:url(../images/b1.jpg)top center no-repeat;
@@ -60,17 +60,19 @@
 <body >
 <div>
     <span style="margin-left:180px; margin-top:100px; font-size:30px; color:red">欢迎登陆</span>
-    <form method="post">
-        <span class="span">用户名<input name="loginName" type="text" /></span><br />
-        <span class="span">密&nbsp;&nbsp;&nbsp;码<input name="password" type="password" /><font color="red" id="info"></font></span><br />
+    <form>
+        <span class="span">用户名<input id="getUserName"  name="username" type="text" /></span><br />
+        <span class="span">密&nbsp;&nbsp;&nbsp;码<input id="getPassword" name="password" type="password" /><font color="red" id="info"></font></span><br />
         <span class="span_1"><input type="button" id="toUserLogin" value="登    陆" /></span>
     </form>
 </div>
 
 <script type="text/javascript">
     $("#toUserLogin").click(function(){
-        var loginNames = document.getElementsByName("loginName")[0].value;
-        var passwords = document.getElementsByName("password")[0].value;
+        //var loginNames = document.getElementsByName("loginName")[0].value;
+        //var passwords = document.getElementsByName("password")[0].value;
+        var loginNames = $("#getUserName").val();
+        var passwords = $("#getPassword").val();
         $.ajax({
             url:"../user/userlogin",
             type:"post",

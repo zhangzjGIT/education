@@ -1,89 +1,188 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
-    <link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
-    <link rel="stylesheet" href="../EasyUI/themes/color.css"/>
-    <script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
-    <script src="../EasyUI/jquery.easyui.min.js"></script>
-    <script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
-    <script src="../EasyUI/util-js.js"></script>
-    <title>idea主页面</title>
-</head>
-<body class="easyui-layout">
-<div data-options="region:'north',title:'标题',split:true" style="height:100px;">
-    <center><h1>springCloud增删改查作业</h1></center>
-</div>
-<div data-options="region:'west',title:'导航',split:true" style="width:250px;">
-    <ul class="easyui-tree" id="myTree"></ul>
-</div>
-<div data-options="region:'center'">
-    <div id="myTabs" class="easyui-tabs" data-options="fit:true">
-        <div title="欢迎" style="padding:20px;display:none;">
-            <h1>欢迎使用</h1>
-        </div>
+    <meta charset="utf-8">
+    <title>金科在线教育后台系统</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+    <link rel="stylesheet" href="../css/main.css" media="all" />
 
+</head>
+<body class="main_body">
+<div class="layui-layout layui-layout-admin">
+    <!-- 顶部 -->
+    <div class="layui-header header">
+        <div class="layui-main">
+            <a href="#" class="logo">金科在线教育</a>
+            <!-- 显示/隐藏菜单 -->
+            <a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
+            <!-- 天气信息 -->
+            <div class="weather" pc>
+                <div id="tp-weather-widget"></div>
+                <script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+                <script>tpwidget("init", {
+                    "flavor": "slim",
+                    "location": "WX4FBXXFKE4F",
+                    "geolocation": "enabled",
+                    "language": "zh-chs",
+                    "unit": "c",
+                    "theme": "chameleon",
+                    "container": "tp-weather-widget",
+                    "bubble": "disabled",
+                    "alarmType": "badge",
+                    "color": "#FFFFFF",
+                    "uid": "U9EC08A15F",
+                    "hash": "039da28f5581f4bcb5c799fb4cdfb673"
+                });
+                tpwidget("show");</script>
+            </div>
+            <!-- 当前系统时间 -->
+            <div class="nowTimeClass" id="nowTime"></div>
+
+            <!-- 顶部右侧菜单 -->
+            <ul class="layui-nav top_menu">
+                <li class="layui-nav-item showNotice" id="showNotice" pc>
+                    <a href="javascript:;"><i class="iconfont icon-gonggao"></i><cite>系统公告</cite></a>
+                </li>
+                <li class="layui-nav-item lockcms" pc>
+                    <a href="javascript:;"><i class="iconfont icon-lock1"></i><cite>锁屏</cite></a>
+                </li>
+                <li class="layui-nav-item" pc>
+                    <a href="javascript:;">
+                        <img src="images/face.jpg" class="layui-circle" width="35" height="35">
+                        <cite>登录人姓名</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+                        <dd><a href="javascript:;" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
+                        <dd><a href="logout" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧导航 -->
+    <div class="layui-side layui-bg-black">
+        <div class="user-photo">
+            <a class="img" title="我的头像" ><img src=""></a>
+            <p>你好！<span th:text="${name}">登录人姓名</span>, 欢迎登录</p>
+        </div>
+        <div class="navBar layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" id="myTree" lay-filter=""></ul>
+        </div>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="layui-body layui-form">
+        <div class="layui-tab marg0" lay-filter="bodyTab" id="top_tabs_box">
+            <ul class="layui-tab-title top_tab" id="top_tabs">
+                <li class="layui-this" lay-id=""><i class="iconfont icon-computer"></i> <cite>后台首页</cite></li>
+            </ul>
+            <ul class="layui-nav closeBox">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="iconfont icon-caozuo"></i> 页面操作</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#x1002;</i> 刷新当前</a></dd>
+                        <dd><a href="javascript:;" class="closePageOther"><i class="iconfont icon-prohibit"></i> 关闭其他</a></dd>
+                        <dd><a href="javascript:;" class="closePageAll"><i class="iconfont icon-guanbi"></i> 关闭全部</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="layui-tab-content clildFrame">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="../firstMain/firstMain.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="layui-footer footer">
+        <p>copyright @2018 金科在线教育　　<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-small">捐赠机构</a></p>
     </div>
 </div>
-<script type="text/javascript">
-    $("#toUserTab").click(function(){
-        if($('#myTabs').tabs('exists',"用户列表")){
-            $('#myTabs').tabs('select',"用户列表")
-        }else{
-            $('#myTabs').tabs('add',{
-                title:"用户列表",
-                href:"toUserPage",
-                closable:true,
-                tools:[{
-                    iconCls:'icon-mini-refresh',
-                    handler:function(){
-                        alert('refresh');
-                    }
-                }]
-            });
-        }
-    })
-    $(function(){
-        $("#myTree").tree({
-            url:'../user/queryNavTreeByUserId',
-            lines:true,
-            parentField:'pid',
-            onClick:function(node){
-                if(undefined == node.children || node.children.length <= 0){
-                    var flag = $('#myTabs').tabs('exists',node.text);
-                    if(flag){
-                        $('#myTabs').tabs('select',node.text)
-                    }else{
-                        $('#myTabs').tabs('add',{
-                            title:node.text,
-                            content:createFrame(node.url),
-                            closable:true,
-                            tools:[
-                                {
-                                    iconCls:'icon-mini-refresh',
-                                    handler:function(){
-                                        var selectTab = $('#myTabs').tabs('getSelected');
-                                        $('#myTabs').tabs('update',{
-                                            tab:selectTab,
-                                            options:{
-                                                content:createFrame(node.url)
-                                            }
-                                        });
-                                    }
-                                }
-                            ]
-                        })
-                    }
-                }
-            }
-        })
 
-    })
-    function createFrame(url){
-        return '<iframe border="0" scrolling="yes" frameborder="0"  src="'+ url + '" style="width:99.9%;height:99.5%;"></iframe>';
+<!-- 移动导航 -->
+<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
+<div class="site-mobile-shade"></div>
+
+
+<script type="text/javascript" src="../layui/layui.js"></script>
+<script type="text/javascript" src="../js/leftNav.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    layui.use(['layer', 'form', 'element'], function(){
+        $(function () {
+            $.ajax( {
+                url :'queryNavTreeByUserId',
+                type : 'post',
+                dataType : 'json',
+                success : function(data) {
+                    var menu = ""; //定义变量存储
+                    for(var i = 0;i<data.length;i++){
+                        menu += "<li class='layui-nav-item layui-nav-itemed'>"
+                        if(data[i].parentId == 0){ //取出父元素的菜单，拼进页面
+                            menu +=        "<a href='javascript:;'>"+data[i].text+"</a>"
+                            for(var j = 0;j<data.length;j++){ //继续遍历这几条数据
+                                if(data[j].childrenId > data[i].childrenId && data[j].childrenId < (data[i].childrenId)+1000){ //取出这个父元素所对应的子元素
+                                    menu +=    "<dl class='layui-nav-child'>"
+                                    menu +=        "<dd>"
+                                    menu +=            "<a href='javascript:;' data-url='"+data[j].url+"'>"
+                                    //menu +=                 "<i class='layui-icon' data-icon=' '> </i>"
+                                    menu +=                 "<cite>"+data[j].text+"</cite>"
+                                    menu +=            "</a>"
+                                    menu +=        "</dd>"
+                                    menu +=    "</dl>"
+                                }
+                            }
+                        }
+                        menu +=    "</li>";
+                    }
+                    $("#myTree").html(menu);
+                    var element = layui.element;
+                    element.init()//初始化element事件，使菜单展开
+                }
+            });
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    //获取系统时间
+    var newDate = '';
+    getLangDate();
+    //值小于10时，在前面补0
+    function dateFilter(date){
+        if(date < 10){return "0"+date;}
+        return date;
+    }
+    function getLangDate(){
+        var dateObj = new Date(); //表示当前系统时间的Date对象
+        var year = dateObj.getFullYear(); //当前系统时间的完整年份值
+        var month = dateObj.getMonth()+1; //当前系统时间的月份值
+        var date = dateObj.getDate(); //当前系统时间的月份中的日
+        var day = dateObj.getDay(); //当前系统时间中的星期值
+        var weeks = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        var week = weeks[day]; //根据星期值，从数组中获取对应的星期字符串
+        var hour = dateObj.getHours(); //当前系统时间的小时值
+        var minute = dateObj.getMinutes(); //当前系统时间的分钟值
+        var second = dateObj.getSeconds(); //当前系统时间的秒钟值
+        var timeValue = "" +((hour >= 12) ? (hour >= 18) ? "晚上" : "下午" : "上午" ); //当前时间属于上午、晚上还是下午
+        newDate = dateFilter(year)+"年"+dateFilter(month)+"月"+dateFilter(date)+"日 "+" "+dateFilter(hour)+":"+dateFilter(minute)+":"+dateFilter(second);
+        //document.getElementById("nowTime").innerHTML = "亲爱的驊驊龔頾，"+timeValue+"好！ 欢迎使用layuiCMS 2.0模版。当前时间为： "+newDate+"　"+week;
+        var dateInfo = "当前时间为： "+newDate+"　"+week;
+        $("#nowTime").html(dateInfo);
+        setTimeout("getLangDate()",1000);
     }
 </script>
-</body>
 
+</body>
 </html>

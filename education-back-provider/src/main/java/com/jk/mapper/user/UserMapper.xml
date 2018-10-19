@@ -2,8 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.user.UserMapper">
 
+    <select id="queryUserTotal" resultType="int">
+        select count(*) from t_user
+    </select>
+
+    <select id="queryUser" resultType="com.jk.model.user.UserBean">
+        select * from t_user limit #{start},#{end}
+    </select>
+
     <select id="queryUserByLoginNumer" resultType="com.jk.model.user.UserBean">
-        select * from t_user where userName = #{userName}
+        select * from t_user where loginNumber = #{userName}
     </select>
 
     <insert id="addRoleNav" parameterType="list">
@@ -70,7 +78,8 @@
 
     <!-- 根据用户Id查询出所对应的权限树 -->
     <select id="queryNavTreeByUserId" parameterType="int" resultType="com.jk.model.user.NavBean">
-        SELECT distinct tn.id,tn.text,tn.pid,tn.url from t_nav tn
+        SELECT distinct tn.id,tn.text,tn.pid,tn.url,tn.parentId,tn.childrenId
+            from t_nav tn
 			LEFT JOIN t_nav_role trn on tn.id = trn.navId
 			LEFT JOIN t_role tr on tr.roleId = trn.roleId
 			LEFT JOIN t_user_role tur on tr.roleId =tur.roleId
@@ -82,7 +91,7 @@
 	    where loginNumber = #{value}
     </select>
 
-    <select id="queryUserCount" parameterType="com.jk.model.user.UserBean" resultType="int">
+    <!--<select id="queryUserCount" parameterType="com.jk.model.user.UserBean" resultType="int">
         select count(*) from
         (select tu.*,GROUP_CONCAT(tr.roleName) as roleName from t_user tu
         left join t_user_role tur on tu.userId = tur.userId
@@ -92,15 +101,15 @@
             and tu.userName like "%${userBean.userName}%"
         </if>
         group by tu.userName)a
-    </select>
+    </select>-->
 
-    <select id="queryUserList" parameterType="com.jk.model.user.UserBean" resultType="com.jk.model.user.UserBean">
+    <!--<select id="queryUserList" parameterType="com.jk.model.user.UserBean" resultType="com.jk.model.user.UserBean">
         select * from t_user where 1=1
         <if test="userBean.userName !=null and userBean.userName !=''">
             and userName like "%${userBean.userName}%"
         </if>
         limit #{userBean.startIndex},#{userBean.rows}
-    </select>
+    </select>-->
 
     <insert id="addUser" parameterType="com.jk.model.user.UserBean">
 	    insert into t_user (userName,loginNumber,password)
@@ -108,11 +117,11 @@
     </insert>
 
     <select id="queryUserById" parameterType="int" resultType="com.jk.model.user.UserBean" >
-	    select * from t_user where userId = #{value}
+	    select * from t_user where userId = #{userId}
 	</select>
 
     <update id="editUser" parameterType="com.jk.model.user.UserBean">
--- 	  	update t_user
+ 	  	update t_user
 	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password}
 	    where userId = #{userId}
     </update>

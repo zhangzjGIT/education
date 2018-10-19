@@ -17,13 +17,13 @@ public interface UserMapper {
 
     UserBean queryUserLoginInfo(String loginNumber);
 
-    Integer queryUserCount(@Param("userBean") UserBean userBean);
+    /*Integer queryUserCount(@Param("userBean") UserBean userBean);
 
-    List<UserBean> queryUserList(@Param("userBean") UserBean userBean);
+    List<UserBean> queryUserList(@Param("userBean") UserBean userBean);*/
 
     void addUser(UserBean userBean);
 
-    UserBean queryUserById(Integer userId);
+    UserBean queryUserById(@Param("userId") Integer userId);
 
     void editUser(UserBean userBean);
 
@@ -62,4 +62,9 @@ public interface UserMapper {
     void addRoleNav(ArrayList<NavRoleBean> arrayList);
 
     UserBean queryUserByLoginNumer(String userName);
+
+    //layui的前台
+    int queryUserTotal();
+
+    List<UserBean> queryUser(@Param("start")int start, @Param("end")int end);
 }

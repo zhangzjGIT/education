@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class UserServiceImpl implements UserServiceApi{
@@ -27,7 +25,7 @@ public class UserServiceImpl implements UserServiceApi{
         return userDao.queryUserLoginInfo(userBean.getLoginNumber());
     }
 
-    @Override
+    /*@Override
     @RequestMapping(value = "queryUserList")
     public ResultPage queryUserList(@RequestBody UserBean userBean) {
         ResultPage resultPage = new ResultPage();
@@ -37,7 +35,7 @@ public class UserServiceImpl implements UserServiceApi{
         resultPage.setTotal(count);
         resultPage.setRows(userList);
         return resultPage;
-    }
+    }*/
 
     @Override
     @RequestMapping(value = "addUser")
@@ -158,5 +156,26 @@ public class UserServiceImpl implements UserServiceApi{
     public UserBean queryUserByLoginNumer(@RequestParam(value="userName") String userName) {
         return userDao.queryUserByLoginNumer(userName);
     }
+
+
+    @Override
+    @RequestMapping(value = "queryUserListAndLimit")
+    public Map<String, Object> queryUserListAndLimit(@RequestParam(value = "page")int page, @RequestParam(value = "limit") int limit) {
+        int total=userDao.queryUserTotal();
+        //2.起始位置：（当前页 - 1） *  每页条数
+        int start=(page-1)*limit;
+        //3.结束位置 = 起始位置 +  每页条数
+        int end = start+limit;
+        //4.获取对象集合
+        List<UserBean>dlist=userDao.queryUser(start,end);
+        //5.装进Map中，总条数，展示数据
+        Map<String,Object>map=new HashMap<>();//实例化
+        map.put("total",total);
+        map.put("rows",dlist);
+        map.put("page",page);
+        map.put("limit",limit);
+        return map;
+    }
+
 
 }

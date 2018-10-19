@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserServiceApi {
 
     @RequestMapping(value = "/queryUserLoginInfo",method = RequestMethod.POST)
     UserBean queryUserLoginInfo(@RequestBody UserBean userBean);
 
-    @RequestMapping(value = "/queryUserList",method = RequestMethod.POST)
-    ResultPage queryUserList(@RequestBody UserBean userBean);
+    /*@RequestMapping(value = "/queryUserList",method = RequestMethod.POST)
+    ResultPage queryUserList(@RequestBody UserBean userBean);*/
 
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     void addUser(@RequestBody UserBean userBean);
@@ -66,4 +67,6 @@ public interface UserServiceApi {
     @RequestMapping(value = "/queryUserByLoginNumer",method = RequestMethod.POST)
     UserBean queryUserByLoginNumer(@RequestParam(value="userName") String userName);
 
+    @RequestMapping(value = "/queryUserListAndLimit",method = RequestMethod.POST)
+    Map<String, Object> queryUserListAndLimit(@RequestParam(value="page") int page, @RequestParam(value="limit") int limit);
 }
