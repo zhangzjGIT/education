@@ -184,6 +184,7 @@ public class UserController {
         model.addAttribute("bir", formatDate);
         model.addAttribute("role", role);
         System.out.println("李达伟");
+        System.out.println("李达伟");
         return "teacher/loginInfo";
     }
 
