@@ -17,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="education-front-server" target="1.8" />
+      <module name="education-back-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
