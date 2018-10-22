@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.jk.model.ResultPage;
 import com.jk.model.user.NavBean;
 import com.jk.model.user.RoleBean;
+import com.jk.model.user.Teacher;
 import com.jk.model.user.UserBean;
 import com.jk.service.user.UserServiceApi;
 import com.jk.utils.Md5Util;
@@ -22,12 +23,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,7 +108,11 @@ public class UserController {
   }
 
     @RequestMapping("/toMain")
-    public String toMain(){
+    public String toMain(Model model){
+        Session session = SecurityUtils.getSubject().getSession();
+        UserBean users = (UserBean) session.getAttribute(session.getId());
+        String userName = users.getUserName();
+        model.addAttribute("userName",userName);
         return "login/main";
     }
 
@@ -236,14 +243,14 @@ public class UserController {
     }
 
     //跳转到首页面(easyui前台展示)
-    @RequestMapping("toLayout")
+    /*@RequestMapping("toLayout")
     public String toLayout(ModelMap mm){
      Session session = SecurityUtils.getSubject().getSession();
      UserBean users = (UserBean) session.getAttribute(session.getId());
      String userName = users.getUserName();
      mm.put("name",userName);
      return "login/main";
-    }
+    }*/
 
     //查询用户信息
     @RequestMapping("toUserPage")
@@ -334,5 +341,73 @@ public class UserController {
 
  }
 
+    /**
+     * 类描述：  教师审批
+     * 创建人：LDW
+     * 创建时间：2018/10/18 11:51
+     * 修改人：LDW
+     * 修改时间：2018/10/18 11:51
+     * 修改备注：
+     * @version ：1.0
+     */
+    @RequestMapping("toTeacher")
+    public String toTeacher(){
+        return "teacher/showTeacher";
+    }
+
+    @RequestMapping("queryTeacher")
+    @ResponseBody
+    public String queryTeacher (@RequestParam(value="page",defaultValue="1",required=true)int page,@RequestParam(value="limit",defaultValue="10",required=true)int limit){
+
+        Map<String,Object> map= userServiceApi.queryTeacher(page,limit);
+        List<Teacher> list = (List<Teacher>) map.get("rows");
+        int count= (int) map.get("total");
+        //list转成json
+//		 JSONArray array =new JSONArray();
+        JSONObject obj=new JSONObject();
+        //前台通过key值获得对应的value值
+        obj.put("code", 0);
+        obj.put("msg", "");
+        obj.put("count",count);
+        obj.put("data",list);
+        return obj.toString();
+    }
+    @RequestMapping("updStatus")
+    @ResponseBody
+    public String updStatus(Teacher teacher){
+        userServiceApi.updStatus(teacher);
+        return "{}";
+    }
+    /**
+     * 类描述：  登录人信息
+     * 创建人：LDW
+     * 创建时间：2018/10/19 11:11
+     * 修改人：LDW
+     * 修改时间：2018/10/19 11:11
+     * 修改备注：
+     * @version ：1.0
+     */
+    @RequestMapping("toMyInfo")
+    public String toMyInfo(Model model){
+        Session  session=  SecurityUtils.getSubject().getSession();
+        UserBean userBean = (UserBean) session.getAttribute(session.getId());
+        Integer userId = userBean.getUserId();
+        UserBean editUser = userServiceApi.queryUserById(userId);
+        RoleBean role=userServiceApi.queryRoleById(userId);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String formatDate = df.format(editUser.getBirthday());
+        model.addAttribute("editUser", editUser);
+        model.addAttribute("bir", formatDate);
+        model.addAttribute("role", role);
+        return "teacher/loginInfo";
+    }
+
+
+    @RequestMapping(value = "updUser",method = RequestMethod.POST)
+    @ResponseBody
+    public String updUser(UserBean userBean){
+        userServiceApi.updUser(userBean);
+        return "{}";
+    }
 
 }

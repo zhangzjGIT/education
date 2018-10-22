@@ -6,7 +6,22 @@
     <link rel="stylesheet" href="../layui/css/layui.css" media="all">
 
 </head>
-<body>
+<body style="overflow-y: hidden">
+    <blockquote class="layui-elem-quote news_search">
+        <div class="layui-inline">
+            <div class="layui-input-inline">
+                <input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+            </div>
+            <a class="layui-btn search_btn">查询</a>
+        </div>
+        <div class="layui-inline">
+            <a class="layui-btn layui-btn-normal newsAdd_btn">添加文章</a>
+        </div>
+        <div class="layui-inline">
+            <a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+        </div>
+    </blockquote>
+
     <table class="layui-hide" id="demo" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">

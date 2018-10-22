@@ -19,5 +19,4 @@ public class EducationBackConsumerApplication {
         SpringApplication.run(EducationBackConsumerApplication.class, args);
     }
 
-
 }

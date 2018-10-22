@@ -58,10 +58,10 @@
                 <li class="layui-nav-item" pc>
                     <a href="javascript:;">
                         <img src="images/face.jpg" class="layui-circle" width="35" height="35">
-                        <cite>登录人姓名</cite>
+                        <cite><span th:text="${userName}"></span></cite>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" data-url="page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
+                        <dd><a href="javascript:;" data-url="toMyInfo"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
                         <dd><a href="javascript:;" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
                         <dd><a href="logout" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
@@ -74,7 +74,7 @@
     <div class="layui-side layui-bg-black">
         <div class="user-photo">
             <a class="img" title="我的头像" ><img src=""></a>
-            <p>你好！<span th:text="${name}">登录人姓名</span>, 欢迎登录</p>
+            <p>你好！<span th:text="${userName}"></span>, 欢迎登录</p>
         </div>
         <div class="navBar layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" id="myTree" lay-filter=""></ul>
@@ -132,7 +132,7 @@
                         if(data[i].parentId == 0){ //取出父元素的菜单，拼进页面
                             menu +=        "<a href='javascript:;'>"+data[i].text+"</a>"
                             for(var j = 0;j<data.length;j++){ //继续遍历这几条数据
-                                if(data[j].childrenId > data[i].childrenId && data[j].childrenId < (data[i].childrenId)+1000){ //取出这个父元素所对应的子元素
+                                if(data[j].childrenId > data[i].childrenId && data[j].childrenId < (data[i].childrenId)+100){ //取出这个父元素所对应的子元素
                                     menu +=    "<dl class='layui-nav-child'>"
                                     menu +=        "<dd>"
                                     menu +=            "<a href='javascript:;' data-url='"+data[j].url+"'>"
