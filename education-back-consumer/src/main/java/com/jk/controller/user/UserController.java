@@ -190,6 +190,7 @@ public class UserController {
         System.out.println("李达伟");
         System.out.println("李达伟");
         System.out.println("李达伟");
+        System.out.println("李达伟");
 
 
         return "teacher/loginInfo";
