@@ -149,7 +149,7 @@
 	  	update t_user
 	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password},
 	    sex=#{sex},phone=#{phone},birthday=#{birthday},province=#{province},city=#{city},
-	    area=#{area},email=#{email},userInfo=#{userInfo}
+	    area=#{area},email=#{email},userInfo=#{userInfo},userImg = #{userImg}
 	    where userId = #{userId}
     </update>
 </mapper>
