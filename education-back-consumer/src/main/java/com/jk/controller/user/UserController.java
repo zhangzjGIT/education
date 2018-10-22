@@ -7,15 +7,18 @@ import com.jk.model.user.Teacher;
 import com.jk.model.user.UserBean;
 import com.jk.service.user.UserServiceApi;
 import com.jk.utils.Md5Util;
+import com.jk.utils.OSSClientUtil;
 import com.jk.utils.RandomValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -193,4 +196,24 @@ public class UserController {
         userServiceApi.updUser(userBean);
         return "{}";
     }
+    //oss图片上传
+    @RequestMapping(value = "userImgUpload",method = RequestMethod.POST)
+    @ResponseBody
+    public HashMap<String, Object> headImgUpload(MultipartFile file) throws IOException {
+
+        if (file == null || file.getSize() <= 0) {
+            throw new IOException("file不能为空");
+        }
+        //获取文件的大小,单位/KB
+        long size = file.getSize();
+        OSSClientUtil ossClient = new OSSClientUtil();
+        String name = ossClient.uploadImg2Oss(file);
+        String imgUrl = ossClient.getImgUrl(name);
+        HashMap<String, Object> map = new HashMap<>();
+        //文件存储的路径
+        map.put("name", imgUrl);
+
+        return map;
+    }
+
 }
