@@ -3,6 +3,8 @@ package com.jk.mapper.user;
 import com.jk.model.user.NavBean;
 import com.jk.model.user.NavRoleBean;
 import com.jk.model.user.RoleBean;
+import com.jk.model.user.RoleBean;
+import com.jk.model.user.Teacher;
 import com.jk.model.user.UserBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -67,4 +69,16 @@ public interface UserMapper {
     int queryUserTotal();
 
     List<UserBean> queryUser(@Param("start")int start, @Param("end")int end);
+
+    int queryTeacherTotal();
+
+    List<Teacher> queryTeacher(@Param("st")int start, @Param("end")int end);
+
+    void updStatusUp(Teacher teacher);
+
+    void updStatusDown(Teacher teacher);
+
+    RoleBean queryRoleById(Integer userId);
+
+    void updUser(UserBean userBean);
 }
