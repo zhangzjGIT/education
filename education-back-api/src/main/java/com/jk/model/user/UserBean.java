@@ -35,6 +35,8 @@ public class UserBean extends Page implements Serializable {
 
     private String userInfo;
 
+    private String userImg;
+
     public Integer getUserId() {
         return userId;
     }
@@ -129,5 +131,13 @@ public class UserBean extends Page implements Serializable {
 
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
+    }
+
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg;
     }
 }
