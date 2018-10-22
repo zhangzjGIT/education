@@ -45,5 +45,27 @@
     <delete id="deleteUser" parameterType="int">
         delete from t_user where userId = #{value}
     </delete>
-
+    <select id="queryTeacherTotal" resultType="int">
+        select count(*) from t_teacher
+    </select>
+    <select id="queryTeacher"  resultType="com.jk.model.user.Teacher">
+        select * from t_teacher
+    </select>
+    <update id="updStatusUp" parameterType="com.jk.model.user.Teacher" >
+        update t_teacher set status =2 where teacherId=#{teacherId}
+    </update>
+    <update id="updStatusDown" parameterType="com.jk.model.user.Teacher" >
+        update t_teacher set status =1 where teacherId=#{teacherId}
+    </update>
+    <select id="queryRoleById" parameterType="int" resultType="com.jk.model.user.RoleBean" >
+	    select tr.* from t_role tr,t_user_role tur ,t_user tu WHERE
+        tr.roleId=tur.roleId and tur.userId=tu.userId and tu.userId= #{value}
+	</select>
+    <update id="updUser" parameterType="com.jk.model.user.UserBean">
+	  	update t_user
+	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password},
+	    sex=#{sex},phone=#{phone},birthday=#{birthday},province=#{province},city=#{city},
+	    area=#{area},email=#{email},userInfo=#{userInfo}
+	    where userId = #{userId}
+    </update>
 </mapper>
