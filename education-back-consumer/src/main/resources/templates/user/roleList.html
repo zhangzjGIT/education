@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
+    <link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
+    <link rel="stylesheet" href="../EasyUI/themes/color.css"/>
+    <script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
+    <script src="../EasyUI/jquery.easyui.min.js"></script>
+    <script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
+    <script src="../EasyUI/util-js.js"></script>
+</head>
+<body>
+<div id="ccs" class="easyui-layout" data-options="fit:true" >
+    <div data-options="region:'west',title:'West',split:true" style="width:50%;">
+        <div id="tools">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="toAdd()">新增</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" onclick="toEdit()">修改</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="deleRole()">删除</a>
+            角色名称:<input class="easyui-textbox" type="search" id="name">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="search()">搜索</a>
+            <a href="#" onclick="yyyy()" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"></a>
+        </div>
+        <table id="roleTable"></table>
+        <div id="addSpan"></div>
+        <div id="editdiv"></div>
+    </div>
+    <div id="navTitle" data-options="region:'center',title:'权限树'" style="width:50%;">
+        <div class="easyui-panel" data-options="footer:'#ft',fit:true">
+            <input type="hidden" id="roleIdHid"/>
+            <ul id="powerTree"></ul>
+            <div id="ft" style="padding:5px;text-align:right" >
+                <a class="easyui-linkbutton" onclick="saveRoleNav()" data-options="iconCls:'icon-save',plain:true">保存权限</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    function saveRoleNav(){
+        var roleIdHid = $('#roleIdHid').val();
+        if(roleIdHid == '' || roleIdHid == null){
+            $.messager.alert('提示','请选择需要绑定的角色','warning');
+            return;
+        }
+        var treeArr=$('#powerTree').tree('getChecked');
+        var ids = "";
+        for (var i = 0; i < treeArr.length; i++) {
+            ids += ids == "" ?treeArr[i].id : ","+treeArr[i].id;
+        }
+        $.ajax({
+            url:'../user/addRoleNav',
+            type:'post',
+            data:{
+                roleId:roleIdHid,
+                ids:ids
+            },
+            success:function(result){
+                if(result){
+                    $.messager.alert('提示','绑定成功','info');
+                }else{
+                    $.messager.alert('提示','绑定失败','error');
+                }
+
+            },
+            error:function(){
+                alert("绑定失败")
+            }
+        })
+    }
+
+
+    $(function(){
+        search()
+        intiPowerTree('0');
+    })
+
+    function search(){
+        $('#roleTable').datagrid({
+            url:'getRolePage',
+            pagination:'true',
+            pageNumber:1,
+            fit:true,
+            toolbar:'#tools',
+            pageSize:10,
+            pageList:[2,5,10],
+            queryParams:{
+                roleName:$('#name').val()
+            },
+            columns:[
+                [
+                    {field:'chec',checkbox:true},
+                    {field:'roleId',title:'主键Id'},
+                    {field:'roleName',title:'角色名称'},
+                    {field:'123',title:'操作',
+                        formatter:function(value,row,index){
+                            return '<a href="javascript:bindPower('+row.roleId+',\''+row.roleName+'\')">绑定权限</a>'
+                        }
+                    }
+            ]
+            ]
+        })
+    }
+
+
+    function toAdd(){
+        $('#addSpan').dialog({
+            title: '添加',
+            width: 500,
+            height: 600,
+            href: 'toAddRole',
+            modal: true,
+            buttons:[{
+                text:'保存',
+                handler:function(){
+                    $.ajax({
+                        url:'addRole',
+                        ype:'post',
+                        data:$("#add_Role_Form").serialize(),
+                        dataType:'json',
+                        success:function(result){
+                            if (result) {
+                                $("#roleTable").datagrid("reload");
+                            }else{
+                                alert('添加失败');
+                            }
+                        },
+                    })
+                    $('#addSpan').dialog('close');
+                }
+            },{
+                text:'关闭',
+                handler:function(){
+                    $('#addSpan').dialog('close');
+                }
+            }]
+        });
+    }
+
+    function deleRole(){
+        var roleInfo = $('#roleTable').datagrid('getSelected');
+        var roleId = roleInfo.roleId;
+        $.ajax({
+            url:'deleteRole',
+            type:'post',
+            data:{
+                roleId:roleId
+            },
+            dataType:'json',
+            success:function(){
+                <!--$('#editdiv').dialog("close");-->
+                $("#roleTable").datagrid("reload");
+            }
+        })
+    }
+
+    function toEdit(){
+        var roleInfo = $('#roleTable').datagrid('getSelected');
+        var roleId = roleInfo.roleId;
+        $('#editdiv').dialog({
+            title: '修改',
+            width: 400,
+            height: 200,
+            closed: false,
+            cache: false,
+            href: 'toEditRole?roleId='+roleId,
+            modal: true,
+            buttons:[{
+                text:'保存',
+                handler:function(){
+                    $.ajax({
+                        url:'updateRole',
+                        type:'post',
+                        data:$('#edit_Role_Form').serialize(),
+                        dataType:'json',
+                        success:function(){
+                            $('#editdiv').dialog("close");
+                            $("#roleTable").datagrid("reload");
+                        }
+                    })
+                }
+            },{
+                text:'关闭',
+                handler:function(){
+                    $('#editdiv').dialog("close");
+                    $('#tasktable').datagrid("reload");
+                }
+            }]
+        });
+    }
+
+    function intiPowerTree(roleId){
+        $('#powerTree').tree({
+            url:'../user/queryRoleNavTree?roleId='+roleId,
+            lines:true,
+            checkbox:true,
+        })
+    }
+
+    function bindPower(id,name){
+        $('#roleIdHid').val(id);
+        $('#ccs').layout('panel','center').panel({title: name+"的权限"})
+        intiPowerTree(id);
+    }
+</script>
+</body>
+</html>

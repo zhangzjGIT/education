@@ -1,34 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
-<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
-<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
-<script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
-<script src="../EasyUI/jquery.easyui.min.js"></script>
-<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
-<script src="../EasyUI/util-js.js"></script>
-<title>Insert title here</title>
+	<meta charset="utf-8"/>
+	<title>新增广告</title>
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+
 </head>
 <body>
+<script src="/layui/layui.js"></script>
+<script src="/layui/lay/modules/upload.js"></script>
+<script src="../js/jquery-1.9.1.min.js"></script>
 
-	<form id="addUserForm">
-         <table align="center">
-             <tr>
-				<td>用户姓名</td>
-				<td><input class="easyui-validatebox" data-options="required:true" name="userName"></td>
-			</tr>
-			<tr>
-				<td>登录账号</td>
-				<td><input class="easyui-validatebox" data-options="required:true" name="loginNumber"></td>
-			</tr>
-			<tr>
-				<td>登录密码</td>
-				<td><input class="easyui-validatebox" data-options="required:true" name="password"></td>
-			</tr>
-         </table>
-     </form>
-     
+
+<form class="layui-form" method="post" id="adduserForm">
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">用户姓名</label>
+		<div class="layui-input-inline">
+			<input type="text" name="userName" lay-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<label class="layui-form-label">登陆账号</label>
+		<div class="layui-input-inline">
+			<input type="text" name="loginNumber" lay-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+
+	<div class="layui-form-item">
+		<label class="layui-form-label">密码</label>
+		<div class="layui-input-inline">
+			<input type="text" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-input-block">
+			<button class="layui-btn" onclick="addFrom()">立即提交</button>
+			<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		</div>
+	</div>
+
+
+
+</form>
+
+<script>
+    function addFrom() {
+        $.ajax({
+            url:'/user/addUser',
+            dataType:'json',
+            type:'post',
+            data:$('#adduserForm').serialize(),
+            success:function(){
+                parent.reloadData();
+            }
+        })
+    }
+</script>
 </body>
 </html>

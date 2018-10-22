@@ -12,6 +12,10 @@ spring:
       prefix: classpath:/templates/
       suffix: .html
 
+
+
+
+
 #feign:
 #  hystrix:
 #    enabled: true

@@ -4,7 +4,7 @@ import com.jk.model.Page;
 
 import java.io.Serializable;
 
-public class UserBean extends Page implements Serializable {
+public class UserBean implements Serializable {
 
     private Integer userId;
 
