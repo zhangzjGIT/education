@@ -65,7 +65,21 @@
 	  	update t_user
 	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password},
 	    sex=#{sex},phone=#{phone},birthday=#{birthday},province=#{province},city=#{city},
-	    area=#{area},email=#{email},userInfo=#{userInfo}
+	    area=#{area},email=#{email},userInfo=#{userInfo},userImg=#{userImg}
 	    where userId = #{userId}
     </update>
+    <select id="queryCourseTotal" resultType="int">
+        select count(*) from t_message tm ,t_teacher tt where tm.teaId=tt.teacherId
+    </select>
+    <select id="queryCourse"  resultType="com.jk.model.user.MessageBean">
+        select tm.* ,tt.teacherName as teacherName from t_message tm ,t_teacher tt where tm.teaId=tt.teacherId
+    </select>
+    <update id="updClassStatusUp" parameterType="com.jk.model.user.MessageBean" >
+        update t_message set status =2 where couId=#{couId}
+    </update>
+    <update id="updClassStatusDown" parameterType="com.jk.model.user.MessageBean" >
+        update t_message set status =1 where couId=#{couId}
+    </update>
+
+
 </mapper>

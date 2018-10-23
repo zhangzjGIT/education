@@ -1,5 +1,6 @@
 package com.jk.mapper.user;
 
+import com.jk.model.user.MessageBean;
 import com.jk.model.user.RoleBean;
 import com.jk.model.user.Teacher;
 import com.jk.model.user.UserBean;
@@ -39,4 +40,12 @@ public interface UserMapper {
     RoleBean queryRoleById(Integer userId);
 
     void updUser(UserBean userBean);
+
+    int queryCourseTotal();
+
+    List<MessageBean> queryCourse(@Param("st")int start, @Param("end")int end);
+
+    void updClassStatusUp(MessageBean messageBean);
+
+    void updClassStatusDown(MessageBean messageBean);
 }

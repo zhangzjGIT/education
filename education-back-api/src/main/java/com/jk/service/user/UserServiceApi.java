@@ -1,6 +1,7 @@
 package com.jk.service.user;
 
 import com.jk.model.ResultPage;
+import com.jk.model.user.MessageBean;
 import com.jk.model.user.RoleBean;
 import com.jk.model.user.Teacher;
 import com.jk.model.user.UserBean;
@@ -42,4 +43,10 @@ public interface UserServiceApi {
 
     @RequestMapping(value = "/updUser",method = RequestMethod.POST)
     void updUser(@RequestBody UserBean userBean);
+
+    @RequestMapping(value = "/queryCourse",method = RequestMethod.POST)
+    Map<String, Object> queryCourse(@RequestParam(value = "page")int page, @RequestParam(value = "limit")int limit);
+
+    @RequestMapping(value = "/updClassStatus",method = RequestMethod.POST)
+    void updClassStatus(@RequestBody MessageBean messageBean);
 }
