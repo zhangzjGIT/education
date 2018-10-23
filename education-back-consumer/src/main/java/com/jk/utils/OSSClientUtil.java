@@ -49,19 +49,19 @@ public class OSSClientUtil {
 	     * accessKey访问秘钥
 	     *  访问用户
 	     */
-	    private String accessKeyId = "LTAIMNbRzwDEdvlh";
+	    private String accessKeyId = "LTAIqguiTL0OOs6g";
 	    /**
 	     * 密钥
 	     */
-	    private String accessKeySecret = "Xgzv6l3YvCrKiRTDLuUaQtDBOo8OWL";  
+	    private String accessKeySecret = "xVscqBpORSiy0zVgnpng7ppiC4wM4S";
 	    /**
 	     * 空间  名称
 	     */
-	    private String bucketName = "zhangzj";  
+	    private String bucketName = "wangym";
 	    /**
 	     *  文件存储目录  
 	     */
-	    private String filedir = "firstShop/";  
+	    private String filedir = "education/";
 	  
 	    private OSSClient ossClient;
 	  
@@ -104,7 +104,7 @@ public class OSSClientUtil {
 	    }  
 	  
 	    public String uploadImg2Oss(MultipartFile file) throws IOException {  
-	        if (file.getSize() > 10 * 1024 * 1024) {  
+	        if (file.getSize() > 2000 * 1024 * 1024) {
 	            throw new IOException("上传图片大小不能超过10M！");  
 	        }  
 	        String originalFilename = file.getOriginalFilename();  

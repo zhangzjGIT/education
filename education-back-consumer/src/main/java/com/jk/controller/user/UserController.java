@@ -116,7 +116,9 @@ public class UserController {
         Session session = SecurityUtils.getSubject().getSession();
         UserBean users = (UserBean) session.getAttribute(session.getId());
         String userName = users.getUserName();
+        String userImg = users.getUserImg();
         model.addAttribute("userName",userName);
+        model.addAttribute("userImg",userImg);
         return "login/main";
     }
 
@@ -411,6 +413,9 @@ public class UserController {
     @ResponseBody
     public String updUser(UserBean userBean){
         userServiceApi.updUser(userBean);
+        Session  session=  SecurityUtils.getSubject().getSession();
+        session.removeAttribute(session.getId());
+        session.setAttribute(session.getId(),userBean);
         return "{}";
     }
 
