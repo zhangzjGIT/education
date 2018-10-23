@@ -1,6 +1,8 @@
 package com.jk.mapper.education;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -20,4 +22,8 @@ public interface EduMapper {
     List<ClassBean> searchList(@Param("search")String search);
 
     List<ClassBean> searchmany(@Param("search")String search);
+
+    List<TypeBean> queryCLassTypeList();
+
+    List<MessageBean> queryClassByTypeId();
 }

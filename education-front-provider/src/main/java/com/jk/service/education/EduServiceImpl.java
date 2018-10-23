@@ -4,6 +4,8 @@ import com.jk.mapper.education.EduMapper;
 
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +41,19 @@ public class EduServiceImpl implements EduServiceApi {
     @Override
     @RequestMapping(value = "/searchmany")
     public List<ClassBean> searchmany(String search) {
+
         return eduMapper.searchmany(search);
+    }
+
+    @Override
+    public List<TypeBean> queryCLassTypeList() {
+
+        return eduMapper.queryCLassTypeList();
+    }
+
+    @Override
+    public List<MessageBean> queryClassByTypeId() {
+        return eduMapper.queryClassByTypeId();
     }
 
 

@@ -22,6 +22,12 @@
         </if>
     </select>
 
+    <select id="queryCLassTypeList"  resultType="com.jk.model.education.TypeBean">
+	   select * from t_type
+    </select>
 
+    <select id="queryClassByTypeId"  resultType="com.jk.model.education.MessageBean">
+	   select * from t_message where  status = 2
+    </select>
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.jk.service.education;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,4 +24,10 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/searchmany",method = RequestMethod.POST)
     List<ClassBean> searchmany(@RequestParam(value = "search")String search);
+
+    @RequestMapping(value="/queryCLassTypeList",method = RequestMethod.GET)
+    List<TypeBean> queryCLassTypeList();
+
+    @RequestMapping(value = "/queryClassByTypeId",method = RequestMethod.GET)
+    List<MessageBean> queryClassByTypeId();
 }

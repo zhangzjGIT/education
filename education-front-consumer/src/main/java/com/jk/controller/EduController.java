@@ -1,11 +1,14 @@
 package com.jk.controller;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import com.jk.service.EduService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class EduController {
     public String toList(ClassBean classBean, ModelMap md){
        List<ClassBean> list =  eduService.queryVideoList(classBean);
        md.put("list",list);
-        return "list";
+       return "list";
     }
 
     @RequestMapping("searchList")
@@ -50,9 +53,20 @@ public class EduController {
         return "info";
     }
     @RequestMapping("tomain")
-    public String tomain(){
+    public String tomain(ModelMap md) {
+        List<TypeBean> typelist = eduService.queryCLassTypeList();
+        List<MessageBean> mesList = eduService.queryClassByTypeId();
+        md.put("mesList", mesList);
+        md.put("typelist", typelist);
         return "index";
     }
 
+   /* @RequestMapping("queryClassByTypeId")
+    public String queryClassByTypeId(Integer typeId,ModelMap md){
+        List<ClassBean> classList = eduService.queryClassByTypeId(typeId);
+        if (classList != null) {
 
+        }
+        return "index";
+    }*/
 }
