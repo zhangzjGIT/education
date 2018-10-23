@@ -1,11 +1,7 @@
 package com.jk.mapper.user;
 
-import com.jk.model.user.NavBean;
-import com.jk.model.user.NavRoleBean;
+import com.jk.model.user.*;
 import com.jk.model.user.RoleBean;
-import com.jk.model.user.RoleBean;
-import com.jk.model.user.Teacher;
-import com.jk.model.user.UserBean;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -81,4 +77,12 @@ public interface UserMapper {
     RoleBean queryRoleById(Integer userId);
 
     void updUser(UserBean userBean);
+
+    int queryCourseTotal();
+
+    List<MessageBean> queryCourse(@Param("st")int start, @Param("end")int end);
+
+    void updClassStatusUp(MessageBean messageBean);
+
+    void updClassStatusDown(MessageBean messageBean);
 }

@@ -4,12 +4,8 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 import com.jk.mapper.user.UserMapper;
 
 import com.jk.model.ResultPage;
-import com.jk.model.user.NavBean;
-import com.jk.model.user.NavRoleBean;
+import com.jk.model.user.*;
 import com.jk.model.user.RoleBean;
-import com.jk.model.user.RoleBean;
-import com.jk.model.user.Teacher;
-import com.jk.model.user.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -226,6 +222,37 @@ public class UserServiceImpl implements UserServiceApi{
     @RequestMapping(value = "updUser")
     public void updUser(@RequestBody UserBean userBean) {
         userDao.updUser(userBean);
+    }
+
+    @Override
+    @RequestMapping(value = "queryCourse")
+    public Map<String, Object> queryCourse(@RequestParam(value = "page") int page, @RequestParam(value = "limit") int limit) {
+        int total = userDao.queryCourseTotal();
+        //2.起始位置：（当前页 - 1） *  每页条数
+        int start = (page - 1) * limit;
+        //3.结束位置 = 起始位置 +  每页条数
+        int end = start + limit;
+        //4.获取对象集合
+        List<MessageBean> dlist = userDao.queryCourse(start, end);
+        //5.装进Map中，总条数，展示数据
+        Map<String, Object> map = new HashMap<>();//实例化
+        map.put("total", total);
+        map.put("rows", dlist);
+        map.put("page", page);
+        map.put("limit", limit);
+        return map;
+    }
+
+    @Override
+    @RequestMapping(value = "updClassStatus")
+    public void updClassStatus(@RequestBody MessageBean messageBean) {
+        int status = messageBean.getStatus();
+
+        if (status == 1) {
+            userDao.updClassStatusUp(messageBean);
+        } else {
+            userDao.updClassStatusDown(messageBean);
+        }
     }
 
 

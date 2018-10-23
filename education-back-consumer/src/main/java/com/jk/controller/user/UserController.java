@@ -2,10 +2,7 @@ package com.jk.controller.user;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jk.model.ResultPage;
-import com.jk.model.user.NavBean;
-import com.jk.model.user.RoleBean;
-import com.jk.model.user.Teacher;
-import com.jk.model.user.UserBean;
+import com.jk.model.user.*;
 import com.jk.service.user.UserServiceApi;
 import com.jk.utils.Md5Util;
 import com.jk.utils.OSSClientUtil;
@@ -438,5 +435,45 @@ public class UserController {
 
         return map;
     }
+
+    /**
+     * 类描述：课程审核
+     * 创建人：LDW
+     * 创建时间：2018/10/23 10:24
+     * 修改人：LDW
+     * 修改时间：2018/10/23 10:24
+     * 修改备注：
+     * @version ：1.0
+     */
+    @RequestMapping("toCourse")
+    public String toCourse(){
+        return "teacher/showClass";
+    }
+
+    @RequestMapping("queryCourse")
+    @ResponseBody
+    public String queryCourse (@RequestParam(value="page",defaultValue="1",required=true)int page,@RequestParam(value="limit",defaultValue="10",required=true)int limit){
+
+        Map<String,Object> map= userServiceApi.queryCourse(page,limit);
+        List<MessageBean> list = (List<MessageBean>) map.get("rows");
+        int count= (int) map.get("total");
+        //list转成json
+//		 JSONArray array =new JSONArray();
+        JSONObject obj=new JSONObject();
+        //前台通过key值获得对应的value值
+        obj.put("code", 0);
+        obj.put("msg", "");
+        obj.put("count",count);
+        obj.put("data",list);
+        return obj.toString();
+    }
+
+    @RequestMapping(value = "updClassStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public String updClassStatus(MessageBean messageBean){
+        userServiceApi.updClassStatus(messageBean);
+        return "{}";
+    }
+
 
 }
