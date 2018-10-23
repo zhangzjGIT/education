@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.class.cn/my_course/create_course?act=add -->
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>创建课程-会员中心-莘莘学子-中国教育在线</title>
+	<link rel="stylesheet" href="../personal/layout.css" media="all">
+    <link rel="stylesheet" href="../js/kindeditor-4.1.7/themes/default/default.css">
+    <link rel="stylesheet"  href="../js/uploadify/uploadify.css" type="text/css"/>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../uploadify/jquery.uploadify.min.js"></script>
+</head>
+<body>
+<div style="position: absolute; left: -9999em; top: 234px; visibility: visible; width: auto; z-index: 1976;">
+    <table class="ui_border ui_state_visible ui_state_focus">
+        <tbody>
+        <tr>
+            <td class="ui_lt"></td>
+            <td class="ui_t"></td>
+            <td class="ui_rt"></td>
+        </tr>
+        <tr>
+            <td class="ui_l"></td>
+            <td class="ui_c">
+                <div class="ui_inner">
+                    <table class="ui_dialog">
+                        <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <div class="ui_title_bar">
+                                    <div class="ui_title" unselectable="on" style="cursor: move;">视窗 </div><div class="ui_title_buttons"><a class="ui_min" href="javascript:void(0);" title="最小化" style="display: inline-block;"><b class="ui_min_b"></b></a><a class="ui_max" href="javascript:void(0);" title="最大化" style="display: inline-block;"><b class="ui_max_b"></b></a><a class="ui_res" href="javascript:void(0);" title="还原"><b class="ui_res_b"></b><b class="ui_res_t"></b></a><a class="ui_close" href="javascript:void(0);" title="关闭(esc键)" style="display: inline-block;">×</a></div></div></td></tr><tr><td class="ui_icon" style="display: none;"></td><td class="ui_main" style="width: auto; height: auto;"><div class="ui_content" style="padding: 10px;"><div class="ui_loading"><span>loading...</span></div></div></td></tr><tr><td colspan="2"><div class="ui_buttons" style="display: none;"></div></td></tr></tbody></table></div></td><td class="ui_r"></td></tr><tr><td class="ui_lb"></td><td class="ui_b"></td><td class="ui_rb" style="cursor: se-resize;"></td></tr></tbody></table></div><div style="position: absolute; left: -9999em; top: 234px; visibility: visible; width: auto; z-index: 1976;"><table class="ui_border ui_state_visible ui_state_focus"><tbody><tr><td class="ui_lt"></td><td class="ui_t"></td><td class="ui_rt"></td></tr><tr><td class="ui_l"></td><td class="ui_c"><div class="ui_inner"><table class="ui_dialog"><tbody><tr><td colspan="2"><div class="ui_title_bar"><div class="ui_title" unselectable="on" style="cursor: move;">视窗 </div><div class="ui_title_buttons"><a class="ui_min" href="javascript:void(0);" title="最小化" style="display: inline-block;"><b class="ui_min_b"></b></a><a class="ui_max" href="javascript:void(0);" title="最大化" style="display: inline-block;"><b class="ui_max_b"></b></a><a class="ui_res" href="javascript:void(0);" title="还原"><b class="ui_res_b"></b><b class="ui_res_t"></b></a><a class="ui_close" href="javascript:void(0);" title="关闭(esc键)" style="display: inline-block;">×</a></div></div></td></tr><tr><td class="ui_icon" style="display: none;"></td><td class="ui_main" style="width: auto; height: auto;"><div class="ui_content" style="padding: 10px;"><div class="ui_loading"><span>loading...</span></div></div></td></tr><tr><td colspan="2"><div class="ui_buttons" style="display: none;"></div></td></tr></tbody></table></div></td><td class="ui_r"></td></tr><tr><td class="ui_lb"></td><td class="ui_b"></td><td class="ui_rb" style="cursor: se-resize;"></td></tr></tbody></table></div>
+
+
+<style type="text/css">
+	form.headsearch {float:left;width:50%}
+	div.header .login {font-family:"Microsoft YaHei";font-size:16px;font-weight:bold;color:#FFF;margin-top:5px;height:36px;margin-right:20px}
+	div.header .up_course {display:inline-block;font-family:"Microsoft YaHei";font-size:16px;font-weight:bold;color:#FFF;margin-top:-10px;margin-left:-10px}
+	p.login {text-align:left}
+	#mailcontent {width:150px;left:-100px}
+</style>
+<!--顶部导航栏-->
+<div class="top-nav" style="display: block; margin-top: 32px;">
+	<div class="w1180">
+		<div class="top-nav-logo"><a href="http://www.class.cn/index/stu"><img title="莘莘学子" src="../personal/logo.png" border="0"> </a><span class="hide">中国教育在线-莘莘学子</span></div>
+		<div class="top-nav-search-courses">
+			<div class="top-nav-search-box">
+			</div>
+			<a href="javascript:;" id="show_course_type">发现课程</a>
+			<a href="http://www.class.cn/index/tech">我要开课</a>
+		</div>
+		<div class="top-nav-userinfo-box">
+						<!--登录状态-->
+			<div class="state-login" style="">
+				<!--userinfo-mailbox-preview是更改收件箱为预览状态的class-->
+				<div class="userinfo-cartbox" style="display:none;">
+				<dl>
+					<dt class="ld">
+						<s></s>
+                                <span class="shopping">
+                                    <span id="shopping-amount"></span>
+                                </span>
+					</dt>
+				</dl>
+			</div>
+			<div class="clear"></div>
+		</div>
+			</div>
+	<div class="clear"></div>
+</div>
+</div>
+<!--顶部导航栏END-->
+<!--课程全部分类框-页面顶部发现课程-->
+<!--课程全部分类框END-->
+<div class="opMaskLayer hide" style="height: 1259px; position: fixed;"></div>
+	<div class="content body_width overnone">
+		<div class="wraper marb20">
+			<div class="usercontent mart20 overnone">
+				<div class="userface">
+            <div class="userface_wraper clearfix">
+                <div class="fl marr10 face" id="user_face">
+                    <!--若有头像,使用本人的，否则使用系统的分为个人和机构两个不同的图片-->
+                    <span id="img_span">
+                        <img src="../personal/user_face.jpg" onerror="this.onerror=null;this.src=&#39;http://www.class.cn/public/images/user_face.jpg&#39;" alt="">
+                    </span>
+                    <span class="changebtn" id="changebtn" style="display:none">
+                        <em class="changebtn_bg"></em>
+                        <a class="my_runcode" name="my_flash_a" href="http://www.class.cn/account_user/upload_photo">更换头像</a>
+                    </span>
+                </div>
+                <div class="fl userinfo2 auth_info">
+                    <p><!--<span>用户昵称：</span>--><a class="deepblue nickname" href="javascript:void(0);" onclick="window.location.href = &#39;">${user.userName}</a></p>
+                    <p><!--<span>收费权限：</span>--><a class="deepblue applyset" href="javascript:void(0);" onclick="window.location.href = &#39;">申请收费权限</a></p>
+                </div>
+            </div>
+            <div class="userinfo2" style="border-top:1px solid #DEDEDE;padding-top:0px;">
+            	<ul class="adduserinfo">
+                    <li>
+                        <a href="http://www.class.cn/my_course/lists" class="a4 active">我的课程</a>
+                        <a href="http://www.class.cn/my_course/create_course?act=add" class="rtext active" target="_blank">创建课程</a>
+                    </li>
+                    
+                                                            
+                                        <li><a href="http://www.class.cn/my_lib" class="a11 ">资源库</a>
+                    </li>
+                                    </ul>
+                <ul class="adduserinfo">
+                    <li><a href="http://www.class.cn/my_course/collect_course" class="a5 ">我的收藏</a></li>
+                </ul>
+                <ul class="adduserinfo">
+                    <li class="posr"><a href="http://www.class.cn/user/message" class="a8 ">我的消息</a></li>
+                </ul>
+                <ul class="adduserinfo" style="background-image:none;">
+                	<li><a href="http://www.class.cn/user/trade" class="a9 ">我的账户</a></li>
+                </ul> 
+                            </div>
+		</div>
+<div class="userdata posr">
+    <!-- 创建课程信息 strat -->
+    <h2 class="YaHei add_course_title tit_line">创建课程</h2>
+    <ul class="mart20 progressbar clearfix">
+        <li class="active">填写课程信息<i class="triangle"></i></li>
+        <li>安排点播课程</li>
+        <li>安排点播课程<i class="triangle"></i></li>
+        <li>安排直播课程</li>
+    </ul>
+    <form id="addCourseForm" method="post">
+        <div class="tabs_wraper">
+            <div id="error_msg" class="error" style="width:100%;height:35px;line-height:35px;margin-left:18px;display:none;"></div>
+            <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程标题：</div>
+                <div class="tabs_values">
+                    <input type="text" class="input_text" name="couTitle" >
+                </div>
+            </div>
+            <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程类型：</div>
+                <div id="base_set" class="tabs_values">
+                    <input type="radio" name="couType" value="1" class="input_radio">点播
+                    <!--2015-12-29取消 <input id="sel_live" type="radio" name="course_type" value="2" class="input_radio" /><label for="sel_live">直播</label>
+                    <input id="sel_demandtolive" type="radio" name="course_type" value="3" class="input_radio" /><label for="sel_demandtolive">点播+直播</label>-->
+                </div>
+            </div>
+            <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程分类：</div>
+                <div class="tabs_values">
+                    <select id="lev1" name="couClass">
+                          <option value="0">课程分类</option>
+                          <option value="1">IT▪互联网</option>
+                          <option value="2">设计▪创作</option>
+                          <option value="3">语言▪留学</option>
+                          <option value="4">职业▪考证</option>
+                          <option value="5">升学▪考研</option>
+                          <option value="6">兴趣▪生活</option>
+                      </select>
+                </div>
+            </div>
+                        <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程价格：</div>
+                <div class="tabs_values">
+                    <input id="free" type="radio" name="couPrice" value="0" class="input_radio"><label for="free">免费</label>　
+                    <input id="pay" type="radio" name="couPrice" value="1" class="input_radio"><label for="pay">收费</label>
+                </div>
+            </div>
+            <!--  -->
+            <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程说明：</div>
+                <div class="tabs_values">
+                    <div class="ke-container ke-container-default" style="width: 650px;">
+                        <textarea name="couState" id="edittext"></textarea>
+                </div>
+            </div>
+            <div class="tabs_attr tabs_attr_hd">
+                <div class="tabs_key"><span>*</span>课程封面：</div>
+                <div class="tabs_values">
+                    <input type="file" id="imgFileBTN" >
+                    <div id="showImgDiv" style="margin-left:10px;border-radius:250px;width:100px;height:100px;border-style:solid;">
+                        <div id="showImg" style="margin-left:-1px;">
+
+                        </div>
+                    </div>
+                    <!-- 显示进度条的div -->
+                    <div id="showBars" ></div>
+                    <input type="hidden" id="photo" name="priImg"/>
+                </div>
+            </div>
+            <!-- 上传封面弹窗 strat -->
+            <div class="opMaskLayer hide" style="height: 1259px; position: fixed;"></div>
+            <div id="cover_wrapper" class="popWindow hide update_cover_wrapper" style="top: 379.5px; margin-top: 0px;">
+                <span class="pop_colsebtn"></span>
+                <div class="tabs_attr tabs_attr_hd">
+                    <div class="upload_btn_cover">
+                        <a class="radius2 defaultTheme_button" href="javascript:void(0)">
+                            <span class="btn_text">上传封面</span>
+                            <div class="file_input_wrapper">
+                                <input>
+                            </div>
+                        </a>
+                        <p>支持.jpg、.gif、.png格式的图片，不能大于2MB,最佳显示建议：宽高比2:1，400*200像素</p>
+                    </div>
+                </div>
+                <div class="tabs_attr tabs_attr_hd">
+                    <div class="tabs_values">
+                        <div class="jc-demo-box">
+                            <img src="../personal/course_388X195.jpg" id="target" alt="" style="display: none; visibility: hidden; width: 400px; height: 200px;"><div class="jcrop-holder" style="position: relative; background-color: white;"><div style="position: absolute; z-index: 600;"><div style="width: 100%; height: 100%; z-index: 310; position: absolute; overflow: hidden;"><img src="../personal/course_388X195.jpg" style="border: none; visibility: visible; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; width: 400px; height: 200px;"><div class="jcrop-hline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-hline bottom" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline right" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-vline" style="position: absolute; opacity: 0.4;"></div><div class="jcrop-tracker" style="cursor: move; position: absolute; z-index: 360;"></div></div><div style="width: 100%; height: 100%; z-index: 320; display: none;"><div class="ord-n jcrop-dragbar" style="cursor: n-resize; position: absolute; z-index: 370;"></div><div class="ord-s jcrop-dragbar" style="cursor: s-resize; position: absolute; z-index: 371;"></div><div class="ord-e jcrop-dragbar" style="cursor: e-resize; position: absolute; z-index: 372;"></div><div class="ord-w jcrop-dragbar" style="cursor: w-resize; position: absolute; z-index: 373;"></div><div class="ord-n jcrop-handle" style="cursor: n-resize; position: absolute; z-index: 374; opacity: 0.5;"></div><div class="ord-s jcrop-handle" style="cursor: s-resize; position: absolute; z-index: 375; opacity: 0.5;"></div><div class="ord-e jcrop-handle" style="cursor: e-resize; position: absolute; z-index: 376; opacity: 0.5;"></div><div class="ord-w jcrop-handle" style="cursor: w-resize; position: absolute; z-index: 377; opacity: 0.5;"></div><div class="ord-nw jcrop-handle" style="cursor: nw-resize; position: absolute; z-index: 378; opacity: 0.5;"></div><div class="ord-ne jcrop-handle" style="cursor: ne-resize; position: absolute; z-index: 379; opacity: 0.5;"></div><div class="ord-se jcrop-handle" style="cursor: se-resize; position: absolute; z-index: 380; opacity: 0.5;"></div><div class="ord-sw jcrop-handle" style="cursor: sw-resize; position: absolute; z-index: 381; opacity: 0.5;"></div></div></div><div class="jcrop-tracker" style="width: 404px; height: 204px; position: absolute; top: -2px; left: -2px; z-index: 290; cursor: crosshair;"></div><input type="radio" class="jcrop-keymgr" style="position: fixed; left: -120px; width: 12px;"><img src="../personal/course_388X195.jpg" alt="" style="display: block; visibility: visible; width: 400px; height: 200px; border: none; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px;" class="uploadImage"><div id="preview-pane">
+                                <div class="preview-container" style="">
+                                    <img src="../personal/course_388X195.jpg" class="jcrop-preview" alt="Preview">
+                                </div>
+                            </div></div>
+                            
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END -->
+            
+            <!-- 提交按钮区域 strat -->
+            <div class="mart20 tac btn_wraper">
+                <span class="btn_auto">
+                    <input type="hidden" name="cosid" value="" id="cosid">
+                    <!-- <input type="hidden" name="active" value="" id="active" /> -->
+                    <a onclick="addCou()" >下一步</a><br>
+                </span>
+            </div>
+            <!-- END -->
+
+        </div>
+        <div id="js_save" class="save_success_btn"><img src="../personal/save.png"></div>
+        <!-- 创建课程信息 end -->
+        </div></form>
+</div>
+</div>
+</div>
+</div>
+<!--新页脚-->
+<div class="new-footer">
+	<div class="w1180">
+		<div class="app-download">
+			<a href="http://m.class.cn/" class="btn-app-download" target="_blank"><i></i></a>
+            <!-- <a href="javascript:void(0);" class="btn-android-download"><i></i></a> -->
+		</div>
+		<div class="new-footer-info">
+			<a href="http://www.class.cn/index/tech" class="btn-join"></a>
+			<div class="social-share">
+				关注我们：
+                <a href="javascript:void(0);"><img src="../personal/social-share-weixin.png" alt="微信"></a>
+                <a href="http://weibo.com/classcn" target="_blank"><img src="../personal/social-share-weibo.png" alt="新浪微博"></a>
+                <a href="http://www.renren.com/543059126" target="_blank"><img src="../personal/social-share-renren.png" alt="人人网"></a>
+                <a href="http://t.qq.com/classcn" target="_blank"><img src="../personal/social-share-tengxun.png" alt="腾讯微博"></a>
+			</div>
+            <div class="weixin_code">
+                <img width="128" height="128" src="../personal/weixin_430x430.jpg" alt="扫描微信二维码">
+            </div>
+			<div class="clear"></div>
+			<p>
+				<a href="http://www.class.cn/index/aboutus" target="_blank">关于我们</a>|<a href="http://www.class.cn/index/declares" target="_blank">服务协议</a>|<a href="http://www.class.cn/index/prototype" target="_blank">隐私政策</a>|<a href="http://www.class.cn/index/contactus" target="_blank">联系我们</a>|<a href="http://www.class.cn/index/help" target="_blank">帮助中心</a>
+			</p>
+			<p>
+				<a href="http://www.miibeian.gov.cn/" target="_blank">京ICP备15059156号-1</a>京公网安备11010802020027号
+
+			</p>
+			<p>
+				<a href="http://www.eol.cn/" target="_blank">中国教育在线</a>旗下网站　©北京莘莘学子科技有限公司 版权所有
+			</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $.getScript('../js/kindeditor-4.1.7/kindeditor-all-min.js',
+        function() {
+            KindEditor.basePath = '../js/kindeditor-4.1.7/';
+            editor = KindEditor.create('#edittext', {
+                cssPath : '../js/kindeditor-4.1.7/plugins/code/prettify.css',
+                uploadJson : '../js/kindeditor-4.1.7/jsp/upload_json.jsp',
+                fileManagerJson : '../js/kindeditor-4.1.7/jsp/file_manager_json.jsp',
+                afterBlur:function(){this.sync();},//和ajax同步
+            });
+        })
+</script>
+
+<script>
+    function addCou(){
+        $.ajax({
+            url:'../deils/addCourse',
+            type:'post',
+            data:$('#addCourseForm').serialize(),
+            dataType:'json',
+            success:function(aaa){
+                location.href="../deils/enroll";
+            }
+        })
+    }
+</script>
+
+<script>
+    $(function(){
+        //给文件域的id  一个上传方法
+        $("#imgFileBTN").uploadify({
+            //前台请求后台的url 不可忽略的参数
+            'uploader' :"../deils/upImg",
+            //插件自带 不可忽略的参数
+            'swf' : "../uploadify/uploadify.swf",
+            //撤销按钮的图片路径
+            'cancelImg' : "../uploadify/uploadify-cancel.png",
+            //如果为true 为自动上传 在文件后 为false 那么它就要我们自己手动点上传按钮
+            'auto' : true,
+            //可以同时选择多个文件 默认为true 不可忽略
+            'multi' : false,
+            //给上传按钮设置文字
+            'buttonText' : '上传封面',
+            //上传后队列是否消失
+            'removeCompleted' : true,
+            'removeTimeout' : 1,
+            //上传文件的个数
+            'uploadLimit' : 1,
+            'fileTypeExts' : '*.*',
+            'fileSizeLimit' : '20000MB',
+            //给div的进度条加背景 不可忽略
+            'queueID' : 'showBars',
+            // controller层方法中接收文件的参数名
+            'fileObjName' : 'file',
+            //上传成功后的回调函数
+            'onUploadSuccess' : function(file, data, response) {
+                //data   上传到服务器的文件夹   加     图片名
+                $("#showImg").html("<img src='"+JSON.parse(data).aaa+"' style='width:100px;height:100px;border-radius:220px;'/>");
+                $("#photo").val(JSON.parse(data).aaa);
+                //转换为脚本对象
+            }
+        })
+    })
+</script>
+
+

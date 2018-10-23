@@ -1,7 +1,7 @@
 package com.jk.service.education;
 
 import com.jk.model.education.ClassBean;
-import com.jk.model.education.CourseBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +20,20 @@ public interface EduServiceApi {
     List<ClassBean> queryVideoList(@RequestBody ClassBean classBean);
 
     @RequestMapping(value = "/deils/querydeils",method = RequestMethod.POST)
-    CourseBean querydeils(@RequestBody CourseBean courseBean);
+    MessageBean querydeils(@RequestBody MessageBean messageBean);
 
     @RequestMapping(value = "/deils/collect",method = RequestMethod.PUT)
     void updateCollect(@RequestParam(value="courseId") String courseId);
 
     @RequestMapping(value = "/deils/queryuser",method = RequestMethod.GET)
-    User queryuser(String userId);
+    User queryuser(@RequestParam(value="userId")String userId);
+
+    @RequestMapping(value = "/deils/updateMessage",method = RequestMethod.PUT)
+    void updateMessage(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/deils/addCourse",method = RequestMethod.POST)
+    void addCourse(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/deils/queryMess",method = RequestMethod.POST)
+    MessageBean queryMess(@RequestParam(value="couTitleId")String couTitleId);
 }

@@ -4,9 +4,8 @@
 
 	<title> 【动sa脑学院】_莘莘学子课堂</title>
 	<link rel="canonical" href="https://ke.qq.com/course/130952">
-
-	<link rel="stylesheet" href="../aa_files/common.9d8f74fe.css"/>
-	<link rel="stylesheet" href="../aa_files/course.7aed7816.css"/>
+	<link rel="stylesheet" href="../common.9d8f74fe.css"/>
+	<link rel="stylesheet" href="../course.7aed7816.css"/>
 </head>
 <body class="page-course l-media l-aside-right ">
 <!--合作头部展示-->
@@ -47,7 +46,7 @@
 				<div class="mod-header_wrap-user dropdown-wrap" id="js_logout_outer" style="display: block;">
 					<p class="mod-header__user-name dropdown-tt">
 						<a href="https://ke.qq.com/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
-							<img alt="头像" class="mod-header__user-avatar js-avatar" th:src="${us.img}"/>
+							<!--<img alt="头像" class="mod-header__user-avatar js-avatar" th:src="${us.img}"/>-->
 							<i class="icon-account js-account i-qq"></i>
 							<span class="mod-header__user-operation-title js-username" title="ㄱ青春的梦ㅎ">ㄱ青春的梦ㅎ</span>
 						</a>
@@ -84,19 +83,19 @@
 		<div id="js-imgtext" class="imgtext-course imgtext-course--free" auto-test="mod_course_imgtext">
 
 			<div class="img-left--wrap" auto-test="mod_course_imgtext_left">
-			<img class="img-left" onerror="this.src=&#39;//9.url.cn/edu/edu_modules/edu-ui/img/nohash/img-err2.png&#39;;this.onerror=null;" src="../aa_files/510"  width="510" height="286"/>
+				<img class="img-left" onerror="this.src=&#39;//9.url.cn/edu/edu_modules/edu-ui/img/nohash/img-err2.png&#39;;this.onerror=null;" src="../aa_files/510"  width="510" height="286"/>
 				<div id="js-banner-cover" class="banner-cover" style="display: block;">
-                    <div class="banner-cover-video">
-                        <a class="banner-cover-play js-expr-btn" href="javascript:void(0);">
-                            <i class="icon-play"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+					<div class="banner-cover-video">
+						<a class="banner-cover-play js-expr-btn" href="javascript:void(0);">
+							<i class="icon-play"></i>
+						</a>
+					</div>
+				</div>
+			</div>
 
 			<div class="text-right " auto-test="mod_course_imgtext_right">
 
-				<h1 class="page-tt"><span class="title-main"> <input   th:value="${cl.courseName}" size="2" style="border:none"></span><span class="title-label"></span></h1>
+				<h1 class="page-tt"><span class="title-main"> <input   th:value="${cl.infoName}" size="2" style="border:none"></span><span class="title-label"></span></h1>
 				<div class="tt-below-line">
                     <span id="js-statistics-apply" class="line-item statistics-apply">
                         最近在学 <input   th:value="${cl.stuCount}" size="2" style="border:none"> 人
@@ -218,10 +217,10 @@
 					<div class="guide-bd">
 						<table class="tb-course">
 							<tbody>
-								<tr>
-									<th>简　介</th>
-									<td><span th:text="${cl.info}"></span> </td>
-								</tr>
+							<tr>
+								<th>简　介</th>
+								<td><span th:text="${cl.couState}"></span> </td>
+							</tr>
 							</tbody>
 						</table>
 						<div class="intro-course">
@@ -398,7 +397,7 @@
 					</h4>
 					<div class="item-line item-line--bottom">
 						<span class="line-cell item-price">¥3880.00</span>
-                        <span class="line-cell item-user item-user--right">
+						<span class="line-cell item-user item-user--right">
                     19人购买
                 </span>
 
