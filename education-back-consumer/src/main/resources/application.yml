@@ -4,8 +4,6 @@ eureka:
       defaultZone: http://localhost:8080/eureka/
 server:
   port: 8082
-  max-http-header-size: 4048576
-
 spring:
   application:
     name: service-comsumer
@@ -14,11 +12,6 @@ spring:
       prefix: classpath:/templates/
       suffix: .html
 
-
-
-ribbon:
-  eureka:
-    enable: true
 
 
 

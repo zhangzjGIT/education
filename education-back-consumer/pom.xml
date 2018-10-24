@@ -31,6 +31,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
@@ -42,26 +46,39 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.jk</groupId>
             <artifactId>education-back-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.28</version>
         </dependency>
 
+        <!-- shiro相关jar包 -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.2.2</version>
         </dependency>
-
-        <!--阿里云-->
+       <dependency>
+           <groupId>org.apache.shiro</groupId>
+           <artifactId>shiro-ehcache</artifactId>
+           <version>1.2.2</version>
+       </dependency>
+       <dependency>
+           <groupId>com.github.theborakompanioni</groupId>
+           <artifactId>thymeleaf-extras-shiro</artifactId>
+           <version>1.2.1</version>
+       </dependency>
+        <!-- <dependency>
+           <groupId>net.sourceforge.nekohtml</groupId>
+           <artifactId>nekohtml</artifactId>
+           <version>1.9.22</version>
+       </dependency> -->
         <dependency>
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
@@ -79,45 +96,45 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.26</version>
+        </dependency>
 
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-test</artifactId>
+           <scope>test</scope>
+       </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.28</version>
         </dependency>
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.10-FINAL</version>
-        </dependency>
+
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.cloud</groupId>
+               <artifactId>spring-cloud-dependencies</artifactId>
+               <version>${spring-cloud.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+           </plugin>
+       </plugins>
+   </build>
 
 
 </project>

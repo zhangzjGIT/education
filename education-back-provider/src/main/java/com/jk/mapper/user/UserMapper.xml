@@ -2,12 +2,96 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.user.UserMapper">
 
+    <select id="queryUserTotal" resultType="int">
+        select count(*) from t_user
+    </select>
+
+    <select id="queryUser" resultType="com.jk.model.user.UserBean">
+        select * from t_user limit #{start},#{end}
+    </select>
+
+    <select id="queryUserByLoginNumer" resultType="com.jk.model.user.UserBean">
+        select * from t_user where loginNumber = #{userName}
+    </select>
+
+    <insert id="addRoleNav" parameterType="list">
+        insert into t_nav_role (id,roleId,navId) values 
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.roleId},#{item.navId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteRoleNav">
+        delete from t_nav_role where roleId = #{value}
+    </delete>
+
+    <select id="queryNavIdListByRoleId" parameterType="int" resultType="com.jk.model.user.NavRoleBean">
+        select * from t_nav_role where roleId = #{value}
+    </select>
+
+    <select id="queryRoleNavTree" parameterType="int" resultType="com.jk.model.user.NavBean">
+        select * from t_nav where pid = #{value}
+    </select>
+
+    <!-- 根据角色Id修改角色信息 -->
+    <update id="updateRole">
+        update t_role set roleName = #{roleName} where roleId = #{roleId}
+    </update>
+
+    <!-- 根据Id查询角色表的一条信息 -->
+    <select id="getRoleInfoById" resultType="com.jk.model.user.RoleBean">
+        select * from t_role where roleId = #{roleId}
+    </select>
+
+    <!-- 根据Id删除角色表的信息 -->
+    <delete id="deleteRole">
+        delete from t_role where roleId = #{roleId}
+    </delete>
+
+    <!-- 新增角色表 -->
+    <insert id="addRole">
+        insert into t_role
+        (roleName)
+        values (#{roleName});
+    </insert>
+
+    <!-- 分页查询角色表的所有信息 -->
+    <select id="getRolePage" parameterType="com.jk.model.user.RoleBean" resultType="com.jk.model.user.RoleBean">
+        select * from t_role
+        <where>
+            <if test="roleBean.roleName !=null and roleBean.roleName !=''">
+                and roleName like "%${roleBean.roleName}%"
+            </if>
+        </where>
+         limit #{roleBean.startIndex},#{roleBean.rows}
+    </select>
+
+    <!-- 查询角色表的总条数 -->
+    <select id="getRolePageCount" parameterType="com.jk.model.user.RoleBean" resultType="int">
+        select count(*) from t_role
+        <where>
+            <if test="roleBean.roleName !=null and roleBean.roleName !=''">
+                and roleName like "%${roleBean.roleName}%"
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据用户Id查询出所对应的权限树 -->
+    <select id="queryNavTreeByUserId" parameterType="int" resultType="com.jk.model.user.NavBean">
+        SELECT distinct tn.id,tn.text,tn.pid,tn.url,tn.parentId,tn.childrenId
+            from t_nav tn
+			LEFT JOIN t_nav_role trn on tn.id = trn.navId
+			LEFT JOIN t_role tr on tr.roleId = trn.roleId
+			LEFT JOIN t_user_role tur on tr.roleId =tur.roleId
+		where tur.userId = #{userId}
+    </select>
+
     <select id="queryUserLoginInfo" parameterType="string" resultType="com.jk.model.user.UserBean">
 	    select * from t_user
 	    where loginNumber = #{value}
     </select>
 
-    <select id="queryUserCount" parameterType="com.jk.model.user.UserBean" resultType="int">
+    <!--<select id="queryUserCount" parameterType="com.jk.model.user.UserBean" resultType="int">
         select count(*) from
         (select tu.*,GROUP_CONCAT(tr.roleName) as roleName from t_user tu
         left join t_user_role tur on tu.userId = tur.userId
@@ -17,15 +101,15 @@
             and tu.userName like "%${userBean.userName}%"
         </if>
         group by tu.userName)a
-    </select>
+    </select>-->
 
-    <select id="queryUserList" parameterType="com.jk.model.user.UserBean" resultType="com.jk.model.user.UserBean">
+    <!--<select id="queryUserList" parameterType="com.jk.model.user.UserBean" resultType="com.jk.model.user.UserBean">
         select * from t_user where 1=1
         <if test="userBean.userName !=null and userBean.userName !=''">
             and userName like "%${userBean.userName}%"
         </if>
         limit #{userBean.startIndex},#{userBean.rows}
-    </select>
+    </select>-->
 
     <insert id="addUser" parameterType="com.jk.model.user.UserBean">
 	    insert into t_user (userName,loginNumber,password)
@@ -33,11 +117,11 @@
     </insert>
 
     <select id="queryUserById" parameterType="int" resultType="com.jk.model.user.UserBean" >
-	    select * from t_user where userId = #{value}
+	    select * from t_user where userId = #{userId}
 	</select>
 
     <update id="editUser" parameterType="com.jk.model.user.UserBean">
-	  	update t_user
+ 	  	update t_user
 	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password}
 	    where userId = #{userId}
     </update>
@@ -45,5 +129,41 @@
     <delete id="deleteUser" parameterType="int">
         delete from t_user where userId = #{value}
     </delete>
+    <select id="queryTeacherTotal" resultType="int">
+        select count(*) from t_teacher
+    </select>
+    <select id="queryTeacher"  resultType="com.jk.model.user.Teacher">
+        select * from t_teacher
+    </select>
+    <update id="updStatusUp" parameterType="com.jk.model.user.Teacher" >
+        update t_teacher set status =2 where teacherId=#{teacherId}
+    </update>
+    <update id="updStatusDown" parameterType="com.jk.model.user.Teacher" >
+        update t_teacher set status =1 where teacherId=#{teacherId}
+    </update>
+    <select id="queryRoleById" parameterType="int" resultType="com.jk.model.user.RoleBean" >
+	    select tr.* from t_role tr,t_user_role tur ,t_user tu WHERE
+        tr.roleId=tur.roleId and tur.userId=tu.userId and tu.userId= #{value}
+	</select>
+    <update id="updUser" parameterType="com.jk.model.user.UserBean">
+	  	update t_user
+	    set userName = #{userName},loginNumber = #{loginNumber},password = #{password},
+	    sex=#{sex},phone=#{phone},birthday=#{birthday},province=#{province},city=#{city},
+	    area=#{area},email=#{email},userInfo=#{userInfo},userImg = #{userImg}
+	    where userId = #{userId}
+    </update>
+
+    <select id="queryCourseTotal" resultType="int">
+        select count(*) from t_message tm ,t_teacher tt where tm.teaId=tt.teacherId
+    </select>
+        <select id="queryCourse"  resultType="com.jk.model.user.MessageBean">
+        select tm.* ,tt.teacherName as teacherName from t_message tm ,t_teacher tt where tm.teaId=tt.teacherId
+    </select>
+        <update id="updClassStatusUp" parameterType="com.jk.model.user.MessageBean" >
+        update t_message set status =2 where couId=#{couId}
+    </update>
+        <update id="updClassStatusDown" parameterType="com.jk.model.user.MessageBean" >
+        update t_message set status =1 where couId=#{couId}
+    </update>
 
 </mapper>

@@ -16,6 +16,9 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Random;
 
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.model.ObjectMetadata;
+import com.aliyun.oss.model.PutObjectResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -23,8 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
-import com.aliyun.oss.model.PutObjectResult;  
-/** 
+import com.aliyun.oss.model.PutObjectResult;
+/**
  * <pre>项目名称：firstShop-back-consumer    
  * 类名称：OSSClientUtil    
  * 类描述：    
@@ -49,21 +52,21 @@ public class OSSClientUtil {
 	     * accessKey访问秘钥
 	     *  访问用户
 	     */
-	    private String accessKeyId = "LTAIMNbRzwDEdvlh";
+	    private String accessKeyId = "LTAIqguiTL0OOs6g";
 	    /**
 	     * 密钥
 	     */
-	    private String accessKeySecret = "Xgzv6l3YvCrKiRTDLuUaQtDBOo8OWL";  
+	    private String accessKeySecret = "xVscqBpORSiy0zVgnpng7ppiC4wM4S";
 	    /**
 	     * 空间  名称
 	     */
-	    private String bucketName = "zhangzj";  
+	    private String bucketName = "wangym";
 	    /**
-	     *  文件存储目录  
+	     *  文件存储目录
 	     */
-	    private String filedir = "firstShop/";  
-	  
-	    private OSSClient ossClient;  
+	    private String filedir = "education/";
+
+	    private OSSClient ossClient;
 	  
 	    public OSSClientUtil() {  
 	    	
@@ -104,7 +107,7 @@ public class OSSClientUtil {
 	    }  
 	  
 	    public String uploadImg2Oss(MultipartFile file) throws IOException {  
-	        if (file.getSize() > 10 * 1024 * 1024) {  
+	        if (file.getSize() > 2000 * 1024 * 1024) {
 	            throw new IOException("上传图片大小不能超过10M！");  
 	        }  
 	        String originalFilename = file.getOriginalFilename();  
@@ -149,14 +152,14 @@ public class OSSClientUtil {
 	        String ret = "";  
 	        try {  
 	            // 创建上传Object的Metadata  
-	            ObjectMetadata objectMetadata = new ObjectMetadata();  
+	            ObjectMetadata objectMetadata = new ObjectMetadata();
 	            objectMetadata.setContentLength(instream.available());  
 	            objectMetadata.setCacheControl("no-cache");  
 	            objectMetadata.setHeader("Pragma", "no-cache");  
 	            objectMetadata.setContentType(getcontentType(fileName.substring(fileName.lastIndexOf("."))));  
 	            objectMetadata.setContentDisposition("inline;filename=" + fileName);  
 	            // 上传文件  
-	            PutObjectResult putResult = ossClient.putObject(bucketName, filedir + fileName, instream, objectMetadata);  
+	            PutObjectResult putResult = ossClient.putObject(bucketName, filedir + fileName, instream, objectMetadata);
 	            ret = putResult.getETag();  
 	        } catch (IOException e) {  
 	            logger.error(e.getMessage(), e);  

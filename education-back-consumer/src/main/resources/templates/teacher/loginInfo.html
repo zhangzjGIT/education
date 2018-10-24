@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:templet="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>个人资料</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    <script type="text/javascript" src="../EasyUI/jquery.min.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../js/user.css" media="all" />
+</head>
+<body class="childrenBody">
+<form class="layui-form" id="myFormId" action="">
+    <div class="user_left">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户角色</label>
+            <div class="layui-input-block">
+                <input type="text" th:value="${role.roleName}" disabled class="layui-input layui-disabled" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户姓名</label>
+            <div class="layui-input-block">
+                <input type="text" th:value="${editUser.userName}" id="userName" placeholder="请输入姓名" lay-verify="required" name="userName" class="layui-input userName"/>
+                <input type="hidden" id="usersId" name="userId" th:value="${editUser.userId}">
+                <input type="hidden" id="password" name="password" th:value="${editUser.password}">
+                <input type="hidden" id="loginNumber" name="loginNumber" th:value="${editUser.loginNumber}">
+               <input type="hidden" id="proId"  >
+                <input type="hidden" id="cityId" >
+                <input type="hidden"  id="areaId" >
+            </div>
+        </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block userSex">
+                <input type="radio" name="sex"  id="boy" value="1"   title="男" />
+                <input type="radio" name="sex" id="girl" value="2"  title="女"/>
+                <input type="hidden"  id="sexVal"  th:value="${editUser.sex}" />
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-block">
+                <input type="tel" id="phone" placeholder="请输入手机号码" lay-verify="required" name="phone" th:value="${editUser.phone}" class="layui-input phone">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">出生年月</label>
+            <div class="layui-input-block">
+                <input type="text"  name="birthday"   th:value="${bir}"placeholder="请输入出生年月" id="test1"lay-verify="required|date" class="layui-input birthday" >
+
+            </div>
+        </div>
+        <div class="layui-form-item userAddress">
+            <label class="layui-form-label">家庭住址</label>
+            <div class="layui-input-inline">
+                <select name="province" lay-filter="province" id="SePro">
+                    <option value="">请选择省</option>
+                    <option th:selected="${editUser.province}"  th:text="${editUser.province}" ></option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select  lay-filter="city" name="city" id="SeCity" disabled>
+                    <option value="">请选择市</option>
+                    <option th:selected="${editUser.city}"    th:text="${editUser.city}" ></option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="area" lay-filter="area"  id="SeArea" disabled>
+                    <option value="">请选择县/区</option>
+                    <option th:selected="${editUser.area}"  th:text="${editUser.area}" ></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-block">
+                <input type="text" id="email" th:value="${editUser.email}" name="email" placeholder="请输入邮箱" lay-verify="required|email" class="layui-input email">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">自我评价</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" id="userInfo" name="userInfo" th:field="${editUser.userInfo}" class="layui-textarea userInfo"> </textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="user_right">
+        <div class="layui-upload">
+            <button type="button" class="layui-btn" id="userImgId">上传头像</button>
+            <div class="layui-upload-list">
+               <!-- <img class="layui-upload-img" id="demo1" >-->
+                <img th:src="${editUser.userImg}" class="layui-circle" id="userFace">
+                <input type="hidden" name="userImg" id="imgUrl"/>
+                <p id="demoText1"></p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="layui-form-item" style="margin-left: 5%;">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          <!--  <button class="layui-btn"  onclick="updUserInfo()" >立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="../js/address.js"></script>
+<script type="text/javascript">
+    var areaData = address;
+    var $form;
+    var form;
+    var $;
+    layui.config({
+        base : "../js/"
+    }).use(['form','layer','upload','laydate'],function(){
+        form = layui.form;
+        var layer = parent.layer === undefined ? layui.layer : parent.layer;
+        $ = layui.jquery;
+        $form = $('form');
+        laydate = layui.laydate;
+        loadProvince();
+    })
+    //加载省数据
+    function loadProvince() {
+        var proHtml = '';
+        for (var i = 0; i < areaData.length; i++) {
+            proHtml += '<option value="' + areaData[i].provinceCode + '_' + areaData[i].mallCityList.length + '_' + i + '">' + areaData[i].provinceName + '</option>';
+        }
+        //初始化省数据
+        $form.find('select[name=province]').append(proHtml);
+        form.render();
+        form.on('select(province)', function(data) {
+            $form.find('select[name=area]').html('<option value="">请选择县/区</option>');
+            var value = data.value;
+            var d = value.split('_');
+            var code = d[0];
+            var count = d[1];
+            var index = d[2];
+            if (count > 0) {
+                loadCity(areaData[index].mallCityList);
+            } else {
+                $form.find('select[name=city]').attr("disabled","disabled");
+            }
+        });
+    }
+    //加载市数据
+    function loadCity(citys) {
+        var cityHtml = '<option value="">请选择市</option>';
+        for (var i = 0; i < citys.length; i++) {
+            cityHtml += '<option value="' + citys[i].cityCode + '_' + citys[i].mallAreaList.length + '_' + i + '">' + citys[i].cityName + '</option>';
+        }
+        $form.find('select[name=city]').html(cityHtml).removeAttr("disabled");
+        form.render();
+        form.on('select(city)', function(data) {
+            var value = data.value;
+            var d = value.split('_');
+            var code = d[0];
+            var count = d[1];
+            var index = d[2];
+            if (count > 0) {
+                loadArea(citys[index].mallAreaList);
+            } else {
+                $form.find('select[name=area]').attr("disabled","disabled");
+            }
+        });
+    }
+    //加载县/区数据
+    function loadArea(areas) {
+        var areaHtml = '<option value="">请选择县/区</option>';
+        for (var i = 0; i < areas.length; i++) {
+            areaHtml += '<option value="' + areas[i].areaCode + '">' + areas[i].areaName + '</option>';
+        }
+        $form.find('select[name=area]').html(areaHtml).removeAttr("disabled");
+        form.render();
+        form.on('select(area)', function(data) {});
+    }
+</script>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    });
+</script>
+<script>
+    $(function(){
+       var userSex=$("#sexVal").val();
+       if(userSex==1){
+           $("#boy").attr("checked","checked");
+       }else{
+           $("#girl").attr("checked","checked");
+       }
+    })
+
+</script>
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+             elem: '#userImgId'
+            ,url: '/user/userImgUpload'
+            ,size: 2048
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#userFace').attr('src', result); //图片链接（base64）
+                    $('#imgUrl').val(result);
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText1');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+
+</script>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            var option1 = $("#SePro option:selected");
+            var option2 = $("#SeCity option:selected");
+            var option3 = $("#SeArea option:selected");
+            $('#proId').val(option1.text()),
+                $('#cityId').val(option2.text()),
+                $('#areaId').val(option3.text()),
+                $.ajax({
+                    url:'/user/updUser',
+                    dataType:'json',
+                    type:'post',
+                    data:{
+                        userId:$('#usersId').val(),
+                        userName:$('#userName').val(),
+                        password:$('#password').val(),
+                        loginNumber:$('#loginNumber').val(),
+                        province:$('#proId').val(),
+                        city:$('#cityId').val(),
+                        area:$('#areaId').val(),
+                        sex:$('input[name="sex"]:checked').val(),
+                        phone:$('#phone').val(),
+                        birthday:$('#test1').val(),
+                        email:$('#email').val(),
+                        userInfo:$('#userInfo').val(),
+                        userImg:$('#imgUrl').val()
+                    },
+                    success:function(){
+                        layer.msg("提交成功！！！");
+                        // parent.reloadData();
+                        parent.location.reload();
+                    },
+
+                });
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+</script>
+</body>
+</html>
