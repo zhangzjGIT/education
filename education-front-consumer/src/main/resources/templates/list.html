@@ -173,7 +173,7 @@
 <!--面包屑展示区域-->
 
 <nav class="mod-breadcrumbs mod-list-breadcrumbs js-breadcrumbs">
-  <a href="javascript:searchmany(0)" class="mod-breadcrumbs__nav" title="全部课程">全部课程</a>
+  <a href="javascript:search()" class="mod-breadcrumbs__nav" title="全部课程">全部课程</a>
   <span class="mod-breadcrumbs__arrow">&nbsp;<i class="icon-font i-v-right"></i>&nbsp;</span>
 
   <!--这里是面包屑引导条-->
@@ -194,7 +194,7 @@
           <dt>全部课程</dt>
           <dd class="curr_all">
             <label></label>
-            <a href="javascript:searchmany(0)" title="腾讯课堂全部在线课程"  report-tdw="action=classify-f&ver3=0"><h2>全部</h2></a>
+            <a href="javascript:search()" title="腾讯课堂全部在线课程"  report-tdw="action=classify-f&ver3=0"><h2>全部</h2></a>
           </dd>
           
           <dd class="">
@@ -270,65 +270,25 @@
 <div class="sort-nav sort-nav-sml clearfix"  data-report-module="filter">
     <dl class="sort-nav-order sort-nav-order-my sort-nav-top js-sort-nav-top" auto-test="mod_sort_nav_mleft">
         <dd>
-            <a  href="/course/list?task_filter=0000000&amp;" report-tdw="action=click&obj1=free_pay_course&ver2=all"
+            <a  href="javascript:search()" report-tdw="action=click&obj1=free_pay_course&ver2=all"
               class="cur-top">
                 全部
             </a>
         </dd>
         <dd>
-            <a  href="/course/list?task_filter=0000000&amp;&price_min=0&price_max=0" report-tdw="action=click&obj1=free_pay_course&ver2=free"
+            <a  href="javascript:priceType('1')" report-tdw="action=click&obj1=free_pay_course&ver2=free"
               class="" data-action="onlyfree">
                 免费课
             </a>
         </dd>
         <dd>
-            <a  href="/course/list?task_filter=0000000&amp;&price_min=1" report-tdw="action=click&obj1=free_pay_course&ver2=pay"
+            <a  href="javascript:priceType('2')" report-tdw="action=click&obj1=free_pay_course&ver2=pay"
               class=""  data-action="onlypay">
                 付费课
             </a>
         </dd>
-        <dd><span class="nav-gap-helper">|</span></dd>
-        <dd class="js-task-filter sort-nav-filter sort-nav-filter--long">
-            <div class="sort-nav-filter-wrap">
-                <dl class="sort-nav-filter-list">
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=0000010&amp;" 
-                            data-tdw="action=click&obj1=content&ver2=classBean">录播</label>
-                    </dd>
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=0000001&amp;"
-                            data-tdw="action=click&obj1=content&ver2=live">直播</label>
-                    </dd>
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=0100000&amp;" 
-                            data-tdw="action=click&obj1=content&ver2=playback">有回放</label>
-                    </dd>
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=1000000&amp;" 
-                            data-tdw="action=click&obj1=content&ver2=try">可试听</label>
-                    </dd>
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=0000100&amp;" 
-                            data-tdw="action=click&obj1=content&ver2=file">资料</label>
-                    </dd>
-                    <dd class="sort-nav-filter-item">
-                        <label class="on-content checkbox-tiny " data-href="/course/list?task_filter=0001000&amp;" 
-                            data-tdw="action=click&obj1=content&ver2=exercises">习题</label>
-                    </dd>
-                </dl>
-                <i class="icon-font i-v-bottom"></i>
-            </div>
-        </dd>
-        <dd><span class="nav-gap-helper">|</span></dd>
-        <dd>
-            <label class="js-filter-renzheng on-space--both-side checkbox-tiny "
-                data-href="/course/list?task_filter=0000000&amp;certificate_flag=1&amp;" data-tdw="action=click&obj1=certification_course&ver2=1">认证课程</label>
-        </dd>
-        <dd><span class="nav-gap-helper">|</span></dd>
-        <dd>
-            <label class="js-on-going on-space--both-side checkbox-tiny "
-                data-href="/course/list?task_filter=0000000&amp;going_filter=1&amp;" data-tdw="action=click&obj1=living&ver2=1">正在直播</label>
-        </dd>
+
+
 
         
     </dl>
@@ -432,7 +392,7 @@
         <h4 class="item-tt">
  	        
 
-            <a href="//ke.qq.com/course/119808" target="_blank" class="item-tt-link" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${user.courseName}"></span>【<span class="item-status-step" th:text="${user.name}"></span>】</a>
+            <a href="//ke.qq.com/course/119808" target="_blank" class="item-tt-link" title="Linux运维及云计算年薪30W入门经典教程【马哥亲讲】" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${user.couTitle}"></span>【<span class="item-status-step" th:text="${user.name}"></span>】</a>
             
         </h4>
         
@@ -451,7 +411,7 @@
         </div>
         
         <div class="item-line item-line--bottom">
-            <span class="line-cell item-price free" th:text="${user.groupPrice}"></span>
+            ¥ <span class="line-cell item-price free" th:text="${user.groupPrice}"></span>
             
             
             
@@ -656,16 +616,7 @@
     <script>var require,define;window.__loadModjsOuter=1,function(e){function r(e,r){if("/"===e)return(e+r).replace(/\/\//g,"/");var n=e.split("/"),t=r.split("/");""!==n[n.length-1]&&n.pop();for(var o=0,i=t.length;i>o;o++)if("."!==t[o]){if(".."!==t[o]){n=n.concat(t.slice(o));break}n.pop()}return n.join("/")}function n(e,n){var t;return t="/"!==e[0]?r(n,e):e,/\.js$/i.test(t)?t:t+".js"}if(!require||!define){var t=(document.getElementsByTagName("head")[0],{}),o={},i={},u={},a={},c={},s={},d=["require","module","exports"],l=!1,f=function(e,r){for(var n=e.length-1;n>=0;n--)if(e[n]===r)return n;return-1},p="/";l&&(window.r={modulesMap:a,aliasMap:c,factoryMap:o,scriptsMap:t,resMap:i,pkgMap:u,loadedMap:s}),define=function(e,r,t){return t||(t=r,r=null),e&&e.splice&&(e=n("",p),r=e),"string"!=typeof e?void("undefined"!=typeof window.BJ_REPORT&&BJ_REPORT.info&&BJ_REPORT.info("define_error:"+e+r)):(e=e.replace(/\.js$/i,""),r&&"string"==typeof r&&(r=[r]),void(o[e]={factory:t,deps:r}))},define.amd=!0,require=function(n){if(n&&n.splice)return require.async.apply(e,arguments);if(-1!==f(d,n))return require;if(n=require.alias(n),a[n])return a[n].exports;var t=a[n]={exports:{}},i=function(t){"."===t[0]&&(t=r(n,t));var o=Array.prototype.slice.call(arguments);return o[0]=t,require.apply(e,o)};for(var u in require)i[u]=require[u];var c=[i,t.exports,t],p={require:c[0],module:c[2],exports:c[1]};if(p[n])return p[n];var m=o[n];if(!m)return s[n]?l&&void 0:require.async(n);if("function"!=typeof m.factory)return t.exports=m.factory,t.exports;if(m.deps){c=[];for(var h=0,q=m.deps.length;q>h;h++){var v=m.deps[h];/^\.{1,2}\//.test(v)&&(v=r(n,v)),c.push(p[v]?p[v]:require(v))}}return t.exports=m.factory.apply(e,c)||t.exports||{},t.exports},require.async=function(r,t,a,l){"string"==typeof r&&(r=[r]);var h=r.concat([]),q=0,v=function(){"function"==typeof l&&l();for(var r=[],n=0,o=h.length;o>n;n++)r.push(require(h[n]));t&&t.apply(e,r)},g=function(e){if(c[e])return c[e];var t=i[e]||i[e+".js"]||{},o=t.pkg;if(o)return u[o].url;if(t.deps)for(var a=0;a<t.deps.length;a++)-1===f(r,t.deps[a])&&r.push(t.deps[a]);var s=t.url||n(e,p);return s},y=function(e){var r=require.alias(e),n=g(r);s[r]=!0,m(n,require.cdns||[],function(){q--,_()},a,require.variableFn)},_=function(){for(;r.length;){var e=r.shift();q++,-1!==f(d,e)?q--:o[e]?q--:y(e)}0>=q&&v()};_()},require.loadCss=function(e){if(e.content){var r=document.createElement("style");r.type="text/css",r.styleSheet?r.styleSheet.cssText=e.content:r.innerHTML=e.content,document.getElementsByTagName("head")[0].appendChild(r)}else if(e.url){var n=document.createElement("link");n.href=e.url,n.rel="stylesheet",n.type="text/css",document.getElementsByTagName("head")[0].appendChild(n)}},require.loadJs=function(e,r,n,o){if(e in t)return r?r(e):"";t[e]=!0;var i=document.createElement("script"),u=null,a=function(){u&&(clearTimeout(u),u=null,"onload"in i&&(i.onload=null),"onerror"in i&&(i.onerror=null),"onreadystatechange"in i&&(i.onreadystatechange=null))},c=function(){a(),require.onerror&&require.onerror(e),n&&n(e)};if(n&&"onerror"in i&&(i.onerror=c),r&&(i["onload"in i?"onload":"onreadystatechange"]=function(){var n="function"==typeof o?o(e):!0;this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState||(!n&&/MSIE 8\./i.test(navigator.userAgent)?(c(),require.on404&&require.on404(e)):(a(),require.onsuccess&&require.onsuccess(e),r(e)))}),u=setTimeout(c,require.timeout),i.type="text/javascript",i.src=e,require.attrs)for(var s in require.attrs)i.setAttribute(s,require.attrs[s]);return document.getElementsByTagName("head")[0].appendChild(i),i};var m=function(e,r,n,t,o){var i=r?Array.prototype.slice.call(r):[];require.loadJs((i.shift()||"")+e,n,function(r){i.length>0?m(e,i,n,t,o):t&&t(r)},function(){return"function"==typeof o?o(e):!0})};require.resourceMap=function(e){var r,n;n=e.res;for(r in n)n.hasOwnProperty(r)&&(i[r]=n[r]);n=e.pkg;for(r in n)n.hasOwnProperty(r)&&(u[r]=n[r])},require.alias=function(e){return e.replace(/\.js$/i,"")},require.timeout=5e3,require.cdns=[],require.onerror=null,require.onsuccess=null,require.variableFn=function(){return!0},require.scriptsMap=t,window.__loadModjsInner=1}}(this),window.__loadModjs=window.define?"HasDefine":"NoDefined",require.timeout=5e3,require.test=1,require.badjsUrl="//badjs.qq.com/badjs";var __reportBadjs=function(e,r){setTimeout(function(){(new Image).src=require.badjsUrl+"?id=1162&uin="+parseInt((document.cookie.match(/\buin=\D+(\d+)/)||[])[1],10)+"&from="+encodeURIComponent(location.href)+"&msg[0]="+encodeURIComponent(e)+"&ext[0]=%7B%22msid%22%3A"+r+"%7D&level[0]=1&count=1&_t="+(new Date-0)},10)},__reportMonitor=function(e,r){r=r||"",setTimeout(function(){(new Image).src="//cgi.connect.qq.com/report/report_vm?monitors=["+e+"]&_="+r+"&t="+(new Date-0)},10)};window.__DIST_MODE__&&"dist"===window.__DIST_MODE__?(/QQBrowser/.test(navigator.userAgent)&&Math.random()<.1?(require.cdns=["//ke.qq.com"],require.isGreyUser=!0):require.cdns=["//7.url.cn/edu","//ke.qq.com"],require.onsuccess=function(e){__reportMonitor(/\/\/ke\.qq\.com/.test(e)?"2487030":"2138181")},require.onerror=function(e){__reportBadjs("scripterror:"+e,/\/\/ke\.qq\.com/.test(e)?"2415405":"2138182")},require.on404=function(e){__reportBadjs("script404:"+e,/\/\/ke\.qq\.com/.test(e)?"2487031":"2487032")},"undefined"==typeof window.Nohost&&(require.attrs={crossOrigin:"anonymous"}),function(){var e=window.__loadjscache={};window.__loadJs=function(r,n){e[r]=e[r]||{},e[r][n]=(new Date).getTime()},require.variableFn=function(r){return r.indexOf("ckeditor")?!0:e[r]&&e[r][2]}}()):(require.cdns=["//7.url.cn/edu"],localStorage.__debug__&&(require.cdns=[])),function(){function e(){var e=0;return e="2"===(document.cookie.match(/\buid_type=(\d+)/)||[])[1]?(document.cookie.match(/\buid_uin=(\d+)/)||[])[1]:parseInt((document.cookie.match(/\buin=\D+(\d+)/)||[])[1],10)||0}function r(r,n){var n=n||0;(new Image).src="//badjs.qq.com/badjs?id=1162&uin="+e()+"&from="+encodeURIComponent(location.href)+"&msg[0]="+encodeURIComponent(r)+"&ext[0]=%7B%22msid%22%3A"+n+"%7D&level[0]=1&count=1&_t="+(new Date-0)}function n(e){return document.getElementById(e)}function t(e){for(var r=5381,n=0,t=e.length;t>n;++n)r+=(r<<5)+e.charAt(n).charCodeAt();return 2147483647&r}function o(e){var e=e.split("/edu/")[1],r=e.split(".");r.length=r.length-2;var n=t(r.join("."));return n}function i(e){var r=e.match(/.*\:\/\/([^\/]*).*/);return r[1]}function u(){for(var e=[],r=[].concat.apply([],document.getElementsByTagName("LINK")),n=0,t=r.length;t>n;n++){var i=r[n];"stylesheet"==i.rel&&-1!=i.href.indexOf("8.url.cn/edu/")&&(i.relNodeId="_"+o(i.href),i.oriUrl=i.href,e.push(i))}return e}function a(e){return window.getComputedStyle?window.getComputedStyle(e,null).display:e.currentStyle.display}function c(e){return"none"==a(n(e.relNodeId))}function s(e){var r=document.createElement("DIV");return r.id=e,r.style.cssText="position:absolute;height:0;width:0;overflow:hidden",r}function d(e){var r=n(e);r&&r.parentNode.removeChild(r),r=null}function l(e){var r=e.href,n=i(r);e.href=r.replace(n+"/edu",location.host)}function f(){function e(){return new Date-v}function n(){p++;for(var o,u=i.length,a=u-1;a>-1;a--)o=i[a],c(o)?(r("CSS 主域拉取第"+p+"次成功："+o.href,2494598),i.splice(a,1)):r("CSS 主域拉取第"+p+"失败："+o.href,2494597);i.length>0&&e()<3e3?setTimeout(n,1e3):t()}function t(){for(var e=0,r=o.length;r>e;e++){var n=o[e];d(n.relNodeId),delete n.relNodeId,delete n.oriUrl}o=i=null}var o=u(),i=[],a=document.createDocumentFragment();for(f=0,m=o.length;m>f;f++)a.appendChild(s(o[f].relNodeId));document.body.appendChild(a),a=null;for(var f=0,m=o.length;m>f;f++){var h=o[f];c(h)?setTimeout(function(){(new Image).src="//cgi.connect.qq.com/report/report_vm?monitors=[2494596]&_=csssuccess&t="+(new Date-0)},10):(r("CSS CDN 拉取失败："+h.href,2494595),l(h),i.push(h))}var q=i.length,v=+new Date;q>0?setTimeout(n,1e3):t()}var p=0;window.__DIST_MODE__&&"dist"===window.__DIST_MODE__&&f()}();;</script> 
 <script type="text/javascript">require.resourceMap({"res":{"edu_modules/edu-comb/comb.nowrap":{"url":"/edu_modules/edu-comb/comb.nowrap.81748ebf.js"},"edu_modules/edu-base/edu-base":{"url":"/edu_modules/edu-base/edu-base.a8fc28f6.js"},"comment/mod.main.base":{"url":"/modules/comment/mod.main.base.f127066b.js"},"download/js/mod.main":{"url":"/download/js/mod.main.d81ed563.js"},"download/js/mod.main.macapp":{"url":"/download/js/mod.main.macapp.001399eb.js"},"download/js/mod.main.pcapp":{"url":"/download/js/mod.main.pcapp.b6ee659d.js"},"download/js/mod.main.teacher":{"url":"/download/js/mod.main.teacher.9d62bf60.js"},"edu_modules/ckeditor.init/mod.main.ckeditor":{"url":"/edu_modules/ckeditor.init/mod.main.ckeditor.89e13bc3.js"},"mini_program/js/mod.main":{"url":"/mini_program/js/mod.main.759e9484.js"},"404/mod.main":{"url":"/modules/404/mod.main.33036a52.js"},"agencyIndex/mod.main.fallback":{"url":"/modules/agencyIndex/mod.main.fallback.7d7c47dc.js"},"agencyIndex/mod.mainNew":{"url":"/modules/agencyIndex/mod.mainNew.456639b8.js"},"applySuccess/mod.main":{"url":"/modules/applySuccess/mod.main.0307c685.js"},"category/design-revise/mod.main.channel":{"url":"/modules/category/design-revise/mod.main.channel.c7ad28c6.js"},"category/design-revise/mod.main.detail":{"url":"/modules/category/design-revise/mod.main.detail.8a90af86.js"},"category/mod.main.fallback":{"url":"/modules/category/mod.main.fallback.ce663397.js"},"category/mod.main":{"url":"/modules/category/mod.main.1f35cd31.js"},"comment/mod.main":{"url":"/modules/comment/mod.main.506d19a0.js"},"coupon/mod.main":{"url":"/modules/coupon/mod.main.2db81cdd.js"},"courseDetail/mod.main.fallback":{"url":"/modules/courseDetail/mod.main.fallback.dd239659.js"},"courseDetail/mod.main.live":{"url":"/modules/courseDetail/mod.main.live.4057d327.js"},"courseList/mod.main.fallback":{"url":"/modules/courseList/mod.main.fallback.77aab848.js"},"courseList/mod.main":{"url":"/modules/courseList/mod.main.d500ed4e.js"},"coursePackage/mod.main.fallback":{"url":"/modules/coursePackage/mod.main.fallback.3c142c9a.js"},"coursePackage/mod.main.new":{"url":"/modules/coursePackage/mod.main.new.befdb7f1.js"},"faq/mod.main.frame":{"url":"/modules/faq/mod.main.frame.d16153e8.js"},"faq/mod.main":{"url":"/modules/faq/mod.main.dff04508.js"},"grandDetail/mod.main.common":{"url":"/modules/grandDetail/mod.main.common.7b363267.js"},"grandDetail/mod.main.fallback":{"url":"/modules/grandDetail/mod.main.fallback.3207bc54.js"},"grandDetail/mod.main":{"url":"/modules/grandDetail/mod.main.a4fc3a55.js"},"groupResult/mod.main":{"url":"/modules/groupResult/mod.main.13baf484.js"},"indexNew/mod.main.fallback":{"url":"/modules/indexNew/mod.main.fallback.33927906.js"},"indexNew/mod.main":{"url":"/modules/indexNew/mod.main.1dcc2b87.js"},"joinQun/mod.main":{"url":"/modules/joinQun/mod.main.a796ac08.js"},"jump/mod.main":{"url":"/modules/jump/mod.main.c670438a.js"},"latelyCourse/mod.main.fallback":{"url":"/modules/latelyCourse/mod.main.fallback.66a309ae.js"},"latelyCourse/nowrap/mod.main.tc1.all":{"url":"/modules/latelyCourse/nowrap/mod.main.tc1.all.48625665.js"},"latelyCourse/nowrap/mod.main.jx.uiless.min":{"url":"/modules/latelyCourse/nowrap/mod.main.jx.uiless.min.0af31518.js"},"personIndex/mod.main":{"url":"/modules/personIndex/mod.main.73155fbd.js"},"renzheng/mod.main":{"url":"/modules/renzheng/mod.main.e22eb0f8.js"},"sale/mod.main":{"url":"/modules/sale/mod.main.d9e8c0ae.js"},"searchAgency/mod.main":{"url":"/modules/searchAgency/mod.main.d48d9b1b.js"},"serviceDetail/mod.main":{"url":"/modules/serviceDetail/mod.main.2313c7df.js"},"storageProxy/mod.main":{"url":"/modules/storageProxy/mod.main.779d3534.js"},"teacher/mod.main":{"url":"/modules/teacher/mod.main.8d9f5d10.js"},"topo_index/mod.main":{"url":"/modules/topo_index/mod.main.de09d6af.js"},"topo/mod.main":{"url":"/modules/topo/mod.main.0d8e2d4d.js"},"unsubscribeEmail/mod.main":{"url":"/modules/unsubscribeEmail/mod.main.a26d752f.js"},"next_detail/mod.main":{"url":"/next_detail/mod.main.d243fcb8.js"},"next/js/mod.main":{"url":"/next/js/mod.main.92016f82.js"},"views/teacher/mod.main":{"url":"/views/teacher/mod.main.5513724d.js"},"edu_modules/timing/timing":{"url":"/edu_modules/timing/timing.9ea9820c.js"},"edu_modules/edu-zoom/index":{"url":"/edu_modules/edu-zoom/index.80fc9e9c.js"},"edu_modules/ckeditor.init/src/addpic":{"url":"/edu_modules/ckeditor.init/src/addpic.11126fa2.js"},"edu_modules/ckeditor.init/src/addvideo":{"url":"/edu_modules/ckeditor.init/src/addvideo.ddf44208.js"},"edu_modules/ckeditor.init/src/addword":{"url":"/edu_modules/ckeditor.init/src/addword.e550b1c1.js"},"edu_modules/ckeditor.init/src/addlink":{"url":"/edu_modules/ckeditor.init/src/addlink.96f3e176.js"},"edu_modules/ckeditor.init/src/instruction":{"url":"/edu_modules/ckeditor.init/src/instruction.a7ed5a38.js"},"edu_modules/edu-pay-service/fusion_loader.nowrap":{"url":"/edu_modules/edu-pay-service/fusion_loader.nowrap.4e853145.js"},"edu_modules/edu-pay-service/cashier.nowrap":{"url":"/edu_modules/edu-pay-service/cashier.nowrap.563abb19.js"},"edu_modules/edu-top/index":{"url":"/edu_modules/edu-top/index.2fc28361.js"}}})</script>
 
-    <script>
 
-        require.async(['edu_modules/edu-comb/comb.nowrap','edu_modules/edu-base/edu-base','courseList/mod.main'],function(c, e, main){
-            main.init();
-            var $=require("jquery"),getHeader=function(e,t){return(e.getResponseHeader(t)||"").toLowerCase()};$(window).load(function(){var e=window.timingCfg;e&&require.async(["edu_modules/timing/timing"],function(t){$.ajax({type:"HEAD",url:"/ketang_sc.html",complete:function(n){var o=getHeader(n,"x-client-spdy"),r=getHeader(n,"x-client-proto-ver"),i=getHeader(n,"x-client-proto"),d="http1";~i.indexOf("https")&&(d=o?"spdy":r&&~r.indexOf("http/2")?"http2":"https"),e[d]&&t.report(e[d])}})}),function(){var e=document.createElement("script"),t=window.location.protocol.split(":")[0];e.src="https"===t?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)}();var t=window.TRecord;t&&t.report&&window.TAuto&&t.report(null,{delay:1e3})}),window.top===window&&require.async(["edu_modules/edu-zoom/index"]);;
-        },null,function(){
-            TRecord.push('page_js_ready');
-        });
-
-    </script>
     <script>TRecord.push('inline_script_run_time', T[0] + (new Date - TInline));</script>
     <!-- tcss点击流上报 -->
 <script>
@@ -707,8 +658,12 @@ var _hmt = _hmt || [];
         location.href="../user/searchList?search="+aa;
     }
     function searchmany(num){
-        alert(num)
+
         location.href="../user/searchmany?search="+num;
+    }
+    function priceType(num){
+
+        location.href="../user/priceType?search="+num;
     }
 
 </script>
