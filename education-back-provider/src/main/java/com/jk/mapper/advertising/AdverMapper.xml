@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.advertising.AdverMapper">
+
+    <select id="queryadverTotal"  resultType="int">
+       select  count(*) from t_advertising  t1,t_type t2
+       where t1.imgtype=t2.typeId
+    </select>
+
+    <!-- 分页查询-->
+    <select id="queryadver"  resultType="com.jk.model.advertising.Advertising">
+       select * from t_advertising t1,t_type t2
+       where t1.imgtype=t2.typeId
+       limit #{start},#{end}
+    </select>
+
+    <!-- 新增 -->
+    <insert id="saveAdver" parameterType="com.jk.model.advertising.Advertising">
+         insert into t_advertising (imgtitle,imginfo,imgtype,imghref)
+	     values (#{imgtitle},#{imginfo},#{imgtype},#{imghref})
+
+    </insert>
+
+    <!-- 查询类型 -->
+    <select id="queryType" resultType="com.jk.model.TypeBean">
+       select * from t_type
+    </select>
+
+    <!-- 回显 -->
+    <select id="queryadverbyid" resultType="com.jk.model.advertising.Advertising">
+          	    select * from t_advertising where imgid = #{imgid}
+    </select>
+
+    <!-- 修改 -->
+    <update id="updateadver" parameterType="com.jk.model.advertising.Advertising">
+      update t_advertising set
+       imgtitle=#{imgtitle}
+       ,imginfo=#{imginfo}
+       , imgtype=#{imgtype}
+      ,imghref= #{imghref}
+      where imgid=#{imgid}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deladvertising">
+        delete from  t_advertising where imgid in (#{imgid})
+    </delete>
+
+
+
+</mapper>

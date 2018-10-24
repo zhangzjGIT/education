@@ -1,0 +1,24 @@
+package com.jk.service.course;
+
+import com.jk.model.user.UserBean;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
+
+public interface CourseServiceApi {
+
+    //查询
+    @RequestMapping(value = "course/queryCoursePage",method = RequestMethod.POST)
+    Map<String, Object> queryCoursePage(@RequestParam(value = "page") int page, @RequestParam(value = "limit") int limi);
+
+    //修改密码回显
+    @RequestMapping(value= "course/toEditPass",method = RequestMethod.POST)
+    UserBean queryPwdById(@RequestBody UserBean user);
+
+    //修改密码
+    @RequestMapping(value= "course/editPass",method = RequestMethod.POST)
+    void editPass(@RequestBody UserBean userBean);
+}

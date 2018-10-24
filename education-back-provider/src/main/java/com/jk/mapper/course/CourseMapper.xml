@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.course.CourseMapper">
+
+    <!-- 查询 -->
+    <select id="queryCourseTotal"  resultType="int">
+       select  count(*) from t_message t1, t_teacher t2
+        where t1.teaId = t2.teacherId
+        and t2.status=1
+    </select>
+
+    <!-- 分页查询-->
+    <select id="queryCourse"  resultType="com.jk.model.course.MessageBean">
+       select * from t_message t1, t_teacher t2
+        where t1.teaId = t2.teacherId
+        and t2.status=1
+
+       limit #{start},#{end}
+    </select>
+
+    <!-- 回显密码-->
+    <select id="queryPwdById" resultType="com.jk.model.user.UserBean">
+          select * from t_user where userId = #{userId}
+    </select>
+
+
+    <!-- 修改密码-->
+    <update id="editPass" parameterType="com.jk.model.user.UserBean">
+        update t_user
+        set password = #{password}
+        where userId= #{userId}
+
+    </update>
+
+
+
+</mapper>

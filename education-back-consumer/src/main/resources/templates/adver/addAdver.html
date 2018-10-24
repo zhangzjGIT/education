@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>新增广告</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+
+</head>
+<body>
+<script src="/layui/layui.js"></script>
+<script src="/layui/lay/modules/upload.js"></script>
+<script src="/jquery-1.9.1.min.js"></script>
+
+
+
+<form class="layui-form" id="addFormAver">
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="imgtitle" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <!--<div class="layui-form-item">
+        <label class="layui-form-label">跳转路径</label>
+        <div class="layui-input-block">
+            <input type="text" name="imghref" lay-verify="title" autocomplete="off" placeholder="请输入跳转路径" class="layui-input">
+        </div>
+    </div>-->
+
+    <!--<div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-inline">
+            <input type="text" name="sort" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>-->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="color-red"></span>图片类型：</label>
+        <div class="layui-input-inline">
+            <!--<select id="edit_exam_school" name="imgtype">
+                <option value="">请选择</option>
+                <option value="1">首页图片</option>
+                <option value="2">底部二维码</option>
+                <option value="3">轮播图</option>
+                <option value="4">左侧icon</option>
+            </select>-->
+
+            <select id="selectID" name="imgtype"></select>
+         </div>
+    </div>
+
+
+<div class="layui-form-item layui-form-text">
+        <label class="layui-form-label" >图片简介</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="imginfo"></textarea>
+        </div>
+</div>
+
+    <div class="layui-upload">
+       <button type="button" class="layui-btn" id="test1">上传图片</button>
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="demo1" >
+            <input type="hidden" name="imghref" id="imgUrl"/>
+            <p id="demoText"></p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" onclick="saveAdverFrom()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script src="/layui/lay/modules/form.js"></script>
+
+<script>
+
+    function saveAdverFrom() {
+
+        $.ajax({
+            url:'/advertising/saveAdver',
+            dataType:'json',
+            type:'post',
+            data:$('#addFormAver').serialize(),
+            success:function(){
+                parent.reloadData();
+            }
+        })
+    }
+</script>
+
+<script>
+    layui.use('form', function() {
+        var form = layui.form;
+        $(function () {
+            //js
+            $.ajax({
+                url: '/advertising/queryType',
+                dataType: 'json',
+                type: 'post',
+                success: function (list) {
+
+                    $.each(list, function (index, item) {
+                        $('#selectID').append(new Option(item.typeName, item.typeId));
+                    })
+
+                    form.render();//菜单渲染 把内容加载进去
+                }
+            })
+        })
+    });
+
+
+</script>
+
+
+
+
+
+
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            ,url: '/advertising/initiateMultipartUpload'
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                    $('#imgUrl').val(result);
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-mini demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+
+
+
+
+
+</script>
+
+
+
+    </body>
+
+</html>

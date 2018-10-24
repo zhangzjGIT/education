@@ -7,7 +7,7 @@ spring:
   datasource:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.31.10:3306/homework?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.31.10:3306/education?useUnicode=true&characterEncoding=utf-8
     username: root
 
 eureka:
