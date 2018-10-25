@@ -4,6 +4,7 @@ import com.jk.mapper.education.EduMapper;
 
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,11 @@ public class EduServiceImpl implements EduServiceApi {
     public void adduser(@RequestBody User user) {
         user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         eduMapper.adduser(user);
+    }
+
+    @Override
+    public List<MessageBean> queryHotList() {
+        return  eduMapper.queryHotList();
     }
 
    /* @Override

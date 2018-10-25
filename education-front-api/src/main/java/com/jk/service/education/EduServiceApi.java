@@ -1,6 +1,7 @@
 package com.jk.service.education;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.User;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,9 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/adduser",method = RequestMethod.POST)
     void adduser(@RequestBody User user);
+
+    @RequestMapping(value = "/queryHotList",method = RequestMethod.POST)
+    List<MessageBean> queryHotList();
 
     //@RequestMapping(value = "/getImgById",method = RequestMethod.POST)
   //  GridFSDBFile getImgById(@RequestParam(value = "id")String id);

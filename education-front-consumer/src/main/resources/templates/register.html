@@ -22,7 +22,7 @@
 						<form action="#" method="post">
 							
 							<div class="form_text_ipt">
-								<input id="userName" type="text" placeholder="手机号/邮箱">
+								<input id="userName" type="text" placeholder="用户名">
 							</div>
 							<div class="ececk_warning"><span>手机号/邮箱不能为空</span></div>
 							<div class="form_text_ipt">
@@ -89,7 +89,7 @@
     })
 
     $("#getSMSCodeBtn").click(function(){
-	alert("111")
+
         $.ajax({
             url:'../user/sendSMS',
             type:'post',

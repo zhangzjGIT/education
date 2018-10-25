@@ -24,6 +24,10 @@
 	   select * from x_user
       where phoneNumber = #{phoneNumber}
     </select>
+    <select id="queryHotList"  resultType="com.jk.model.education.MessageBean">
+	   select t1.*,t2.* from t_message t1,t_class t2 order by t1.allCount
+     limit 0,2
+    </select>
 
 
     <select id="searchList" parameterType="String" resultType="com.jk.model.education.ClassBean">

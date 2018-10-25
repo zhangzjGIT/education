@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>首页</title>
+
+    <meta name="keywords" content="首页" />
+    <meta name="description" content="首页" />
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../js/kindeditor-4.1.7/themes/default/default.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var showproduct = {
+                "boxid":"showbox",
+                "sumid":"showsum",
+                "boxw":400,//宽度,该版本中请把宽高填写成一样
+                "boxh":400,//高度,该版本中请把宽高填写成一样
+                "sumw":60,//列表每个宽度,该版本中请把宽高填写成一样
+                "sumh":60,//列表每个高度,该版本中请把宽高填写成一样
+                "sumi":7,//列表间隔
+                "sums":5,//列表显示个数
+                "sumsel":"sel",
+                "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+                "lastid":"showlast",
+                "nextid":"shownext"
+            };//参数定义
+            $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+        });
+    </script>
+</head>
+<body>
+<div class="top-wrapper">
+    <div class="top-info">
+        <div class="top-left">
+            <div data-toggle="arrowdown" id="arrow1" class="user-name">
+                <a href="#">用户管理</a>
+                <span class="down-icon"></span>
+            </div>
+
+
+            <img height="34px" a-float-left src="../img/qqq.gif" />
+            <!--hidden-box-->
+            <div data-toggle="hidden-box" id="nav-box1" class="user-box">
+                <img class="my-head" src="../img/user-head.jpg" />
+                <div class="my-grow">
+                    <h1><a href="#">账号管理</a>&nbsp;|&nbsp;<a href="#">退出</a></h1>
+                    <p>
+                    <h2><a href="#">查看我会员特权</a></h2>
+                    <a href="#">我的成长</a>
+                    </p>
+                </div>
+                <p style="height: 10px; clear: both;">&nbsp;</p>
+                <div class="my-card">
+                    <div class="cards-info">
+                        <ul>
+                            <li><img src="../img/icon.png" /></li>
+                            <li><img src="../img/icon.png" /></li>
+                        </ul>
+                    </div>
+                    <div class="toggle-box">
+                        <div class="toggle">
+                            <i style="vertical-align: top" class="fa fa-angle-left arrow-left"></i>
+                            <i style="vertical-align: top" class="fa fa-angle-right arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-toggle="hidden-box" id="nav-box2" class="msg-box">
+                <h1>未读新消息<a href="#" class="fa fa-pencil-square-o pencil"></a></h1>
+                <div class="read-info">
+                    <h2><span class="orange">&nbsp;&nbsp;|</span>&nbsp;你的书架&nbsp;<span style="font-weight: lighter">收到了<span class="orange">1</span>本书</span><span class="fa fa-times close-msg"></span></h2>
+                    <img src="../img/book-1.png" />
+                    <div style="float: right">
+                        <h3><a href="#">去看看</a></h3>
+                    </div>
+                </div>
+                <div class="msg-setting">
+                    <a href="#" class="fa fa-cog"></a>
+                    <a href="#" class="fa fa-pencil-square-o"></a>
+                    <a style="margin-left: 70px" href="#">买家消息&nbsp;|&nbsp;</a>
+                    <a href="#">卖家消息</a>
+                </div>
+            </div>
+        </div>
+        <!--top-right-->
+        <div class="top-right">
+            <div data-toggle="arrowdown" id="arrow3" class="user-name">
+                <a href="#">我的首选</a>
+                <span class="down-icon"></span>
+            </div>
+            <div data-toggle="arrowdown" id="arrow4" class="user-name">
+                <i class="fa fa-shopping-cart fa-orange"></i>
+                <a href="#">购物车</a>
+                <span class="down-icon"></span>
+            </div>
+            <div data-toggle="arrowdown" id="arrow5" class="user-name">
+                <i class="fa fa-star fa-gray"></i>
+                <a href="#">收藏夹</a>
+                <span class="down-icon"></span>
+            </div>
+            <!--hidden-box-->
+            <div data-toggle="hidden-box" id="nav-box3" class="my-taobao-box">
+                <ul>
+                    <li>已买到的宝贝</li>
+                    <li>新欢</li>
+                    <li>我的足迹</li>
+                    <li>我的上新</li>
+                    <li>我的优惠</li>
+                </ul>
+            </div>
+            <div data-toggle="hidden-box" id="nav-box4" class="shopping-box">
+                <span>您购物车里还没有任何宝贝。</span><a class="check-shopp" href="#">查看我的购物车</a>
+            </div>
+            <div data-toggle="hidden-box" id="nav-box5" class="get-box">
+                <ul>
+                    <li>收藏的宝贝</li>
+                    <li>收藏的店铺</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="height:70px"></div>
+<div style="width:2400px;height:70px" >
+    <div style="width:500px;height:60px;float:left" >
+        <div style="width:230px;height:60px;float:left"></div>
+        <div style="width:200px;float:left">
+            <img src="../img/firstShop_logo.png" width="100px" height="85px"/>
+        </div>
+    </div>
+    <div style="height:10px;float:left"></div>
+    <br/><br/>
+    <div class="search-box" style="float:left">
+
+        <div   class="search-toggle">
+            <span class="down-icon"></span>
+        </div>
+        <input class="search-in" type="text" placeholder="    ">
+        <input type="button" class="search-but" value="搜索" id="">
+        <div data-toggle="hidden-box" id="nav-box8" class="search-toggle-box"></div>
+    </div>
+</div>
+
+
+<div class="showall">
+
+    <!--left -->
+    <div class="showbot">
+        <div id="showbox">
+            <img src="../images/photos/img01.png" width="400" height="400" />
+            <img src="../images/photos/img02.png" width="400" height="400" />
+            <img src="../images/photos/img03.png" width="400" height="400" />
+            <img src="../images/photos/img04.png" width="400" height="400" />
+            <img th:src="${go.img}" width="400" height="400" />
+            <img src="../images/photos/img06.png" width="400" height="400" />
+
+        </div><!--展示图片盒子-->
+        <div id="showsum">
+            <!--展示图片里边-->
+        </div>
+        <p class="showpage">
+            <a href="javascript:void(0);" id="showlast"> < </a>
+            <a href="javascript:void(0);" id="shownext"> > </a>
+        </p>
+    </div>
+    <!--conet -->
+    <div class="tb-property">
+        <div class="tr-nobdr">
+            <h3><span th:text="${go.goodsName}"></span></h3>
+        </div>
+        <div class="txt">
+            <span class="nowprice">￥<span th:text="${go.price}"></span></span>
+            <div class="cumulative">
+                <span class="number ty1">累计售出<br /><em id="add_sell_num_363">370</em></span>
+                <span class="number tyu">累计评价<br /><em id="add_sell_num_363">25</em></span>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                var t = $("#text_box");
+                $('#min').attr('disabled',true);
+                $("#add").click(function(){
+                    t.val(parseInt(t.val())+1)
+                    if (parseInt(t.val())!=1){
+                        $('#min').attr('disabled',false);
+                    }
+
+                })
+                $("#min").click(function(){
+                    t.val(parseInt(t.val())-1);
+                    if (parseInt(t.val())==1){
+                        $('#min').attr('disabled',true);
+                    }
+
+                })
+            });
+        </script>
+        <div class="gcIpt">
+            <span class="guT">数量</span>
+            <input id="min" name="" type="button" value="-" />
+            <input id="text_box"  type="text" value="1"style="width:30px; text-align: center; color: #0F0F0F;"/>
+            <input id="add" name="" type="button" value="+" />
+            <span class="Hgt">库存(<span th:text="${go.stock}"></span>)</span>
+        </div>
+        <div class="nobdr-btns">
+            <button class="addcart hu" th:onclick="'addcar('+${go.goodsId}+')'"><img src="../images/shop.png" width="25" height="25"/>加入购物车</button>
+            <button th:onclick="'toPayment('+${go.goodsId}+')'" class="addcart yh"><img src="../images/ht.png" width="25" height="25"/>立即购买</button>
+        </div>
+        <div class="guarantee">
+            <span>邮费：包邮&nbsp;&nbsp;支持货到付款 <a href=""><img src="../images/me.png"/></a></span>
+        </div>
+    </div>
+    <!--right -->
+    <div class="extInfo">
+        <div class="brand-logo">
+            <img th:src="${go.img}" height="85px" width="220px"/>
+        </div>
+        <div class="seller-pop-box">
+            <span class="tr">商家名称：<span th:text="${go.shopName}"></span></span>
+            <span class="tr">商家等级：初级店铺</span>
+            <span class="tr">客家电话：15012365897</span>
+            <span class="tr hoh">
+            	            		<a title="河南郑州市航海路57号河南郑州市航海路57号" href="">所在地区：河南郑州市航海路57号河南郑州市航海路57号</a>
+            	            	</span>
+        </div>
+        <div class="seller-phone">
+            	            	<span class="pop in">
+            	            		<a href="" data-name="进店逛逛"><img src="../images/shop-line.png"/>进店逛逛</a>
+            	            	</span>
+            <span class="pop in">
+            	            		<a href="" data-name="关注店铺"><img src="../images/staar.png"/>关注店铺</a>
+            	            	</span>
+        </div>
+
+    </div>
+</div>
+
+<!-- 商品介紹 -->
+<div class="gdetail">
+    <!-- left -->
+    <div class="aside">
+        <h3>看了还看</h3>
+        <dl class="ac-mod-list">
+            <dt><a href=""><img src="../images/hdy_09.png"/></a></dt>
+            <dd>
+                O2+车载空气净化器DM2
+                <span>￥99</span>
+            </dd>
+        </dl>
+        <dl class="ac-mod-list">
+            <dt><a href=""><img src="../images/hdy_07.png"/></a></dt>
+            <dd>
+                O2+车载空气净化器DM2
+                <span>￥99</span>
+            </dd>
+        </dl>
+        <dl class="ac-mod-list">
+            <dt><a href=""><img src="../images/hdy_11.jpg"/></a></dt>
+            <dd>
+                O2+车载空气净化器DM2
+                <span>￥99</span>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="detail">
+        <div class="active_tab" id="outer">
+            <ul class="act_title_left" id="tab">
+                <li class="act_active">
+                    <a href="#">规格参数</a>
+                </li>
+                <li>
+                    <a href="#">商品介绍</a>
+                </li>
+                <li>
+                    <a href="#">商品评价</a>
+                </li>
+                <li>
+                    <a href="#">售后保障</a>
+                </li>
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+        <div id="content" class="active_list">
+            <!--0-->
+            <div id="ui-a" class="ui-a">
+                <ul style="display:block;">
+                    <li>商品名称：<span th:text="${go.goodsName}"></li>
+                    <li>商品编号：<span th:text="${go.goodsId}"></li>
+                    <li>品牌</li>
+                    <li>上架时间：2016-05-24</li>
+                    <li>商品毛重：0克</li>
+                    <li>库存：<span th:text="${go.stock}"></span> </li>
+                    <li><img src="../images/ko-1.jpg"/></li>
+                    <li><img src="../images/ko-2.jpg"/></li>
+                    <li><img src="../images/ko.jpg"/></li>
+                    <li><img th:src="${go.img}"/></li>
+                </ul>
+            </div>
+            <!--商品规格-->
+            <div id="bit" class="bit">
+                <ul style="display:none;">
+                    <li><img th:src="${go.img}"/></li>
+                    <li><img src="../images/ko-2.jpg"/></li>
+                    <li><img src="../images/ko.jpg"/></li>
+                    <li><img src="../images/ko-1.jpg"/></li>
+                    <li><img src="../images/ko-2.jpg"/></li>
+                </ul>
+            </div>
+
+            <!--商品评价-->
+
+            <div id="ui-c" class="ui-c">
+                <ul style="display:none;">
+                    <table th:each="comment:${co}">
+                        商品：<img th:src="${comment.goodsimg}" width="30px" height="30px"/>
+                        商品的评价：<span th:text="${comment.commentInfo}"></span>
+                        评价时间：<span th:text="${comment.commentTime}"></span>
+                    </table>
+
+                </ul>
+            </div>
+            <!--售后保障-->
+            <div id="uic" class="uic">
+                <ul style="display:none;">
+                    <p>商品名称：<span th:text="${go.goodsName}"></p>
+                    <p>商品编号：<span th:text="${go.goodsId}"></p>
+                    <p>品牌:威力马哈国产</p>
+                    <p>上架时间：2016-05-24</p>
+                    <span><img th:src="${go.img}"/></span>
+                    <span><img th:src="${go.img}"/></span>
+                </ul>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                window.onload = function()
+                {
+                    var $li = $('#tab li');
+                    var $ul = $('#content ul');
+
+                    $li.mouseover(function(){
+                        var $this = $(this);
+                        var $t = $this.index();
+                        $li.removeClass();
+                        $this.addClass('act_active');
+                        $ul.css('display','none');
+                        $ul.eq($t).css('display','block');
+                    })
+                }
+            });
+
+            function addcar(goodsId){
+                var count =$('#text_box').val();
+                alert(goodsId);
+                alert(count);
+                location.href="../shopcar/addShopCar?num="+count+"&goodsId="+goodsId
+            }
+
+            function toPayment(goodsId){
+                location.href="../market/toPayment?goodsId="+goodsId;
+            }
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

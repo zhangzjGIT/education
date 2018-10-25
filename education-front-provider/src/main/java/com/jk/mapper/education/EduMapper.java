@@ -1,6 +1,7 @@
 package com.jk.mapper.education;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -29,4 +30,6 @@ public interface EduMapper {
     void adduser(@Param("user")User user);
 
     User queryUserOne(@Param("phoneNumber")String phoneNumber);
+
+    List<MessageBean> queryHotList();
 }
