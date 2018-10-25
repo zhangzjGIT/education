@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="education-back-api" />
         <module name="education-back-consumer" />
         <module name="education-back-provider" />
         <module name="education-back-server" />
@@ -15,5 +14,11 @@
         <module name="education-front-provider" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="education-back-api" target="1.5" />
+      <module name="education-front-api" target="1.5" />
+      <module name="education-front-consumer" target="1.8" />
+      <module name="education-front-provider" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
