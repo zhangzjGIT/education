@@ -147,7 +147,7 @@ layui.config({
 			title : false,
 			type : 1,
 			content : '	<div class="admin-header-lock" id="lock-box">'+
-							'<div class="admin-header-lock-img"><img src="images/face.jpg"/></div>'+
+							'<div class="admin-header-lock-img"><img th:src="${userImg}" /></div>'+
 							'<div class="admin-header-lock-name" id="lockUserName">请叫我马哥</div>'+
 							'<div class="input_btn">'+
 								'<input type="password" class="admin-header-lock-input layui-input" autocomplete="off" placeholder="请输入密码解锁.." name="lockPwd" id="lockPwd" />'+
@@ -223,7 +223,7 @@ layui.config({
 	        id: 'LAY_layuipro',
 	        btn: ['火速围观'],
 	        moveType: 1,
-	        content: '<div style="padding:15px 20px; text-align:justify; line-height: 22px; text-indent:2em;border-bottom:1px solid #e2e2e2;"><h2>本系统属于测试版，如有问题欢迎大家指正。谢谢大家。</h2></p><p><h2>在此特别感谢朱义龙老师的指导。</h2></p></div>',
+	        content: '<div style="padding:15px 20px; text-align:justify; line-height: 22px; text-indent:2em;border-bottom:1px solid #e2e2e2;"><p><h2>本系统属于测试版，如有问题欢迎大家指正。谢谢大家。</h2></p></div>',
 	        success: function(layero){
 				var btn = layero.find('.layui-layer-btn');
 				btn.css('text-align', 'center');

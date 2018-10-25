@@ -3,7 +3,7 @@ package com.jk.service.education;
 import com.jk.mapper.education.EduMapper;
 
 
-import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.MessageBean;
 import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
@@ -35,19 +35,19 @@ public class EduServiceImpl implements EduServiceApi {
 
     @Override
     @RequestMapping(value = "/queryVideoList")
-    public List<ClassBean> queryVideoList(@RequestBody ClassBean classBean) {
-        return eduMapper.queryVideoList(classBean);
+    public List<MessageBean> queryVideoList() {
+        return eduMapper.queryVideoList();
     }
 
     @Override
     @RequestMapping(value = "/searchList")
-    public List<ClassBean> searchList(@RequestParam(value = "search")String search) {
+    public List<MessageBean> searchList(@RequestParam(value = "search")String search) {
         return eduMapper.searchList(search);
     }
 
     @Override
     @RequestMapping(value = "/searchmany")
-    public List<ClassBean> searchmany(String search) {
+    public List<MessageBean> searchmany(String search) {
 
         return eduMapper.searchmany(search);
     }
@@ -65,7 +65,7 @@ public class EduServiceImpl implements EduServiceApi {
 
     @Override
     @RequestMapping(value = "/priceType")
-    public List<ClassBean> priceType(String search) {
+    public List<MessageBean> priceType(String search) {
 
             return eduMapper.priceType(search);
     }
@@ -116,6 +116,12 @@ public class EduServiceImpl implements EduServiceApi {
     @RequestMapping(value="queryMess")
     public MessageBean queryMess(@RequestParam(value="couTitleId") String couTitleId) {
         return eduMapper.queryMess(couTitleId);
+    }
+
+    @Override
+    @RequestMapping(value="queryHotList")
+    public List<MessageBean> queryHotList() {
+        return eduMapper.queryHotList();
     }
 
 

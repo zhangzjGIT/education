@@ -3,7 +3,7 @@ package com.jk.controller;
 
 import com.jk.ConstantsConf;
 import com.jk.OSSClientUtil;
-import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.MessageBean;
 import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
@@ -52,6 +52,12 @@ public class EduController {
         return "login";
     }
 
+    @RequestMapping("agLogin")
+    public String agLogin(HttpServletRequest request){
+        request.getSession().removeAttribute("userInfo");
+        return "login";
+    }
+
     @RequestMapping("toregister")
     public String toregister(){
         return "register";
@@ -60,7 +66,7 @@ public class EduController {
     /**
      * 跳转到视频播放列表
      */
-   @RequestMapping("tovideolist")
+    @RequestMapping("tovideolist")
     public String tovideolist(){
         return "videolist";
     }
@@ -90,28 +96,86 @@ public class EduController {
      * @return
      */
     @RequestMapping("toList")
-    public String toList(ClassBean classBean, ModelMap md){
-       List<ClassBean> list =  eduService.queryVideoList(classBean);
-       md.put("list",list);
-       return "list";
+    public String toList(ModelMap md,HttpServletRequest request){
+        List<MessageBean> list =  eduService.queryVideoList();
+        List<MessageBean> cou = eduService.queryHotList();
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null){
+            md.put("codes",1);
+            md.put("user",user);
+            md.put("list",list);
+            md.put("cou",cou);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+            md.put("list",list);
+            md.put("cou",cou);
+        }
+
+        return "list";
     }
 
     @RequestMapping("searchList")
-    public String searchList(String search, ModelMap md){
-        List<ClassBean> list =  eduService.searchList(search);
+    public String searchList(String search, ModelMap md,HttpServletRequest request){
+        List<MessageBean> list =  eduService.searchList(search);
+        List<MessageBean> cou = eduService.queryHotList();
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
+        md.put("cou",cou);
         return "list";
     }
     @RequestMapping("priceType")
-    public String priceType(String search, ModelMap md){
-        List<ClassBean> list =  eduService.priceType(search);
+    public String priceType(String search, ModelMap md,HttpServletRequest request){
+        List<MessageBean> list =  eduService.priceType(search);
+        List<MessageBean> cou = eduService.queryHotList();
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
+        md.put("cou",cou);
         return "list";
     }
     @RequestMapping("searchmany")
-    public String searchmany(String search, ModelMap md){
-        List<ClassBean> list =  eduService.searchmany(search);
+    public String searchmany(String search, ModelMap md,HttpServletRequest request){
+        List<MessageBean> list =  eduService.searchmany(search);
+        List<MessageBean> cou = eduService.queryHotList();
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
+        md.put("cou",cou);
         return "list";
     }
     @RequestMapping("toinfo")
@@ -120,11 +184,24 @@ public class EduController {
         return "info";
     }
     @RequestMapping("tomain")
-    public String tomain(ModelMap md) {
+    public String tomain(ModelMap md,HttpServletRequest request) {
         List<TypeBean> typelist = eduService.queryCLassTypeList();
         List<MessageBean> mesList = eduService.queryClassByTypeId();
         md.put("mesList", mesList);
         md.put("typelist", typelist);
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user",user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+
+        }
+
         return "index";
     }
 
@@ -185,7 +262,7 @@ public class EduController {
             if(!password.equals(user.getPassword())){
                 return false;
             }
-            request.getSession().setAttribute("userId", user.getId());
+            request.getSession().setAttribute("userInfo", user);
             return true;
         } catch (Exception e) {
             return false;
@@ -201,29 +278,29 @@ public class EduController {
         HashMap<String,Object> result = new HashMap<String, Object>();
      /* User userone = eduService.queryUserOne(user.getPhoneNumber());
         if(userone==null){*/
-            String password = user.getPassword();
-            if(password==null || password=="") {
-                result.put("code", 1);
-                result.put("msg","密码不能为空");
-                return result;
-            }
-            if(numPhone==null || numPhone=="") {
-                result.put("code", 2);
-                result.put("msg","验证码不能为空");
-                return result;
-            }
-            String cacheCodeKey = ConstantsConf.Login_Code + user.getPhoneNumber();
-            String randomcode = redisTemplate.opsForValue().get(cacheCodeKey);
-            if(!numPhone.equals(randomcode)){
-                result.put("code", 3);
-                result.put("msg","验证码错误");
-                return result;
-            }
-            eduService.adduser(user);
-            result.put("code", 0);
-            result.put("msg","注册成功");
+        String password = user.getPassword();
+        if(password==null || password=="") {
+            result.put("code", 1);
+            result.put("msg","密码不能为空");
             return result;
-      }
+        }
+        if(numPhone==null || numPhone=="") {
+            result.put("code", 2);
+            result.put("msg","验证码不能为空");
+            return result;
+        }
+        String cacheCodeKey = ConstantsConf.Login_Code + user.getPhoneNumber();
+        String randomcode = redisTemplate.opsForValue().get(cacheCodeKey);
+        if(!numPhone.equals(randomcode)){
+            result.put("code", 3);
+            result.put("msg","验证码错误");
+            return result;
+        }
+        eduService.adduser(user);
+        result.put("code", 0);
+        result.put("msg","注册成功");
+        return result;
+    }
 
 
     @RequestMapping("querydeils")

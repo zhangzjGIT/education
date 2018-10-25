@@ -1,6 +1,6 @@
 package com.jk.mapper.education;
 
-import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
 import com.jk.model.education.MessageBean;
 import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
@@ -18,17 +18,17 @@ import java.util.List;
 @Mapper
 @Component("eduMapper")
 public interface EduMapper {
-    List<ClassBean> queryVideoList(@Param("classBean") ClassBean classBean);
+    List<MessageBean> queryVideoList();
 
-    List<ClassBean> searchList(@Param("search")String search);
+    List<MessageBean> searchList(@Param("search")String search);
 
-    List<ClassBean> searchmany(@Param("search")String search);
+    List<MessageBean> searchmany(@Param("search")String search);
 
     List<TypeBean> queryCLassTypeList();
 
     List<MessageBean> queryClassByTypeId();
 
-    List<ClassBean> priceType(@Param("search")String search);
+    List<MessageBean> priceType(@Param("search")String search);
 
     User login(@Param("phone")String phone);
 
@@ -48,4 +48,5 @@ public interface EduMapper {
 
     MessageBean queryMess(String couTitleId);
 
+    List<MessageBean> queryHotList();
 }
