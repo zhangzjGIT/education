@@ -6,7 +6,10 @@ import com.jk.mapper.education.EduMapper;
 import com.jk.model.education.ClassBean;
 import com.jk.model.education.MessageBean;
 import com.jk.model.education.TypeBean;
+import com.jk.model.education.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Auther: yangjianguang
@@ -25,6 +29,9 @@ public class EduServiceImpl implements EduServiceApi {
 
     @Autowired
     private EduMapper eduMapper;
+
+   // @Autowired
+   // private MongoTemplate mongoTemplate;
 
     @Override
     @RequestMapping(value = "/queryVideoList")
@@ -55,6 +62,38 @@ public class EduServiceImpl implements EduServiceApi {
     public List<MessageBean> queryClassByTypeId() {
         return eduMapper.queryClassByTypeId();
     }
+
+    @Override
+    @RequestMapping(value = "/priceType")
+    public List<ClassBean> priceType(String search) {
+
+            return eduMapper.priceType(search);
+    }
+
+    @Override
+    @RequestMapping(value = "/login")
+    public User login(@RequestParam(value = "phone")String phone) {
+        return eduMapper.login(phone);
+    }
+
+    @Override
+    public void adduser(@RequestBody User user) {
+        user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+        eduMapper.adduser(user);
+    }
+
+   /* @Override
+    public GridFSDBFile getImgById(String id) {
+        DBObject query = new BasicDBObject("_id",id);
+        GridFS gridFS = new GridFS(mongoTemplate.getDb());
+        GridFSDBFile findOne = gridFS.findOne(query);
+        return findOne;
+    }*/
+
+    // @Override
+   // public User queryUserOne(@RequestParam(value = "phoneNumber")String phoneNumber) {
+   //     return  eduMapper.queryUserOne(phoneNumber);
+   // }
 
 
 }

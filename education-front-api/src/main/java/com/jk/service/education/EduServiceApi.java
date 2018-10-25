@@ -3,6 +3,8 @@ package com.jk.service.education;
 import com.jk.model.education.ClassBean;
 import com.jk.model.education.MessageBean;
 import com.jk.model.education.TypeBean;
+import com.jk.model.education.User;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,4 +32,17 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/queryClassByTypeId",method = RequestMethod.GET)
     List<MessageBean> queryClassByTypeId();
+
+    @RequestMapping(value = "/priceType",method = RequestMethod.POST)
+    List<ClassBean> priceType(@RequestParam(value = "search")String search);
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    User login(@RequestParam(value = "phone")String phone);
+
+    @RequestMapping(value = "/adduser",method = RequestMethod.POST)
+    void adduser(@RequestBody User user);
+
+    //@RequestMapping(value = "/getImgById",method = RequestMethod.POST)
+  //  GridFSDBFile getImgById(@RequestParam(value = "id")String id);
+
 }

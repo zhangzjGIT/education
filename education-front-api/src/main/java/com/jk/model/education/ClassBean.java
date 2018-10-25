@@ -28,12 +28,16 @@ public class ClassBean {
 
     private String img;//封面
 
+    private String priceType;
+
 
     /**
      * 业务字段
      * @return
      */
     private String courseName;
+
+    private String couTitle;
 
     private String stuCount;
 
@@ -135,5 +139,21 @@ public class ClassBean {
 
     public void setMaxPrice(String maxPrice) {
         this.maxPrice = maxPrice;
+    }
+
+    public String getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(String priceType) {
+        this.priceType = priceType;
+    }
+
+    public String getCouTitle() {
+        return couTitle;
+    }
+
+    public void setCouTitle(String couTitle) {
+        this.couTitle = couTitle;
     }
 }

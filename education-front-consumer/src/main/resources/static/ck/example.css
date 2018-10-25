@@ -1,0 +1,51 @@
+body {
+	margin: 0px; font-size: 14px;
+}
+ul {
+	margin: 0px; padding: 0px;
+}
+dl {
+	margin: 0px; padding: 0px;
+}
+form {
+	margin: 0px; padding: 0px;
+}
+li {
+	list-style: none;
+}
+img {
+	border: 0px currentColor; border-image: none;
+}
+.top {
+	height: 36px; line-height: 30px; background-color: rgb(0, 153, 255);
+}
+.top_left {
+	color: rgb(255, 255, 255); padding-left: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 22px; float: left;
+}
+.top_left a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.top_tab {
+	color: rgb(255, 255, 255); float: right;
+}
+.top_tab a {
+	color: rgb(255, 255, 255); text-decoration: none;
+}
+.yytf {
+	height: 90px; padding-top: 10px; padding-bottom: 10px;
+}
+.explain_title {
+	color: rgb(0, 153, 255); line-height: 36px; font-size: 14px; font-weight: bold; border-bottom-color: rgb(204, 204, 204); border-bottom-width: 1px; border-bottom-style: solid; background-color: rgb(244, 244, 244);
+}
+.content {
+	width: 888px; float: left;
+}
+.c_title {
+	line-height: 36px; padding-left: 10px; font-size: 14px; font-weight: bold;
+}
+.exp {
+	width: 100%; line-height: 26px; padding-top: 20px; float: left;
+}
+.mimg a img {
+	border-width: 0px;
+}
