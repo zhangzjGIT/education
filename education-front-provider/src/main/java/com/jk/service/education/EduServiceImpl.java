@@ -82,18 +82,41 @@ public class EduServiceImpl implements EduServiceApi {
         eduMapper.adduser(user);
     }
 
-   /* @Override
-    public GridFSDBFile getImgById(String id) {
-        DBObject query = new BasicDBObject("_id",id);
-        GridFS gridFS = new GridFS(mongoTemplate.getDb());
-        GridFSDBFile findOne = gridFS.findOne(query);
-        return findOne;
-    }*/
+    @Override
+    @RequestMapping(value="querydeils")
+    public MessageBean querydeils( @RequestBody MessageBean messageBean) {
+        return eduMapper.querydeils(messageBean);
+    }
 
-    // @Override
-   // public User queryUserOne(@RequestParam(value = "phoneNumber")String phoneNumber) {
-   //     return  eduMapper.queryUserOne(phoneNumber);
-   // }
+    @Override
+    @RequestMapping(value="updateCollect")
+    public void updateCollect( @RequestParam(value="courseId") String courseId) {
+        eduMapper.updateCollect(courseId);
+    }
+
+    @Override
+    @RequestMapping(value="queryuser")
+    public User queryuser(@RequestParam(value="userId") String userId) {
+        return eduMapper.queryuser(userId);
+    }
+
+    @Override
+    @RequestMapping(value="updateMessage")
+    public void updateMessage(@RequestBody MessageBean messageBean) {
+        eduMapper.updateMessage(messageBean);
+    }
+
+    @Override
+    @RequestMapping(value="addCourse")
+    public void addCourse(@RequestBody MessageBean messageBean) {
+        eduMapper.addCourse(messageBean);
+    }
+
+    @Override
+    @RequestMapping(value="queryMess")
+    public MessageBean queryMess(@RequestParam(value="couTitleId") String couTitleId) {
+        return eduMapper.queryMess(couTitleId);
+    }
 
 
 }

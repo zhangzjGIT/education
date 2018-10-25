@@ -42,7 +42,22 @@ public interface EduServiceApi {
     @RequestMapping(value = "/adduser",method = RequestMethod.POST)
     void adduser(@RequestBody User user);
 
-    //@RequestMapping(value = "/getImgById",method = RequestMethod.POST)
-  //  GridFSDBFile getImgById(@RequestParam(value = "id")String id);
+    @RequestMapping(value = "/querydeils",method = RequestMethod.POST)
+    MessageBean querydeils(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/collect",method = RequestMethod.PUT)
+    void updateCollect(@RequestParam(value="courseId") String courseId);
+
+    @RequestMapping(value = "/queryuser",method = RequestMethod.GET)
+    User queryuser(@RequestParam(value="userId")String userId);
+
+    @RequestMapping(value = "/updateMessage",method = RequestMethod.PUT)
+    void updateMessage(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/addCourse",method = RequestMethod.POST)
+    void addCourse(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/queryMess",method = RequestMethod.POST)
+    MessageBean queryMess(@RequestParam(value="couTitleId")String couTitleId);
 
 }

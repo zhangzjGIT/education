@@ -11,12 +11,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/education-back-provider/pom.xml" />
-        <option value="$PROJECT_DIR$/education-back-server/pom.xml" />
-        <option value="$PROJECT_DIR$/education-back-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/education-front-provider/pom.xml" />
         <option value="$PROJECT_DIR$/education-front-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/education-front-api/pom.xml" />
+        <option value="$PROJECT_DIR$/education-back-server/pom.xml" />
         <option value="$PROJECT_DIR$/education-back-api/pom.xml" />
+        <option value="$PROJECT_DIR$/education-back-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/education-back-provider/pom.xml" />
       </list>
     </option>
   </component>

@@ -1619,8 +1619,7 @@
         <div class="header-index-search" id="js-searchbox">
             <div class="mod-search">
                 <a class="mod-search-dropdown">
-                    <span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程<i class="icon-font i-v-bottom-small"></i></span>
-                    <span class="mod-search-dropdown-item" style="display: none;" data-type="agency">机构<i class="icon-font i-v-bottom-small"></i></span>
+                    <span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程</span>
                 </a>
                 <input type="text" id="js_keyword" maxlength="38" class="mod-search__input"
                        placeholder="莘莘学子精学课堂"
@@ -1736,11 +1735,10 @@
 
 
                 <li class="mod-nav__li no-border js-mod-category " th:each="type:${typelist}" >
-                    <div class="mod-nav__wrap-nav-first">
-                        <i class="icon-font i-v-right"></i>
+                    <div class="mod-nav__wrap-nav-first" style="text-align:center">
                         <h3 class="mod-nav__link-nav-first">
                             <a  th:onclick="'queryAll('+${type.typeId}+')'" class="mod-nav__link-nav-first-link" >
-                                <span th:text="${type.typeName}" ></span>
+                                <span th:text="${type.typeName}" ></span><i class="icon-font i-v-right"></i>
                             </a>
                         </h3>
                     </div>

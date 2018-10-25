@@ -35,4 +35,17 @@ public interface EduMapper {
     void adduser(@Param("user")User user);
 
     User queryUserOne(@Param("phoneNumber")String phoneNumber);
+
+    MessageBean querydeils(MessageBean messageBean);
+
+    void updateCollect(String courseId);
+
+    User queryuser(String userId);
+
+    void updateMessage(MessageBean messageBean);
+
+    void addCourse(MessageBean messageBean);
+
+    MessageBean queryMess(String couTitleId);
+
 }
