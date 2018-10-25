@@ -126,16 +126,6 @@ public class EduController {
         return "index";
     }
 
-   /* @RequestMapping("queryClassByTypeId")
-    public String queryClassByTypeId(Integer typeId,ModelMap md){
-        List<ClassBean> classList = eduService.queryClassByTypeId(typeId);
-        if (classList != null) {
-
-        }
-        return "index";
-    }*/
-    }
-
     @RequestMapping("sendSMS")
     @ResponseBody
     public Boolean sendSMS(String phone) {
@@ -231,12 +221,6 @@ public class EduController {
             result.put("code", 0);
             result.put("msg","注册成功");
             return result;
-      }/*else{
-           result.put("code", 4);
-           result.put("msg","注册失败");
-           return result;
       }
-
-   }*/
 
 }

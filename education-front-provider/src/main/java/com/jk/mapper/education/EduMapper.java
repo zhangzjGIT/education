@@ -1,6 +1,8 @@
 package com.jk.mapper.education;
 
 import com.jk.model.education.ClassBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
