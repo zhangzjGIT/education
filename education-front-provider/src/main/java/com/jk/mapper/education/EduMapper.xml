@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.education.EduMapper">
+
+    <select id="queryVideoList"  resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_message t2
+      where t1.id =t2.classId
+    </select>
+
+    <select id="searchmany" parameterType="String" resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_message t2
+      where t1.id =t2.classId and t1.classType = #{search}
+    </select>
+    <select id="priceType" parameterType="String" resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_message t2
+      where t1.id =t2.classId and t1.priceType = #{search}
+    </select>
+    <select id="login"  resultType="com.jk.model.education.User">
+	   select * from x_user
+      where phoneNumber = #{phone}
+    </select>
+    <select id="queryUserOne"  resultType="com.jk.model.education.User">
+	   select * from x_user
+      where phoneNumber = #{phoneNumber}
+    </select>
+
+
+    <select id="searchList" parameterType="String" resultType="com.jk.model.education.ClassBean">
+	   select t1.*,t2.* from t_class t1,t_message t2
+      where t1.id =t2.classId
+        <if test="search!=null and search!=''">
+            and t1.name like  '%${search}%' or  t2.couTitle like '%${search}%'
+        </if>
+        and t1.id =t2.classId
+    </select>
+
+    <select id="queryCLassTypeList"  resultType="com.jk.model.education.TypeBean">
+	   select * from t_type
+    </select>
+    <insert id="adduser">
+		insert into x_user(id,userName,phoneNumber,password)
+		values(#{user.id},#{user.userName},#{user.phoneNumber},#{user.password})
+	</insert>
+
+
+    <select id="queryClassByTypeId"  resultType="com.jk.model.education.MessageBean">
+	   select * from t_message where  status = 2
+    </select>
+
+    <insert id="addCourse">
+      insert t_message (couTitle,couType,couClass,couPrice,couState,priImg)
+        values (#{couTitle},#{couType},#{couClass},
+       #{couPrice},#{couState},#{priImg})
+    </insert>
+
+        <update id="updateCollect">
+        update t_message set status = 2 where couId=#{courseId}
+    </update>
+
+        <update id="updateMessage">
+        update t_message
+        set
+        infoName = #{infoName},
+        couInfo=#{couInfo}
+        where couId=#{couId}
+    </update>
+
+        <select id="querydeils" resultType="com.jk.model.education.MessageBean">
+      select * from t_message where couId=#{couId}
+    </select>
+        <select id="queryuser" resultType="com.jk.model.education.User">
+        select * from x_user where id=#{userId}
+    </select>
+
+        <select id="queryMess" resultType="com.jk.model.education.MessageBean">
+        select * from t_message where couTitle=#{couTitleId}
+    </select>
+</mapper>

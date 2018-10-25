@@ -12,10 +12,23 @@ spring:
       prefix: classpath:/templates/
       suffix: .html
 
+
+ribbon:
+  eureka:
+    enabled: true
+redis:
+  host: 127.0.0.1
+  maxActive: 600
+  maxIdle: 300
+  maxWait: 1000
+  pass: ''
+  port: 6379
+  testOnBorrow: true
 #feign:
 #  hystrix:
 #    enabled: true
 
 #  httpclient:
 #    enabled: true
+
 
