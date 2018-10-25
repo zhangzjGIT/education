@@ -7,6 +7,8 @@ import com.jk.model.course.MessageBean;
 import com.jk.model.user.UserBean;
 import com.jk.service.course.CourseServiceApi;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("course")
+@RequestMapping("user")
 public class CourseController {
 
     @Autowired
@@ -60,10 +62,12 @@ public class CourseController {
 
     //密码回显
     @RequestMapping("toEditPass")
-    public String toEditPass(UserBean user, Model model){
-       UserBean userInfo = courseServiceApi.queryPwdById(user);
-       model.addAttribute("user",userInfo);
-     return "course/editPass";
+    public String toEditPass(Model model){
+        Session session = SecurityUtils.getSubject().getSession();
+        UserBean user = (UserBean) session.getAttribute(session.getId());
+        UserBean userInfo = courseServiceApi.queryPwdById(user);
+        model.addAttribute("user",userInfo);
+        return "course/editPass";
     }
 
 

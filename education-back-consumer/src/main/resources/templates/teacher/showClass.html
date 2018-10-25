@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title>课程审核</title>
     <link rel="stylesheet" href="/layui/css/layui.css" media="all">
-
+    <!--<style type="text/css">
+    .layui-table img {
+        max-width: 80px;min-height:80px;
+    }
+    </style>-->
 </head>
 <body>
 
@@ -32,7 +36,7 @@
         //第一个实例
         table.render({
             elem: '#classId'
-            ,height: 500
+            ,height: 567
             ,url: '/user/queryCourse' //数据接口
             ,method:'post'
             ,page: true //开启分页
@@ -46,7 +50,7 @@
                     ,{field:'couType', title: '课程类型',templet:'<div>{{  showType(d.couType) }}</div>'}
                     ,{field:'couClass',  title: '课程分类',templet:'<div>{{  showClass(d.couClass) }}</div>'}
                     ,{field:'couPrice',  title: '课程价格',sort:true}
-                    ,{field:'priImg', title: '课程封面', templet:'<div><img width="100px" height="100px" src="{{ d.priImg}}"></div>'}
+                    ,{field:'priImg', title: '课程封面', templet:'<div><img width="100px" height="100px" src="{{d.priImg}}"></div>'}
                     ,{field:'infoName', title: '视频名称'}
                     ,{field:'couState', title: '课程说明'}
                     ,{field:'teacherName',  title: '授课讲师'}

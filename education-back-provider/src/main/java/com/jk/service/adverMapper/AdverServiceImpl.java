@@ -43,7 +43,7 @@ public class AdverServiceImpl implements AdverServiceApi {
     }
 
     @Override
-    @RequestMapping(value = "advertising/saveadver")
+    @RequestMapping(value = "user/saveadver")
     public void saveAdver(@RequestBody Advertising adver) {
         adverDao.saveAdver(adver);
     }
@@ -51,26 +51,26 @@ public class AdverServiceImpl implements AdverServiceApi {
 
 
     @Override
-    @RequestMapping(value = "advertising/queryType")
+    @RequestMapping(value = "user/queryType")
      public List<TypeBean> queryType(@RequestBody TypeBean typeBean) {
         return adverDao.queryType(typeBean);
     }
 
     @Override
-    @RequestMapping(value = "advertising/queryadverbyid")
+    @RequestMapping(value = "user/queryadverbyid")
     public Advertising queryadverbyid(@RequestParam(value = "imgid")Integer imgid) {
         return adverDao.queryadverbyid(imgid);
     }
 
     @Override
-    @RequestMapping(value = "advertising/updateadver")
+    @RequestMapping(value = "user/updateadver")
     public void updateadver(@RequestBody Advertising advertising) {
         adverDao.updateadver(advertising);
     }
 
 
     @Override
-    @RequestMapping(value = "advertising/deladvertising")
+    @RequestMapping(value = "user/deladvertising")
     public void deladvertising(@RequestParam(value = "imgid")Integer imgid) {
         adverDao.deladvertising(imgid);
     }

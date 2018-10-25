@@ -51,9 +51,8 @@
     <div class="layui-upload">
        <button type="button" class="layui-btn" id="test1">上传图片</button>
         <div class="layui-upload-list">
-            <img src="{adver.imghref}" class="layui-upload-img" id="demo1" >
+            <img th:src="${adver.imghref}"  id="demo1" >
             <input type="hidden" name="imghref" id="imgUrl"/>
-
             <p id="demoText"></p>
         </div>
     </div>
@@ -74,7 +73,7 @@
     function editAdverFrom() {
         //var imgid=$("#imgid").val();
         $.ajax({
-            url:'/advertising/updateadver',
+            url:'/user/updateadver',
             dataType:'json',
             type:'post',
             data:$('#editFormAver').serialize(),
@@ -91,7 +90,7 @@
         $(function () {
             //js
             $.ajax({
-                url: '/advertising/queryType',
+                url: '/user/queryType',
                 dataType: 'json',
                 type: 'post',
                 success: function (list) {
@@ -122,7 +121,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: '/advertising/initiateMultipartUpload'
+            ,url: '/user/initiateMultipartUpload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){

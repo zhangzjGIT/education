@@ -37,26 +37,21 @@
         //第一个实例
         table.render({
             elem: '#demo'
-            ,height: 500
-            ,url: '/advertising/queryadverPage' //数据接口
+            ,height: 567
+            ,url: '/user/queryadverPage' //数据接口
             ,method:'post'
-
-
-
             ,page: true //开启分页
             ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             ,totalRow: true //开启合计行
 
             ,cols: [
                 [ //表头
-                    {field:'imgid', width:80, title: '图片id',sort:true}
-                    ,{field:'imgtitle', width:80, title: '标题'}
-                    ,{field:'imginfo', width:80, title: '简介'}
-                    ,{field:'typeName', width:80, title: '类型', templet: '#titleTpl'}
-
-                   ,{field:'imghref', title: '图片', templet:'<div><img width="100px" height="100px" src="{{ d.imghref }}"></div>'}
-
-                    ,{fixed: 'right',title: '操作', width: 165, align:'center', toolbar: '#barDemo'}
+                    {field:'imgid', title: '图片id',sort:true}
+                    ,{field:'imgtitle', title: '标题'}
+                    ,{field:'imginfo', title: '简介'}
+                    ,{field:'typeName', title: '类型', templet: '#titleTpl'}
+                    ,{field:'imghref', title: '图片', templet:'<div><img width="100px" height="100px" src="{{d.imghref}}"></div>'}
+                    ,{fixed: 'right',title: '操作', align:'center', toolbar: '#barDemo'}
                 ]
             ]
         });
@@ -101,7 +96,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/advertising/toadd', 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/user/toadd', 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         location.reload();
                     }
@@ -111,7 +106,7 @@
                 layer.confirm('真的删除行么', function(index){
                     obj.del();
                     $.ajax({
-                        url:'/advertising/deladvertising',
+                        url:'/user/deladvertising',
                         data:{
                             imgid:imgid,
                         },
@@ -132,7 +127,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         layer.open({
                             type: 2,
@@ -142,7 +137,7 @@
                             area: ['50%', '50%'],
                             maxmin: true,
                             closeBtn: 1,
-                            content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                            content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                             end: function () {
                                 location.reload();
                             }
@@ -152,8 +147,6 @@
 
                 });
             }
-
-
         })
 
     });

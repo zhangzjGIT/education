@@ -80,7 +80,7 @@
     function saveAdverFrom() {
 
         $.ajax({
-            url:'/advertising/saveAdver',
+            url:'/user/saveAdver',
             dataType:'json',
             type:'post',
             data:$('#addFormAver').serialize(),
@@ -97,7 +97,7 @@
         $(function () {
             //js
             $.ajax({
-                url: '/advertising/queryType',
+                url: '/user/queryType',
                 dataType: 'json',
                 type: 'post',
                 success: function (list) {
@@ -128,7 +128,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: '/advertising/initiateMultipartUpload'
+            ,url: '/user/initiateMultipartUpload'
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){

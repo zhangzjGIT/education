@@ -41,13 +41,13 @@ public class CourseServiceImpl implements CourseServiceApi {
     }
 
     @Override
-    @RequestMapping(value = "course/toEditPass")
+    @RequestMapping(value = "user/toEditPass")
     public UserBean queryPwdById(@RequestBody UserBean user) {
         return courseDao.queryPwdById(user);
     }
 
     @Override
-    @RequestMapping(value = "course/editPass")
+    @RequestMapping(value = "user/editPass")
     public void editPass(@RequestBody UserBean userBean) {
         courseDao.editPass(userBean);
     }

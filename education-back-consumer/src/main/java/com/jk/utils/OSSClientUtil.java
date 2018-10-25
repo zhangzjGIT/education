@@ -52,15 +52,15 @@ public class OSSClientUtil {
 	     * accessKey访问秘钥
 	     *  访问用户
 	     */
-	    private String accessKeyId = "LTAIqguiTL0OOs6g";
+	    private String accessKeyId = "LTAIdA4DcSHyzp2b";
 	    /**
 	     * 密钥
 	     */
-	    private String accessKeySecret = "xVscqBpORSiy0zVgnpng7ppiC4wM4S";
+	    private String accessKeySecret = "SjTJ6RxBvuSolrGY5F97Wb6fhMNu4R";
 	    /**
 	     * 空间  名称
 	     */
-	    private String bucketName = "wangym";
+	    private String bucketName = "yangjianguang";
 	    /**
 	     *  文件存储目录
 	     */
