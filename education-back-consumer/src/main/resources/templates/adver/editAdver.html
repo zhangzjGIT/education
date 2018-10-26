@@ -51,7 +51,7 @@
     <div class="layui-upload">
        <button type="button" class="layui-btn" id="test1">上传图片</button>
         <div class="layui-upload-list">
-            <img src="{adver.imghref}" class="layui-upload-img" id="demo1" >
+            <img th:src="${adver.imghref}"  id="demo1" >
             <input type="hidden" name="imghref" id="imgUrl"/>
 
             <p id="demoText"></p>
@@ -74,7 +74,7 @@
     function editAdverFrom() {
         //var imgid=$("#imgid").val();
         $.ajax({
-            url:'/advertising/updateadver',
+            url:'/user/updateadver',
             dataType:'json',
             type:'post',
             data:$('#editFormAver').serialize(),

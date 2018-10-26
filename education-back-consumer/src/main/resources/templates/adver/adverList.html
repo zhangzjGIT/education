@@ -38,7 +38,7 @@
         table.render({
             elem: '#demo'
             ,height: 500
-            ,url: '/advertising/queryadverPage' //数据接口
+            ,url: '/user/queryadverPage' //数据接口
             ,method:'post'
 
 
@@ -101,7 +101,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/advertising/toadd', 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/user/toadd', 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         location.reload();
                     }
@@ -111,7 +111,7 @@
                 layer.confirm('真的删除行么', function(index){
                     obj.del();
                     $.ajax({
-                        url:'/advertising/deladvertising',
+                        url:'/user/deladvertising',
                         data:{
                             imgid:imgid,
                         },
@@ -132,7 +132,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         layer.open({
                             type: 2,
@@ -142,7 +142,7 @@
                             area: ['50%', '50%'],
                             maxmin: true,
                             closeBtn: 1,
-                            content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                            content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                             end: function () {
                                 location.reload();
                             }
@@ -168,14 +168,5 @@
 
 </script>
 
-<!--<script type="text/html" id="titleTpl">
-    if({{d.imgtype}}=='1'){IT▪互联网}
-
-    else if({{d.imgtype}}=='2'){设计▪创作}
-    else if({{d.imgtype}}=='3'){语言▪留学}
-    else if({{d.imgtype}}=='4'){职业▪考证}
-    else if({{d.imgtype}}=='5'){升学▪考研}
-    else if({{d.imgtype}}=='6'){兴趣▪生活}
-</script>-->
 </body>
 </html>

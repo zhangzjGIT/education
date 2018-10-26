@@ -32,6 +32,11 @@
 
     </update>
 
+    <!-- heichars报表-->
+    <select id="queryTypeHigh" resultType="java.util.LinkedHashMap">
+        select count(*) 所有分类,typeId 课程分类 from t_type group by typeId
+
+    </select>
 
 
 </mapper>

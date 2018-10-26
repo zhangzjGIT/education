@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>金科在线教育后台系统</title>
@@ -62,7 +62,8 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="toMyInfo"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
-                        <dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+                        <!--<dd><a href="/user/toEditPass" ><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>-->
+                        <dd class="layui-this"><a href="javascript:;" data-url="/user/toEditPass"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
                         <dd><a href="javascript:;" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
                         <dd><a href="logout" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
                     </dl>
@@ -118,7 +119,11 @@
 <script type="text/javascript" src="../js/leftNav.js"></script>
 <script type="text/javascript" src="../js/index.js"></script>
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+
+
+
 <script type="text/javascript">
+
     layui.use(['layer', 'form', 'element'], function(){
         $(function () {
             $.ajax( {

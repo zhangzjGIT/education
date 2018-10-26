@@ -26,25 +26,25 @@
     <div class="layui-form-item">
         <label class="layui-form-label">旧密码</label>
         <div class="layui-input-block">
-            <input type="text"  id="t1" th:value="${user.password}"  readonly="true" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="password"  id="t1" th:value="${user.password}"  readonly="true" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">新密码</label>
         <div class="layui-input-block">
-            <input type="text"  id="t2" onblur="mi()" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="password"  id="t2" onblur="mi()" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">确认密码</label>
         <div class="layui-input-block">
-            <input type="text" name="password" id="t3" onblur="ma()" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="password" name="password" id="t3" onblur="ma()" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" onclick="editUserFrom()">立即提交</button>
+            <button class="layui-btn" onclick="editUserFrom()">确认修改密码</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 
 
@@ -63,32 +63,29 @@
             alert("新密码与确认密码不一致")
         }else{
             $.ajax({
-                url:'/course/editPass',
+                url:'/user/editPass',
                 dataType:'json',
                 type:'post',
                 data:{userId:d,password:c},
-                success:function(){
-                    location.href="/user/toLogin2";
+                success:function(result){
+                    if(result){
+                        alert("修改密码成功，请退出重新登录")
+                    }else{
+                        alert("修改密码失败")
+                    }
                 }
             });
         }
 
 
     }
-
-
-
-
     function mi() {
         var a = $("#t1").val()
         var b = $("#t2").val()
         if(a==b){
             alert("新旧密码不能相同")
         }
-
-
     }
-
 
 
 </script>

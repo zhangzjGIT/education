@@ -80,7 +80,7 @@
     function saveAdverFrom() {
 
         $.ajax({
-            url:'/advertising/saveAdver',
+            url:'/user/saveAdver',
             dataType:'json',
             type:'post',
             data:$('#addFormAver').serialize(),
@@ -97,7 +97,7 @@
         $(function () {
             //js
             $.ajax({
-                url: '/advertising/queryType',
+                url: '/user/queryType',
                 dataType: 'json',
                 type: 'post',
                 success: function (list) {

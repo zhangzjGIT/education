@@ -9,10 +9,6 @@ import com.jk.utils.OSSClientUtil;
 import com.sun.java.browser.plugin2.liveconnect.v1.Result;
 import javafx.scene.control.Cell;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -30,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-@RequestMapping("advertising")
+@RequestMapping("user")
 public class AdverController {
 
     @Autowired
