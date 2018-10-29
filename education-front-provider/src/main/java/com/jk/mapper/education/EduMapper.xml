@@ -2,18 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jk.mapper.education.EduMapper">
 
-    <select id="queryVideoList"  resultType="com.jk.model.education.ClassBean">
-	   select t1.*,t2.* from t_class t1,t_message t2
-      where t1.id =t2.classId
+    <select id="queryVideoList"  resultType="com.jk.model.education.MessageBean">
+	     select t2.* from t_message t2
     </select>
 
-    <select id="searchmany" parameterType="String" resultType="com.jk.model.education.ClassBean">
-	   select t1.*,t2.* from t_class t1,t_message t2
-      where t1.id =t2.classId and t1.classType = #{search}
+    <select id="searchmany" parameterType="String" resultType="com.jk.model.education.MessageBean">
+	     select t2.* from t_message t2
+      where  t2.couType = #{search}
     </select>
-    <select id="priceType" parameterType="String" resultType="com.jk.model.education.ClassBean">
-	   select t1.*,t2.* from t_class t1,t_message t2
-      where t1.id =t2.classId and t1.priceType = #{search}
+    <select id="priceType" parameterType="String" resultType="com.jk.model.education.MessageBean">
+	    select t2.* from t_message t2
+      where  t2.priceType = #{search}
     </select>
     <select id="login"  resultType="com.jk.model.education.User">
 	   select * from x_user
@@ -24,18 +23,18 @@
       where phoneNumber = #{phoneNumber}
     </select>
     <select id="queryHotList"  resultType="com.jk.model.education.MessageBean">
-	   select t1.*,t2.* from t_message t1,t_class t2 order by t1.allCount
+	   select * from t_message  order by allCount
      limit 0,2
     </select>
 
 
-    <select id="searchList" parameterType="String" resultType="com.jk.model.education.ClassBean">
-	   select t1.*,t2.* from t_class t1,t_message t2
-      where t1.id =t2.classId
+    <select id="searchList" parameterType="String" resultType="com.jk.model.education.MessageBean">
+	   select t2.* from t_message t2
+      where 1=1
         <if test="search!=null and search!=''">
-            and t1.name like  '%${search}%' or  t2.couTitle like '%${search}%'
+            and   t2.couTitle like '%${search}%'
         </if>
-        and t1.id =t2.classId
+
     </select>
 
     <select id="queryCLassTypeList"  resultType="com.jk.model.education.TypeBean">
@@ -52,8 +51,8 @@
     </select>
 
     <insert id="addCourse">
-      insert t_message (couTitle,couType,couClass,couPrice,couState,priImg)
-        values (#{couTitle},#{couType},#{couClass},
+      insert t_message (couId,couTitle,couType,couClass,couPrice,couState,priImg)
+        values (#{couId},#{couTitle},#{couType},#{couClass},
        #{couPrice},#{couState},#{priImg})
     </insert>
 

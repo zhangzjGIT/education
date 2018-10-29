@@ -47,7 +47,7 @@
 <!-- 首页头部模块 -->
 <header class="header-index" id="js_main_nav">
     <div class="header-index-inner clearfix">
-        <a href="//ke.qq.com" class="header-index-logo" report-tdw="action=rainbow-logo-clk" title="腾讯课堂_专业的在线教育平台"></a>
+        <a href=""  report-tdw="action=rainbow-logo-clk" title="腾讯课堂_专业的在线教育平台"><img src="../images/logo.jpg" width="100px" height="80px"></a>
         <div class="header-index-category  " report-hover="obj1=cates">
             <div class="header-index-category-text">
                 <i class="icon-font i-list-index"></i>
@@ -1665,49 +1665,33 @@
             <div class="header-index-join dropdown-wrap"  report-hover="module=join&position=cooperate" report-attr="module=join&position=cooperate">
                 <p class="join-tt dropdown-tt">开课/合作</p>
                 <ul class="join-list dropdown-list">
-                    <li><a href="/agency/personal/intro.html" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
+                    <li><a href="../user/toPersonal" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
                     <li><a href="/agency/join/index.html" title="机构开课" target="_blank" report-attr="module=join&position=institution">机构开课</a></li>
                 </ul>
             </div>
             <!-- 登录相关组件 -->
-            <div id="js-mod-header-login" class="mod-header__wrap-login">
+            <div id="js-mod-header-login" class="mod-header__wrap-login mod-header__wrap-logined">
                 <!-- 新版登录 个人 -->
-                <div class="mod-header_wrap-user dropdown-wrap" id="js_logout_outer">
+                <div class="mod-header_wrap-user dropdown-wrap" id="logout" style="display: none;">
                     <p class="mod-header__user-name dropdown-tt">
                         <a href="/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
-                            <img alt="头像" class="mod-header__user-avatar js-avatar">
-                            <i class="icon-account js-account"></i>
-                            <span class="mod-header__user-operation-title js-username"></span>
+                            <img th:src="${user.img}" alt="头像" class="mod-header__user-avatar js-avatar" onerror="this.src='../images/b2.jpg';this.onerror=null">
+
+                            <span class="mod-header__user-operation-title js-username" th:title="${user.userName}" th:text="${user.userName}"></span>
                         </a>
                     </p>
                     <ul class="mod-header__user-operations dropdown-list">
                         <li><a href="/user/index/index.html#sid=plan" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-                        <li><a href="/user/index/index.html#sid=signup" class="mod-header__user-operation js-signup" rel="nofollow" report-attr="module=personalcenter&amp;position=orders&amp;ver1=topbar">全部订单</a></li>
-                        <li class="mod-header__mailbox hide"><a href="/agency/mailbox/index.html#sid=msg" class="mod-header__user-operation" rel="nofollow">消息管理</a></li>
-                        <li><a href="/user/index/index.html#sid=fav" class="mod-header__user-operation js-fav" rel="nofollow" report-attr="module=personalcenter&amp;position=collection&amp;ver1=topbar">收藏</a></li>
-                        <li><a href="/user/index/index.html#sid=coupon" class="mod-header__user-operation js-coupon" rel="nofollow" report-attr="module=personalcenter&amp;position=coupon&amp;ver1=topbar">优惠券</a></li>
-                        <li><a href="/user/index/index.html#sid=contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
-                        <li><a href="javascript:void(0)" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
+                        <li><a href="../user/contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+                        <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
                     </ul>
                 </div>
-                <div class="mod-header_live-tip triangle">
-                    <p></p>
-                    <span class="btn-s btn-outline">我知道了</span>
+                <div class="mod-header_wrap-user dropdown-wrap"   id="show" style="display: block;">
+                    <input type="hidden" th:value="${codes}" id="codes">
+                    <a onclick="agLogin()">登录</a>
                 </div>
                 <!-- 新版登录 机构 -->
-                <div class="mod-header_wrap-user mod-header_wrap-user-org dropdown-wrap" id="js_logout_outer_agency">
-                    <p class="mod-header__user-name dropdown-tt">
-                        <a href="//ke.qq.com/agency/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=topbar" report-attr="module=personalcenter&amp;position=topbar">
-                            <span class="mod-header__user-operation-title js-agency-op">机构管理</span>
-                        </a>
-                    </p>
-                    <ul class="mod-header__user-operations dropdown-list">
-                        <li class="mod-header__mailbox hide"><a href="/agency/mailbox/index.html#sid=msg" class="mod-header__user-operation" rel="nofollow">消息管理</a></li>
-                        <li><a href="//ke.qq.com/user/index/index.html#sid=plan" class="mod-header__user-operation js-course-plan" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-                        <li><a href="javascript:void(0)" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
-                    </ul>
-                </div>
-                <a href="javascript:" class="mod-header__link-login js-login-op" id="js_login" data-hook="login" rel="nofollow" report-attr="module=login&amp;position=topbar">登录</a>
+
             </div>
             <!-- <div class="header-index-tips hide" id="js-header-sale-tips">
                 转发即可赚钱！分享课程赚佣金
@@ -2213,7 +2197,7 @@
 <script>
     function queryAll(aa) {
         alert(aa);
-        location.href="../user/searchList?search="+aa;
+        location.href="../user/searchmany?search="+aa;
     }
 </script>
 <script>
@@ -2226,6 +2210,30 @@
     };
     window.GLOBAL_DATA = window.GLOBAL_DATA || {};
 
+</script>
+<script>
+    $(function(){
+        var codes = $("#codes").val();
+
+        if(codes == 1){
+            $("#logout").show();
+            $("#show").hide();
+
+        }else if(codes==2){
+            $("#logout").hide();
+            $("#show").show();
+        }
+    })
+
+    $("#out").click(function(){
+
+        $("#logout").hide();
+        $("#show").show();
+    });
+    function agLogin(){
+        alert(1)
+        location.href="../user/agLogin";
+    }
 </script>
 
 <script>TRecord.push('inline_script_run_time', T[0] + (new Date - TInline));</script>

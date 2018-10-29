@@ -2,7 +2,7 @@ package com.jk.model.education;
 
 public class MessageBean {
 
-    private Integer couId;
+    private String couId;
 
     private String couTitle;
 
@@ -30,6 +30,16 @@ public class MessageBean {
     //业务字段
     private String teacherName;
 
+    private String priceType;
+
+    public String getPriceType() {
+        return priceType;
+    }
+
+    public void setPriceType(String priceType) {
+        this.priceType = priceType;
+    }
+
     public String getTeacherName() {
         return teacherName;
     }
@@ -54,11 +64,11 @@ public class MessageBean {
         this.allCount = allCount;
     }
 
-    public Integer getCouId() {
+    public String getCouId() {
         return couId;
     }
 
-    public void setCouId(Integer couId) {
+    public void setCouId(String couId) {
         this.couId = couId;
     }
 

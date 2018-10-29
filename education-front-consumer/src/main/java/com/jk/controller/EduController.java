@@ -21,10 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import com.jk.utils.TimeUtil;
 import org.springframework.web.multipart.MultipartFile;
@@ -98,7 +95,7 @@ public class EduController {
      */
     @RequestMapping("toList")
     public String toList(ClassBean classBean, ModelMap md,HttpServletRequest request){
-       List<ClassBean> list =  eduService.queryVideoList(classBean);
+       List<MessageBean> list =  eduService.queryVideoList(classBean);
        List<MessageBean> cou = eduService.queryHotList();
       User user = (User) request.getSession().getAttribute("userInfo");
       if(user!=null){
@@ -121,30 +118,60 @@ public class EduController {
 
     @RequestMapping("searchList")
     public String searchList(String search, ModelMap md,HttpServletRequest request){
-        List<ClassBean> list =  eduService.searchList(search);
+        List<MessageBean> list =  eduService.searchList(search);
         List<MessageBean> cou = eduService.queryHotList();
         User user = (User) request.getSession().getAttribute("userInfo");
-        md.put("user",user);
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
         md.put("cou",cou);
         return "list";
     }
     @RequestMapping("priceType")
     public String priceType(String search, ModelMap md,HttpServletRequest request){
-        List<ClassBean> list =  eduService.priceType(search);
+        List<MessageBean> list =  eduService.priceType(search);
         List<MessageBean> cou = eduService.queryHotList();
         User user = (User) request.getSession().getAttribute("userInfo");
-        md.put("user",user);
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
         md.put("cou",cou);
         return "list";
     }
     @RequestMapping("searchmany")
     public String searchmany(String search, ModelMap md,HttpServletRequest request){
-        List<ClassBean> list =  eduService.searchmany(search);
+        List<MessageBean> list =  eduService.searchmany(search);
         List<MessageBean> cou = eduService.queryHotList();
         User user = (User) request.getSession().getAttribute("userInfo");
-        md.put("user",user);
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user", user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+        }
+
         md.put("list",list);
         md.put("cou",cou);
         return "list";
@@ -155,11 +182,24 @@ public class EduController {
         return "info";
     }
     @RequestMapping("tomain")
-    public String tomain(ModelMap md) {
+    public String tomain(ModelMap md,HttpServletRequest request) {
         List<TypeBean> typelist = eduService.queryCLassTypeList();
         List<MessageBean> mesList = eduService.queryClassByTypeId();
         md.put("mesList", mesList);
         md.put("typelist", typelist);
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if(user!=null) {
+            md.put("codes", 1);
+            md.put("user",user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            md.put("codes",2);
+            md.put("user",uu);
+
+        }
+
         return "index";
     }
 
@@ -265,17 +305,27 @@ public class EduController {
     public String querydeils(MessageBean messageBean, ModelMap modelMap,HttpServletRequest request){
         MessageBean cl = eduService.querydeils(messageBean);
         modelMap.put("cl",cl);
-        /*HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("UserId");
-        User us=eduService.queryuser(userId);
-        modelMap.put("us",us);*/
+       HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userInfo");
+        if(user!=null) {
+            modelMap.put("codes", 1);
+            modelMap.put("user",user);
+        }else{
+            User uu = new User();
+            uu.setImg("../images/logo.jpg");
+            uu.setUserName("无");
+            modelMap.put("codes",2);
+            modelMap.put("user",uu);
+
+        }
+
         return "deils/deils";
     }
 
     @RequestMapping("quitId")
     public String quitId(HttpServletRequest request){
         HttpSession session = request.getSession();
-        session.removeAttribute("userId");
+        session.removeAttribute("userInfo");
         return "";
     }
 
@@ -293,10 +343,10 @@ public class EduController {
 
     @RequestMapping("enroll")
     public String enroll(ModelMap modelMap,HttpServletRequest request){
-        /*HttpSession session = request.getSession();
+       HttpSession session = request.getSession();
         String couTitleId = (String) session.getAttribute(session.getId());
         MessageBean messageBean=eduService.queryMess(couTitleId);
-        modelMap.put("me",messageBean);*/
+        modelMap.put("me",messageBean);
         return "deils/enrollThor";
     }
 
@@ -318,11 +368,11 @@ public class EduController {
     }
 
     @RequestMapping("toPersonal")
-    public String toPersonal(ModelMap mm){
-        /*HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("UserId");
-        User us=eduService.queryuser(userId);
-        modelMap.put("user",us);*/
+    public String toPersonal(ModelMap modelMap,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("userInfo");
+        User us=eduService.queryuser(user.getId());
+        modelMap.put("user",us);
         return "deils/personal";
     }
 
@@ -342,6 +392,7 @@ public class EduController {
     @ResponseBody
     public Boolean addCourse(MessageBean messageBean,HttpServletRequest request){
         try {
+            messageBean.setCouId(UUID.randomUUID().toString().replace("-",""));
             eduService.addCourse(messageBean);
             HttpSession session = request.getSession();
             session.setAttribute(session.getId(),messageBean.getCouTitle());

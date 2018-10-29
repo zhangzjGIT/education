@@ -19,17 +19,17 @@ import java.util.List;
 @Mapper
 @Component("eduMapper")
 public interface EduMapper {
-    List<ClassBean> queryVideoList(@Param("classBean") ClassBean classBean);
+    List<MessageBean> queryVideoList(@Param("classBean") ClassBean classBean);
 
-    List<ClassBean> searchList(@Param("search")String search);
+    List<MessageBean> searchList(@Param("search")String search);
 
-    List<ClassBean> searchmany(@Param("search")String search);
+    List<MessageBean> searchmany(@Param("search")String search);
 
     List<TypeBean> queryCLassTypeList();
 
     List<MessageBean> queryClassByTypeId();
 
-    List<ClassBean> priceType(@Param("search")String search);
+    List<MessageBean> priceType(@Param("search")String search);
 
     User login(@Param("phone")String phone);
 

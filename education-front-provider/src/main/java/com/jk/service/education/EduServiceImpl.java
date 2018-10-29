@@ -36,19 +36,19 @@ public class EduServiceImpl implements EduServiceApi {
 
     @Override
     @RequestMapping(value = "/queryVideoList")
-    public List<ClassBean> queryVideoList(@RequestBody ClassBean classBean) {
+    public List<MessageBean> queryVideoList(@RequestBody ClassBean classBean) {
         return eduMapper.queryVideoList(classBean);
     }
 
     @Override
     @RequestMapping(value = "/searchList")
-    public List<ClassBean> searchList(@RequestParam(value = "search")String search) {
+    public List<MessageBean> searchList(@RequestParam(value = "search")String search) {
         return eduMapper.searchList(search);
     }
 
     @Override
     @RequestMapping(value = "/searchmany")
-    public List<ClassBean> searchmany(String search) {
+    public List<MessageBean> searchmany(String search) {
 
         return eduMapper.searchmany(search);
     }
@@ -66,7 +66,7 @@ public class EduServiceImpl implements EduServiceApi {
 
     @Override
     @RequestMapping(value = "/priceType")
-    public List<ClassBean> priceType(String search) {
+    public List<MessageBean> priceType(String search) {
 
             return eduMapper.priceType(search);
     }

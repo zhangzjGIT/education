@@ -20,13 +20,13 @@ import java.util.List;
  */
 public interface EduServiceApi {
     @RequestMapping(value = "/queryVideoList",method = RequestMethod.POST)
-    List<ClassBean> queryVideoList(@RequestBody ClassBean classBean);
+    List<MessageBean> queryVideoList(@RequestBody ClassBean classBean);
 
     @RequestMapping(value = "/searchList",method = RequestMethod.POST)
-    List<ClassBean> searchList(@RequestParam(value = "search")String search);
+    List<MessageBean> searchList(@RequestParam(value = "search")String search);
 
     @RequestMapping(value = "/searchmany",method = RequestMethod.POST)
-    List<ClassBean> searchmany(@RequestParam(value = "search")String search);
+    List<MessageBean> searchmany(@RequestParam(value = "search")String search);
 
     @RequestMapping(value="/queryCLassTypeList",method = RequestMethod.GET)
     List<TypeBean> queryCLassTypeList();
@@ -35,7 +35,7 @@ public interface EduServiceApi {
     List<MessageBean> queryClassByTypeId();
 
     @RequestMapping(value = "/priceType",method = RequestMethod.POST)
-    List<ClassBean> priceType(@RequestParam(value = "search")String search);
+    List<MessageBean> priceType(@RequestParam(value = "search")String search);
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     User login(@RequestParam(value = "phone")String phone);

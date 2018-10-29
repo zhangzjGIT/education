@@ -6,6 +6,13 @@
 	<link rel="canonical" href="https://ke.qq.com/course/130952">
 	<link rel="stylesheet" href="../common.9d8f74fe.css"/>
 	<link rel="stylesheet" href="../course.7aed7816.css"/>
+	<link rel="stylesheet" href="../EasyUI/themes/icon.css"/>
+	<link rel="stylesheet" href="../EasyUI/themes/default/easyui.css"/>
+	<link rel="stylesheet" href="../EasyUI/themes/color.css"/>
+	<script src="../EasyUI/jquery.min.js"></script>
+	<script src="../EasyUI/jquery.easyui.min.js"></script>
+	<script src="../EasyUI/locale/easyui-lang-zh_CN.js"></script>
+	<script src="../EasyUI/util-js.js"></script>
 </head>
 <body class="page-course l-media l-aside-right ">
 <!--合作头部展示-->
@@ -21,7 +28,7 @@
 <!--包含头部进来-->
 <header class="header-index" id="js_main_nav">
 	<div class="header-index-inner clearfix">
-		<a href="https://ke.qq.com/" class="header-index-logo" report-tdw="action=rainbow-logo-clk" title="腾讯课堂_专业的在线教育平台"></a>
+		<a href=""  report-tdw="action=rainbow-logo-clk" title="腾讯课堂_专业的在线教育平台"><img src="../images/logo.jpg" width="100px" height="80px"></a>
 		<div class="header-index-category js-header-index-category header-index-category__show" report-hover="obj1=cates">
 			<div class="header-index-category-text">
 				<i class="icon-font i-list-index"></i>
@@ -43,20 +50,26 @@
 			<!-- 登录相关组件 -->
 			<div id="js-mod-header-login" class="mod-header__wrap-login mod-header__wrap-logined">
 				<!-- 新版登录 个人 -->
-				<div class="mod-header_wrap-user dropdown-wrap" id="js_logout_outer" style="display: block;">
+				<div class="mod-header_wrap-user dropdown-wrap" id="logout" style="display: none;">
 					<p class="mod-header__user-name dropdown-tt">
-						<a href="https://ke.qq.com/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
-							<!--<img alt="头像" class="mod-header__user-avatar js-avatar" th:src="${us.img}"/>-->
-							<i class="icon-account js-account i-qq"></i>
-							<span class="mod-header__user-operation-title js-username" title="ㄱ青春的梦ㅎ">ㄱ青春的梦ㅎ</span>
+						<a href="/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
+							<img th:src="${user.img}" alt="头像" class="mod-header__user-avatar js-avatar" onerror="this.src='../images/b2.jpg';this.onerror=null">
+
+							<span class="mod-header__user-operation-title js-username" th:title="${user.userName}" th:text="${user.userName}"></span>
 						</a>
 					</p>
 					<ul class="mod-header__user-operations dropdown-list">
-						<li><a href="../user/collect" class="mod-header__user-operation js-fav" rel="nofollow" report-attr="module=personalcenter&amp;position=collection&amp;ver1=topbar">收藏</a></li>
-						<li><a href="https://ke.qq.com/user/index/index.html#sid=contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
-						<li><a href="../user/quitId" data-hook="logout" class="js_logout mod-header__link-logout js-login-op" report-attr="module=personalcenter&amp;position=exit&amp;ver1=topbar">退出登录</a></li>
+						<li><a href="/user/index/index.html#sid=plan" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
+						<li><a href="../user/contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+						<li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
 					</ul>
 				</div>
+				<div class="mod-header_wrap-user dropdown-wrap"   id="show" style="display: block;">
+					<input type="hidden" th:value="${codes}" id="codes">
+					<a onclick="agLogin()">登录</a>
+				</div>
+				<!-- 新版登录 机构 -->
+
 			</div>
 		</div>
 	</div></header>
@@ -416,6 +429,34 @@
 	<p>Copyright © 2018 Tencent. All Rights Reserved.</p>
 	<p>计算机系统有限公司 版权所有 | <a  target="_blank" rel="nofollow">莘莘学子服务协议</a> | <a  target="_blank">站点地图</a> | <a  target="_blank">侵权投诉</a> | <a  rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a  target="_blank">帮助</a></p>
 </footer>
+<script>
+    $(function(){
+        var codes = $("#codes").val();
 
+        if(codes == 1){
+            $("#logout").show();
+            $("#show").hide();
+
+        }else if(codes==2){
+            $("#logout").hide();
+            $("#show").show();
+        }
+    })
+
+    $("#out").click(function(){
+
+        $("#logout").hide();
+        $("#show").show();
+    });
+    function agLogin(){
+
+        location.href="../user/agLogin";
+    }
+    function querydeils(){
+        var couId = $("#couId").val();
+        location.href="../user/querydeils?couId="+couId;
+    }
+</script>
 </body>
+
 </html>

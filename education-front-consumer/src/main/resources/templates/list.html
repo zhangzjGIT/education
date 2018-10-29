@@ -118,7 +118,7 @@
             </div>
             <div class="mod-header_wrap-user dropdown-wrap"   id="show" style="display: block;">
                <input type="hidden" th:value="${codes}" id="codes">
-                <a href="javascript:agLogin()">登录</a>
+                <a onclick="agLogin()">登录</a>
             </div>
             <!-- 新版登录 机构 -->
 
@@ -349,15 +349,16 @@
                     data-report-position="1" th:each="list:${list}"
                 >
 
-                    <a href="" target="_blank" class="item-img-link" data-ispkg="0" data-id="119808" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&ver1=119808&ver3=1.1" cors-name="course">
+                    <a href="javascript:querydeils()" target="_blank" class="item-img-link" data-ispkg="0" data-id="119808" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&ver1=119808&ver3=1.1" cors-name="course">
 
-                        <img th:src="${list.img}" th:alt="${list.couTitle}" th:title="${list.couTitle}+'【'+${list.name}+'】'" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;"/>
+                        <img th:src="${list.priImg}" th:alt="${list.couTitle}" th:title="${list.couTitle}" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;"/>
 
 
                     </a>
 
                     <div class="item-status">
-                        <span class="item-status-step" th:text="${list.name}"></span>
+                        <span class="item-status-step" th:text="${list.couTitle}"></span>
+
 
                     </div>
 
@@ -365,8 +366,8 @@
                     <h4 class="item-tt">
 
 
-                        <a href="" target="_blank" class="item-tt-link" th:title="${list.couTitle}+'【'+${list.name}+'】'" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${list.couTitle}"></span>【<span class="item-status-step" th:text="${list.name}"></span>】</a>
-
+                        <a href="" target="_blank" class="item-tt-link" th:title="${list.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${list.couTitle}"></span></a>
+                        <input type="hidden" th:value="${list.couId}" id="couId">
                     </h4>
 
 
@@ -378,15 +379,15 @@
 
                         <span class="item-source">
 
-                <a href="" target="_blank" class="item-source-link" th:title="${list.name}" rel="nofollow" report-tdw="action=Coursecard_Courseregister-clk&ver1=119808&ver3=1.1"> <span class="item-status-step" th:text="${list.name}"></span></a>
+                <a href="" target="_blank" class="item-source-link" th:title="${list.couTitle}" rel="nofollow" report-tdw="action=Coursecard_Courseregister-clk&ver1=119808&ver3=1.1"> <span class="item-status-step" th:text="${list.couTitle}"></span></a>
             </span>
                         </span>
                     </div>
 
                     <div class="item-line item-line--bottom">
 
-                        <span class="line-cell item-price free" th:if="${list.priceType} == 1" th:text="免费"></span>
-                        <span class="line-cell item-price free" th:if="${list.priceType} == 2" th:text="${list.groupPrice}+'¥'"></span>
+                        <span class="line-cell item-price free" th:if="${list.couPrice} eq '0'">免费</span>
+                        <span class="line-cell item-price" th:if="${list.couPrice} gt '0'" th:text="'￥'+${list.couPrice}+'.00'"></span>
 
 
 
@@ -480,9 +481,8 @@
 
 
                     <div class="item-line item-line--bottom">
-                        <span class="line-cell item-price free" th:if="${cou.priceType} == 1" th:text="免费"></span>
-                        <span class="line-cell item-price free" th:if="${cou.priceType} == 2" th:text="${cou.couPrice}+'¥'"></span>
-
+                        <span class="line-cell item-price free" th:if="${cou.couPrice} eq '0'">免费</span>
+                        <span class="line-cell item-price" th:if="${cou.couPrice} gt '0'" th:text="'￥'+${cou.couPrice}+'.00'"></span>
 
 
                         <span class="line-cell item-user item-user--right">
@@ -544,8 +544,8 @@
 
 
                     <div class="item-line item-line--bottom">
-                        <span class="line-cell item-price free" th:if="${cou.priceType} == 1" th:text="免费"></span>
-                        <span class="line-cell item-price free" th:if="${cou.priceType} == 2" th:text="${cou.couPrice}+'¥'"></span>
+                        <span class="line-cell item-price free" th:if="${cou.couPrice} eq '0'">免费</span>
+                        <span class="line-cell item-price" th:if="${cou.couPrice} gt '0'" th:text="'￥'+${cou.couPrice}+'.00'"></span>
 
 
 
@@ -645,12 +645,19 @@ var _hmt = _hmt || [];
         $("#show").show();
     });
     function agLogin(){
+
         location.href="../user/agLogin";
+    }
+    function querydeils(){
+        var couId = $("#couId").val();
+        alert(couId)
+        location.href="../user/querydeils?couId="+couId;
     }
 
 </script>
 <script>
     $(function(){
+
         var codes = $("#codes").val();
 
         if(codes == 1){
