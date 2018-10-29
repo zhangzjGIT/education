@@ -2,11 +2,14 @@ package com.jk.service.course;
 
 import com.jk.mapper.course.CourseMapper;
 import com.jk.mapper.user.UserMapper;
+import com.jk.model.ResultPage;
 import com.jk.model.advertising.Advertising;
 import com.jk.model.course.CourseBean;
+import com.jk.model.course.LogBean;
 import com.jk.model.course.MessageBean;
 import com.jk.model.user.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +24,9 @@ public class CourseServiceImpl implements CourseServiceApi {
 
     @Autowired
     private CourseMapper courseDao;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
         public Map<String, Object> queryCoursePage(@RequestParam(value = "page")int page, @RequestParam(value = "limit") int limit) {
@@ -51,4 +57,12 @@ public class CourseServiceImpl implements CourseServiceApi {
     public void editPass(@RequestBody UserBean userBean) {
         courseDao.editPass(userBean);
     }
+
+    @Override
+    @RequestMapping(value = "user/queryTypeHigh")
+    public List<Map<String, Object>> queryTypeHigh() {
+        return courseDao.queryTypeHigh();
+    }
+
+
 }

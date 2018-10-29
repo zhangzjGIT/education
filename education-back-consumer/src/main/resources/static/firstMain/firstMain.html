@@ -10,10 +10,18 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+
 	<link rel="stylesheet" href="../css/main.css" media="all" />
+    <script src="../jquery-1.9.1.min.js"></script>
+
 </head>
-<body class="childrenBody">
+<body >
+
+<script src="../Highcharts-6.1.2/code/highcharts.js"></script>
+<script src="../Highcharts-6.1.2/code/modules/variable-pie.js"></script>
+
 	<div class="panel_box row">
 		<div class="panel col">
 			<a href="javascript:;" data-url="page/message/message.html">
@@ -82,7 +90,52 @@
 				</div>
 			</a>
 		</div>
+        <div id="container">
+
+        </div>
 	</div>
+
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:"../user/queryTypeHigh",
+            dataType:"json",
+            type:"post",
+            success:function(data){
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'variablepie'
+                    },
+                    title: {
+                        text: '课程分类状态图'
+                    },
+                    tooltip: {
+                        headerFormat: '',
+                        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>'
+                    },
+                    series: [{
+                        minPointSize: 10,
+                        innerSize: '50%',
+                        zMin: 0,
+                        name: '课程分类',
+                        colorByPoint: true,
+                        data:data
+                    }]
+                });
+
+            }
+        })
+
+    })
+
+</script>
+
+
+
 
 	<script type="text/javascript" src="../layui/layui.js"></script>
 	<script type="text/javascript" src="../js/main.js"></script>

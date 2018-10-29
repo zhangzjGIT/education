@@ -96,7 +96,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/user/toadd', 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/advertising/toadd', 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         location.reload();
                     }
@@ -106,7 +106,7 @@
                 layer.confirm('真的删除行么', function(index){
                     obj.del();
                     $.ajax({
-                        url:'/user/deladvertising',
+                        url:'/advertising/deladvertising',
                         data:{
                             imgid:imgid,
                         },
@@ -127,7 +127,7 @@
                     area: ['50%', '50%'],
                     maxmin: true,
                     closeBtn: 1,
-                    content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                    content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                     end: function () {
                         layer.open({
                             type: 2,
@@ -137,7 +137,7 @@
                             area: ['50%', '50%'],
                             maxmin: true,
                             closeBtn: 1,
-                            content: ['/user/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
+                            content: ['/advertising/queryadverbyid?imgid='+imgid, 'yes'], //iframe的url，yes是否有滚动条
                             end: function () {
                                 location.reload();
                             }
@@ -147,6 +147,8 @@
 
                 });
             }
+
+
         })
 
     });

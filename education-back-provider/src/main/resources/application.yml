@@ -13,6 +13,7 @@ spring:
     active:
     - shiro
 
+
 eureka:
   client:
     serviceUrl:

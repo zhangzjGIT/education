@@ -11,6 +11,10 @@ spring:
       cache: false
       prefix: classpath:/templates/
       suffix: .html
+    data:
+      mongodb:
+        database: education
+        host: 127.0.0.1:27017
 
 
 
