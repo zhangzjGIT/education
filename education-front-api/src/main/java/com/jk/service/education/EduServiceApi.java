@@ -2,6 +2,8 @@ package com.jk.service.education;
 
 import com.jk.model.education.ClassBean;
 import com.jk.model.education.MessageBean;
+import com.jk.model.education.MessageBean;
+import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +28,12 @@ public interface EduServiceApi {
     @RequestMapping(value = "/searchmany",method = RequestMethod.POST)
     List<ClassBean> searchmany(@RequestParam(value = "search")String search);
 
+    @RequestMapping(value="/queryCLassTypeList",method = RequestMethod.GET)
+    List<TypeBean> queryCLassTypeList();
+
+    @RequestMapping(value = "/queryClassByTypeId",method = RequestMethod.GET)
+    List<MessageBean> queryClassByTypeId();
+
     @RequestMapping(value = "/priceType",method = RequestMethod.POST)
     List<ClassBean> priceType(@RequestParam(value = "search")String search);
 
@@ -40,5 +48,22 @@ public interface EduServiceApi {
 
     //@RequestMapping(value = "/getImgById",method = RequestMethod.POST)
   //  GridFSDBFile getImgById(@RequestParam(value = "id")String id);
+    @RequestMapping(value = "/querydeils",method = RequestMethod.POST)
+    MessageBean querydeils(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/collect",method = RequestMethod.PUT)
+    void updateCollect(@RequestParam(value="courseId") String courseId);
+
+    @RequestMapping(value = "/queryuser",method = RequestMethod.GET)
+    User queryuser(@RequestParam(value="userId")String userId);
+
+    @RequestMapping(value = "/updateMessage",method = RequestMethod.PUT)
+    void updateMessage(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/addCourse",method = RequestMethod.POST)
+    void addCourse(@RequestBody MessageBean messageBean);
+
+    @RequestMapping(value = "/queryMess",method = RequestMethod.POST)
+    MessageBean queryMess(@RequestParam(value="couTitleId")String couTitleId);
 
 }

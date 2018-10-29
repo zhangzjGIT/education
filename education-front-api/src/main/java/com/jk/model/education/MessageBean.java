@@ -1,11 +1,7 @@
 package com.jk.model.education;
 
-/**
- * @Auther: yangjianguang
- * @Date: 2018/10/24 19:07
- * @Description:
- */
 public class MessageBean {
+
     private Integer couId;
 
     private String couTitle;
@@ -34,14 +30,28 @@ public class MessageBean {
     //业务字段
     private String teacherName;
 
-    private String priceType;
-
-    public String getPriceType() {
-        return priceType;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setPriceType(String priceType) {
-        this.priceType = priceType;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getStuCount() {
+        return stuCount;
+    }
+
+    public void setStuCount(String stuCount) {
+        this.stuCount = stuCount;
+    }
+
+    public String getAllCount() {
+        return allCount;
+    }
+
+    public void setAllCount(String allCount) {
+        this.allCount = allCount;
     }
 
     public Integer getCouId() {
@@ -124,22 +134,6 @@ public class MessageBean {
         this.infoName = infoName;
     }
 
-    public String getStuCount() {
-        return stuCount;
-    }
-
-    public void setStuCount(String stuCount) {
-        this.stuCount = stuCount;
-    }
-
-    public String getAllCount() {
-        return allCount;
-    }
-
-    public void setAllCount(String allCount) {
-        this.allCount = allCount;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -147,12 +141,5 @@ public class MessageBean {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
-    }
 }
+
