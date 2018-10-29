@@ -52,8 +52,8 @@
     </select>
 
     <insert id="addCourse">
-      insert t_message (couTitle,couType,couClass,couPrice,couState,priImg,status)
-        values (#{couTitle},#{couType},#{couClass},
+      insert t_message (couId,couTitle,couType,couClass,couPrice,couState,priImg,status)
+        values (#{couId},#{couTitle},#{couType},#{couClass},
        #{couPrice},#{couState},#{priImg},1)
     </insert>
 
@@ -69,7 +69,7 @@
     </update>
 
     <select id="querydeils" resultType="com.jk.model.education.MessageBean">
-      select * from t_message where couId=#{couId} and status = 2
+      select * from t_message where couId=#{couId}
     </select>
     <select id="queryuser" resultType="com.jk.model.education.User">
         select * from x_user where id=#{userId}
@@ -77,5 +77,9 @@
 
     <select id="queryMess" resultType="com.jk.model.education.MessageBean">
         select * from t_message where couTitle=#{couTitleId} and status = 2
+    </select>
+
+    <select id="getBuyInfo" resultType="com.jk.model.education.MessageBean">
+        select * from t_message where couId=#{couId}
     </select>
 </mapper>

@@ -62,4 +62,7 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/queryHotList",method = RequestMethod.POST)
     List<MessageBean> queryHotList();
+
+    @RequestMapping(value = "/getBuyInfo",method = RequestMethod.POST)
+    MessageBean getBuyInfo(@RequestParam(value="couId")String couId);
 }

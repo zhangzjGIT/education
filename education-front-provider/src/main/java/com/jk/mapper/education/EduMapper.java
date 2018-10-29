@@ -49,4 +49,6 @@ public interface EduMapper {
     MessageBean queryMess(String couTitleId);
 
     List<MessageBean> queryHotList();
+
+    MessageBean getBuyInfo(String couId);
 }

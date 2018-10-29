@@ -124,5 +124,11 @@ public class EduServiceImpl implements EduServiceApi {
         return eduMapper.queryHotList();
     }
 
+    @Override
+    @RequestMapping(value="getBuyInfo")
+    public MessageBean getBuyInfo(@RequestParam(value="couId") String couId) {
+        return eduMapper.getBuyInfo(couId);
+    }
+
 
 }

@@ -2,7 +2,7 @@ package com.jk.model.education;
 
 public class MessageBean {
 
-    private Integer couId;
+    private String couId;
 
     private String couTitle;
 
@@ -12,7 +12,7 @@ public class MessageBean {
 
     private Integer couPro;
 
-    private Integer couPrice;
+    private String couPrice;
 
     private String couState;
 
@@ -54,11 +54,11 @@ public class MessageBean {
         this.allCount = allCount;
     }
 
-    public Integer getCouId() {
+    public String getCouId() {
         return couId;
     }
 
-    public void setCouId(Integer couId) {
+    public void setCouId(String couId) {
         this.couId = couId;
     }
 
@@ -94,11 +94,11 @@ public class MessageBean {
         this.couPro = couPro;
     }
 
-    public Integer getCouPrice() {
+    public String getCouPrice() {
         return couPrice;
     }
 
-    public void setCouPrice(Integer couPrice) {
+    public void setCouPrice(String couPrice) {
         this.couPrice = couPrice;
     }
 
