@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>首页--layui后台管理模板</title>
+	<title>首页</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -96,10 +96,49 @@
 	</div>
 
 
-
-
-
 <script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:"../user/queryTypeHigh",
+            dataType:"json",
+            type:"post",
+            success:function(data){
+                Highcharts.chart('container', {
+                    chart: {type: 'column'},
+                    subtitle:{
+                        text: '来源：金科在线教育网http://192.168.31.10:8082/user/queryTypeHigh'
+                    },
+                    title: {
+                        text: '课程分类柱状图'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        crosshair: true
+                    },
+                    yAxis: {
+                        tickInterval:2,
+                        min: 0,
+                        title: {
+                            text: '个数'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: '(个)'
+                    },
+                    plotOptions: {
+                        column: {
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: '课程个数',
+                        data:data
+                    }]
+                });
+            }
+        })
+    })
+/*
     $(function(){
         $.ajax({
             url:"../user/queryTypeHigh",
@@ -126,16 +165,12 @@
                         data:data
                     }]
                 });
-
             }
         })
-
     })
+*/
 
 </script>
-
-
-
 
 	<script type="text/javascript" src="../layui/layui.js"></script>
 	<script type="text/javascript" src="../js/main.js"></script>

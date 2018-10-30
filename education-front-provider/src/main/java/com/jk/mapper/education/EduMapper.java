@@ -42,11 +42,7 @@ public interface EduMapper {
 
     User queryuser(String userId);
 
-    void updateMessage(MessageBean messageBean);
-
     void addCourse(MessageBean messageBean);
-
-    MessageBean queryMess(String couTitleId);
 
     List<MessageBean> queryHotList();
 

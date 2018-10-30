@@ -101,21 +101,9 @@ public class EduServiceImpl implements EduServiceApi {
     }
 
     @Override
-    @RequestMapping(value="updateMessage")
-    public void updateMessage(@RequestBody MessageBean messageBean) {
-        eduMapper.updateMessage(messageBean);
-    }
-
-    @Override
     @RequestMapping(value="addCourse")
     public void addCourse(@RequestBody MessageBean messageBean) {
         eduMapper.addCourse(messageBean);
-    }
-
-    @Override
-    @RequestMapping(value="queryMess")
-    public MessageBean queryMess(@RequestParam(value="couTitleId") String couTitleId) {
-        return eduMapper.queryMess(couTitleId);
     }
 
     @Override

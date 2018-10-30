@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset=utf-8"UTF-8">
 <meta name="renderer" content="webkit">
@@ -307,7 +306,7 @@
 
                 <li class="course-card-item" data-report-position="1" th:each="list:${list}">
 
-                    <a href="" target="_blank" class="item-img-link" data-ispkg="0" data-id="119808" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&ver1=119808&ver3=1.1" cors-name="course">
+                    <a th:onclick="'queryClassById('+${list.couId}+')'" target="_blank" class="item-img-link" data-ispkg="0" data-id="119808" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&ver1=119808&ver3=1.1" cors-name="course">
                         <img th:src="${list.priImg}" th:alt="${list.couTitle}" th:title="${list.couTitle}" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;"/>
                     </a>
 
@@ -316,7 +315,7 @@
                     </div>
 
                     <h4 class="item-tt">
-                        <a href="" target="_blank" class="item-tt-link" th:title="${list.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${list.couTitle}"></span></a>
+                        <a th:onclick="'queryClassById('+${list.couId}+')'" target="_blank" class="item-tt-link" th:title="${list.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&ver1=119808&ver3=1.1"  cors-name="course"><span class="item-status-step" th:text="${list.couTitle}"></span></a>
                     </h4>
 
                     <div class="item-line item-line--middle">
@@ -377,29 +376,16 @@
         <h2 class="main-right-top">热门推荐</h2>
         <div class="course-card-list-aside-wrap" id="js-course-list-hot">
             
-            <!--
-    opt = {
-        simplify: true,  // 简化模式，少了第二行
-        sIndex:   1,     // 首页楼层上报用
-        fIndex:   2,     // 首页楼层上报用
-        noAgency: true,  // 简化模式下不展示机构信息，展示学习人数
-        showOrigin: true,  / 是否在价格后显示原价
-        hideStatus: true,// 隐藏课程状态栏
-        lazyload: true,   // 课程图懒加载
-        grayTag: true, // 展示标签
-    }
-
- -->
             <ul class="course-card-list" auto-test="" >
 
                 <li class="course-card-item" data-report-position="1" th:each="cou:${cou}">
 
-                    <a href="" target="_blank" class="item-img-link" data-ispkg="0" data-id="92671" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course">
+                    <a th:onclick="'queryClassById('+${cou.couId}+')'" target="_blank" class="item-img-link" data-ispkg="0" data-id="92671" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course">
                         <img th:src="${cou.priImg}" th:alt="${cou.couTitle}" th:title="${cou.couTitle}" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;">
                     </a>
 
                     <h4 class="item-tt">
-                        <a href="" target="_blank" class="item-tt-link" th:title="${cou.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course" th:text="${cou.couTitle}"></a>
+                        <a th:onclick="'queryClassById('+${cou.couId}+')'" target="_blank" class="item-tt-link" th:title="${cou.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course" th:text="${cou.couTitle}"></a>
                     </h4>
 
                     <div class="item-line item-line--bottom">
@@ -423,41 +409,24 @@
     <div class="main-below-con">
         <h3 class="main-below-top">猜你喜欢</h3>
         <div class="course-card-list-9-wrap" id="js-course-list-like">
-            
-            <!--
-    opt = {
-        simplify: true,  // 简化模式，少了第二行
-        sIndex:   1,     // 首页楼层上报用
-        fIndex:   2,     // 首页楼层上报用
-        noAgency: true,  // 简化模式下不展示机构信息，展示学习人数
-        showOrigin: true,  / 是否在价格后显示原价
-        hideStatus: true,// 隐藏课程状态栏
-        lazyload: true,   // 课程图懒加载
-        grayTag: true, // 展示标签
-    }
-
- -->
             <ul class="course-card-list" auto-test="" >
 
                 <li class="course-card-item" data-report-position="1" th:each="cou:${cou}">
 
-                    <a href="" target="_blank" class="item-img-link" data-ispkg="0" data-id="92671" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course">
+                    <a th:onclick="'queryClassById('+${cou.couId}+')'" target="_blank" class="item-img-link" data-ispkg="0" data-id="92671" data-index="1" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course">
                         <img th:src="${cou.priImg}" th:alt="${cou.couTitle}" th:title="${cou.couTitle}" class="item-img" width="220" height="124" onerror="this.src='//9.url.cn/edu/lego_modules/edu-ui/0.0.1/img/nohash/img-err2.png';this.onerror=null;">
                     </a>
 
                     <h4 class="item-tt">
-
-                        <a href="" target="_blank" class="item-tt-link" th:title="${cou.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course" th:text="${cou.couTitle}"></a>
-
+                        <a th:onclick="'queryClassById('+${cou.couId}+')'" target="_blank" class="item-tt-link" th:title="${cou.couTitle}" report-tdw="action=Coursecard_Coursesname-clk&amp;ver1=92671&amp;ver3=2.1" cors-name="course" th:text="${cou.couTitle}"></a>
                     </h4>
 
                     <div class="item-line item-line--bottom">
                         <span class="line-cell item-price free" th:if="${cou.couPrice} eq '0'">免费</span>
                         <span class="line-cell item-price" th:if="${cou.couPrice} gt '0'" th:text="'￥'+${cou.couPrice}+'.00'"></span>
                         <span class="line-cell item-user item-user--right">
-                   <span class="item-status-step" th:text="${cou.stuCount}"></span>人最近报名
-                </span>
-
+                            <span class="item-status-step" th:text="${cou.stuCount}"></span>人最近报名
+                        </span>
                     </div>
                 </li>
 
@@ -484,7 +453,7 @@
     <footer class="footer">
     <i class="icon-font i-logo" title="在线教育平台"></i>
     <p>Copyright © 2018 Tencent. All Rights Reserved.</p>
-    <p>金科在线教育 版权所有 | <a href="//ke.qq.com/proService.html" target="_blank" rel="nofollow">金科课堂服务协议</a> | <a href="//ke.qq.com/sitemap.html" target="_blank">站点地图</a> | <a href="//ke.qq.com/tort.html" target="_blank">侵权投诉</a> | <a href="http://support.qq.com/write.shtml?fid=1042" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="//ke.qq.com/faq.html" target="_blank">帮助</a></p>
+    <p>金科在线教育 版权所有 | <a href="" target="_blank" rel="nofollow">金科课堂服务协议</a> | <a href="" target="_blank">站点地图</a> | <a href="" target="_blank">侵权投诉</a> | <a href="" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="" target="_blank">帮助</a></p>
 </footer>
 
 
@@ -530,35 +499,31 @@ var _hmt = _hmt || [];
 <script>
     function search(){
         var aa = $("#js_keyword").val();
-
         location.href="../user/searchList?search="+aa;
     }
     function searchmany(num){
-
         location.href="../user/searchmany?search="+num;
     }
     function priceType(num){
-
         location.href="../user/priceType?search="+num;
     }
     $("#out").click(function(){
-
         $("#logout").hide();
         $("#show").show();
     });
     function agLogin(){
         location.href="../user/agLogin";
     }
-
+    function queryClassById(couId){
+        location.href="../user/querydeils?couId="+couId;
+    }
 </script>
 <script>
     $(function(){
         var codes = $("#codes").val();
-
         if(codes == 1){
             $("#logout").show();
             $("#show").hide();
-
         }else if(codes==2){
             $("#logout").hide();
             $("#show").show();

@@ -29,13 +29,11 @@
         update t_user
         set password = #{password}
         where userId= #{userId}
-
     </update>
 
     <!-- heichars报表-->
     <select id="queryTypeHigh" resultType="java.util.LinkedHashMap">
-        select count(*) 所有分类,typeId 课程分类 from t_type group by typeId
-
+        select count(*) as typeCount,typeName from t_message m,t_type t where m.couClass = t.typeId group by couClass
     </select>
 
 

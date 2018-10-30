@@ -52,20 +52,12 @@
     </select>
 
     <insert id="addCourse">
-      insert t_message (couId,couTitle,couType,couClass,couPrice,couState,priImg,status)
-        values (#{couId},#{couTitle},#{couType},#{couClass},
-       #{couPrice},#{couState},#{priImg},1)
+      insert t_message (couId,couTitle,couType,couClass,couPrice,couState,priImg,infoName,couInfo,status)
+      values (#{couId},#{couTitle},#{couType},#{couClass},#{couPrice},#{couState},#{priImg},#{infoName},#{couInfo},1)
     </insert>
 
     <update id="updateCollect">
         update t_message set status = 2 where couId=#{courseId}
-    </update>
-
-    <update id="updateMessage">
-        update t_message set
-        infoName = #{infoName},
-        couInfo=#{couInfo}
-        where couId=#{couId}
     </update>
 
     <select id="querydeils" resultType="com.jk.model.education.MessageBean">
@@ -73,10 +65,6 @@
     </select>
     <select id="queryuser" resultType="com.jk.model.education.User">
         select * from x_user where id=#{userId}
-    </select>
-
-    <select id="queryMess" resultType="com.jk.model.education.MessageBean">
-        select * from t_message where couTitle=#{couTitleId} and status = 2
     </select>
 
     <select id="getBuyInfo" resultType="com.jk.model.education.MessageBean">

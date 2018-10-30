@@ -80,6 +80,13 @@
 
         })
     })
+
+    //回车事件
+    $(document).keydown(function(event){
+        if(event.keyCode==13){            //ps：13这个数字就代表的是回车按键
+            $("#login_submit").click();            //    ps：用的id选择器,如果按下回车按键的话就调用这个方法
+        }
+    });
 </script>
 </body>
 </html>

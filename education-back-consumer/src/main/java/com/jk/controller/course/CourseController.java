@@ -35,7 +35,8 @@ public class CourseController {
     @Autowired
     private CourseServiceApi courseServiceApi;
 
-
+    @Autowired
+    private MongoTemplate mongoTemplate;
     /**
      * 跳转到查询页面
      */
@@ -100,26 +101,8 @@ public class CourseController {
         List<Map<String, Object>> listType = courseServiceApi.queryTypeHigh();
         for (Map<String, Object> map : listType) {
             Map<String, Object> maps = new HashMap<>();
-            Integer object = (Integer) map.get("课程分类");
-            if (object == 1) {
-                maps.put("name", "IT▪互联网");
-            }
-            if (object == 2) {
-                maps.put("name", "设计▪创作");
-            }
-            if (object == 3) {
-                maps.put("name", "语言▪留学");
-            }
-            if (object == 4) {
-                maps.put("name", "职业▪考证");
-            }
-            if (object == 5) {
-                maps.put("name", "升学▪考研");
-            }
-            if (object == 6) {
-                maps.put("name", "兴趣▪生活");
-            }
-            maps.put("y", map.get("所有分类"));
+            maps.put("name", map.get("typeName"));
+            maps.put("y", map.get("typeCount"));
             maps.put("sliced", false);
             maps.put("selected", false);
             list.add(maps);

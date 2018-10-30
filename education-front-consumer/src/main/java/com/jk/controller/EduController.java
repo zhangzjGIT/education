@@ -65,14 +65,6 @@ public class EduController {
         return "register";
     }
 
-    /**
-     * 跳转到视频播放列表
-     */
-    @RequestMapping("tovideolist")
-    public String tovideolist() {
-        return "videolist";
-    }
-
    /* @RequestMapping("getImg")
     public void getImg(String id, HttpServletRequest request, HttpServletResponse response) {
 
@@ -182,12 +174,6 @@ public class EduController {
         md.put("list", list);
         md.put("cou", cou);
         return "list";
-    }
-
-    @RequestMapping("toinfo")
-    public String toinfo() {
-
-        return "info";
     }
 
     @RequestMapping("tomain")
@@ -343,15 +329,6 @@ public class EduController {
         return true;
     }
 
-    @RequestMapping("enroll")
-    public String enroll(ModelMap modelMap, HttpServletRequest request) {
-        /*HttpSession session = request.getSession();
-        String couTitleId = (String) session.getAttribute(session.getId());
-        MessageBean messageBean=eduService.queryMess(couTitleId);
-        modelMap.put("me",messageBean);*/
-        return "deils/enrollThor";
-    }
-
     @RequestMapping("upImg")
     @ResponseBody
     public HashMap<String, Object> headImgUpload(MultipartFile file) throws IOException {
@@ -370,24 +347,12 @@ public class EduController {
     }
 
     @RequestMapping("toPersonal")
-    public String toPersonal(ModelMap mm) {
-        /*HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute("UserId");
+    public String toPersonal(ModelMap modelMap,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("userInfo");
+        String userId = user.getId();
         User us=eduService.queryuser(userId);
-        modelMap.put("user",us);*/
+        modelMap.put("user",us);
         return "deils/personal";
-    }
-
-    @RequestMapping("updateMessage")
-    @ResponseBody
-    public Boolean updateMessage(MessageBean messageBean, HttpServletRequest request) {
-        try {
-            eduService.updateMessage(messageBean);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     @RequestMapping("addCourse")
@@ -397,7 +362,7 @@ public class EduController {
             messageBean.setCouId(UuidUtil.getUUId());
             eduService.addCourse(messageBean);
             HttpSession session = request.getSession();
-            session.setAttribute(session.getId(), messageBean.getCouTitle());
+            session.setAttribute(session.getId(), messageBean.getCouId());
         } catch (Exception e) {
             e.printStackTrace();
             return false;

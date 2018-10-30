@@ -51,14 +51,8 @@ public interface EduServiceApi {
     @RequestMapping(value = "/queryuser",method = RequestMethod.GET)
     User queryuser(@RequestParam(value="userId")String userId);
 
-    @RequestMapping(value = "/updateMessage",method = RequestMethod.PUT)
-    void updateMessage(@RequestBody MessageBean messageBean);
-
     @RequestMapping(value = "/addCourse",method = RequestMethod.POST)
     void addCourse(@RequestBody MessageBean messageBean);
-
-    @RequestMapping(value = "/queryMess",method = RequestMethod.POST)
-    MessageBean queryMess(@RequestParam(value="couTitleId")String couTitleId);
 
     @RequestMapping(value = "/queryHotList",method = RequestMethod.POST)
     List<MessageBean> queryHotList();
