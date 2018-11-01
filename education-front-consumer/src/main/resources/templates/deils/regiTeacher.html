@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://www.class.cn/my_course/create_course?act=add -->
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>注册教室-金科教育在线</title>
+    <link rel="stylesheet" href="../personal/layout.css" media="all">
+    <link rel="stylesheet"  href="../uploadify/uploadify.css" type="text/css"/>
+
+    <link rel="shortcut icon" href="//8.url.cn/edu/edu_modules/edu-ui/img/nohash/favicon.ico"/>
+    <link rel="dns-prefetch" href="//7.url.cn">
+    <link rel="dns-prefetch" href="//8.url.cn">
+    <link rel="dns-prefetch" href="//9.url.cn">
+    <link rel="stylesheet" href='//8.url.cn/edu/edu_modules/edu-ui/css/common.9d8f74fe.css' />
+    <link rel="stylesheet" href='//8.url.cn/edu/modules/courseList/course_list.892c88dc.css' />
+
+    <link rel="stylesheet" href="../kindeditor-4.1.7/themes/default/default.css">
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../uploadify/jquery.uploadify.min.js"></script>
+
+
+</head>
+<body>
+<style type="text/css">
+    form.headsearch {float:left;width:50%}
+    div.header .login {font-family:"Microsoft YaHei";font-size:16px;font-weight:bold;color:#FFF;margin-top:5px;height:36px;margin-right:20px}
+    div.header .up_course {display:inline-block;font-family:"Microsoft YaHei";font-size:16px;font-weight:bold;color:#FFF;margin-top:-10px;margin-left:-10px}
+    p.login {text-align:left}
+    #mailcontent {width:150px;left:-100px}
+</style>
+
+<header class="header-index" id="js_main_nav">
+    <div class="header-index-inner clearfix">
+        <a href="../user/tomain"  report-tdw="action=rainbow-logo-clk" title="金科在线教育平台"><img src="../images/logo.jpg" width="250px" height="100px"></a>
+        <div class="header-index-category js-header-index-category" report-hover="obj1=cates">
+            <div class="header-index-category-text">
+            </div>
+            <div class="index-cate js-index-cate">
+                <!-- 类目导航 -->
+            </div>
+        </div>
+        <div class="header-index-search" id="js-searchbox">
+            <div class="mod-search">
+                <a class="mod-search-dropdown">
+                    <span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程<i class="icon-font i-v-bottom-small"></i></span>
+                </a>
+                <!-- 默认搜索词 -->
+                <input type="text" id="js_keyword" maxlength="38" class="mod-search__input" placeholder="搜索课程" />
+                <a id="search" href="javascript:search()" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
+            </div>
+            <div id="js-searchhot" class="header-index-hot">
+                <div class="header-index-hot--history">
+                    <div class="hot-word-list"></div>
+                </div>
+                <!-- 搜索历史及搜索热词 -->
+            </div>
+            <div id="js-searchAssociation" class="header-index-hot"></div>
+        </div>
+    </div>
+</header>
+<div class="content body_width overnone">
+    <div class="wraper marb20">
+        <div class="usercontent mart20 overnone">
+            <div class="userface">
+                <div class="userface_wraper clearfix">
+                    <div class="fl marr10 face" id="user_face">
+                        <!--若有头像,使用本人的，否则使用系统的分为个人和机构两个不同的图片-->
+                        <span id="img_span">
+                        <img src="../personal/user_face.jpg" onerror="this.onerror=null;this.src=&#39;http://www.class.cn/public/images/user_face.jpg&#39;" alt="">
+                    </span>
+                        <span class="changebtn" id="changebtn" style="display:none">
+                        <em class="changebtn_bg"></em>
+                        <a class="my_runcode" name="my_flash_a" href="http://www.class.cn/account_user/upload_photo">更换头像</a>
+                    </span>
+                    </div>
+                    <div class="fl userinfo2 auth_info">
+                        <p><!--<span>用户昵称：</span>--><a class="deepblue nickname" href="javascript:void(0);" onclick="window.location.href = &#39;" th:text="${users.userName}"></a></p>
+                        <p><!--<span>收费权限：</span>--><a class="deepblue applyset" href="javascript:void(0);" onclick="window.location.href = &#39;">金科课堂欢迎你</a></p>
+                    </div>
+                </div>
+                <div class="userinfo2" style="border-top:1px solid #DEDEDE;padding-top:0px;">
+                    <ul class="adduserinfo">
+                        <li>
+                            <a href="http://www.class.cn/my_course/lists" class="a4 active">我的课程</a>
+                        </li>
+                        <li>
+                            <a href="http://www.class.cn/my_lib" class="a11 ">资源库</a>
+                        </li>
+                    </ul>
+                    <ul class="adduserinfo">
+                        <li><a href="http://www.class.cn/my_course/collect_course" class="a5 ">我的收藏</a></li>
+                    </ul>
+                    <ul class="adduserinfo">
+                        <li class="posr"><a href="http://www.class.cn/user/message" class="a8 ">我的消息</a></li>
+                    </ul>
+                    <ul class="adduserinfo" style="background-image:none;">
+                        <li><a href="http://www.class.cn/user/trade" class="a9 ">我的账户</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="userdata posr">
+                <!-- 创建课程信息 strat -->
+                <h2 class="YaHei add_course_title tit_line">填写本人真实信息</h2>
+                <!-- <ul class="mart20 progressbar clearfix">
+                     <li class="active">填写课程信息<i class="triangle"></i></li>
+                     <li>安排点播课程</li>
+                     <li>安排点播课程<i class="triangle"></i></li>
+                     <li>安排直播课程</li>
+                 </ul>-->
+                <input type="hidden" th:value="${users.id}" id="userId" >
+                <form id="addTeacherForm" method="post">
+                    <div class="tabs_wraper">
+                        <div id="error_msg" class="error" style="width:100%;height:35px;line-height:35px;margin-left:18px;display:none;"></div>
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>真实姓名:</div>
+                            <div class="tabs_values">
+                                <input type="text" class="input_text" name="teacherName" >
+                            </div>
+                        </div>
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>性别:</div>
+                            <div class="tabs_values">
+                                <input type="radio" name="teaSex" value="1" class="input_radio">男
+                                <input type="radio" name="teaSex" value="2" class="input_radio">女
+                            </div>
+                        </div>
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>证件号码(有效证件):</div>
+                            <div id="base_set" class="tabs_values">
+                                <input type="text" class="input_text" name="idcard" >
+                            </div>
+                        </div>
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>毕业院校:</div>
+                            <div class="tabs_values">
+                                <input type="text" class="input_text" name="school" >
+                            </div>
+                        </div>
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>所读专业:</div>
+                            <div class="tabs_values">
+                                <input type="text" class="input_text" name="career" >
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="tabs_attr tabs_attr_hd">
+                            <div class="tabs_key"><span style="color: red">*</span>从事教师时间:</div>
+                            <div id="base_set" class="tabs_values">
+                                <input type="radio" name="teacherTime" value="1" class="input_radio">1-3年
+                                <input type="radio" name="teacherTime" value="2" class="input_radio">3-5年
+                                <input type="radio" name="teacherTime" value="3" class="input_radio">5年及以上
+                            </div>
+                            <div class="tabs_attr tabs_attr_hd">
+                                <div class="tabs_key"><span style="color: red">*</span>目前居住地址:</div>
+                                <div class="tabs_values">
+                                    <input type="text" class="input_text" name="address" >
+                                </div>
+                            </div>
+
+                            <div class="tabs_attr tabs_attr_hd">
+                                <div class="tabs_key"><span style="color: red">*</span>邮箱:</div>
+                                <div class="tabs_values">
+                                    <input type="text" class="input_text" name="email" >
+                                </div>
+                            </div>
+                            <div class="tabs_attr tabs_attr_hd">
+                                <div class="tabs_key">自我介绍:</div>
+                                <div class="tabs_values">
+                                    <textarea name="teaInfo" id="edittext"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 提交按钮区域 strat -->
+                            <div class="mart20 tac btn_wraper">
+                                <span class="btn_auto">
+                                    <!-- <input type="hidden" name="active" value="" id="active" /> -->
+                                     <a style="background: rgb(0, 144, 255);cursor:pointer; padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
+                                        onclick="addTeacher()">注册教师</a>
+                                </span>
+                            </div>
+                            <!-- END -->
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--包含尾部进来-->
+<footer class="footer">
+    <i class="icon-font i-logo" title="在线教育平台"></i>
+    <p>Copyright © 2018 Tencent. All Rights Reserved.</p>
+    <p>金科在线教育 版权所有 | <a href="//ke.qq.com/proService.html" target="_blank" rel="nofollow">金科课堂服务协议</a> | <a href="//ke.qq.com/sitemap.html" target="_blank">站点地图</a> | <a href="//ke.qq.com/tort.html" target="_blank">侵权投诉</a> | <a href="http://support.qq.com/write.shtml?fid=1042" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="//ke.qq.com/faq.html" target="_blank">帮助</a></p>
+</footer>
+
+
+<script>
+    function addTeacher(){
+        var userId = $('#userId').val();
+        $.ajax({
+            url:'../user/addTeacher?userId='+userId,
+            type:'post',
+            data:$('#addTeacherForm').serialize(),
+            dataType:'json',
+            success:function(result){
+                if (result==true){
+                    alert("注册信息已提交,正在审核,请耐心等待")
+                    location.href="../user/tomain"
+                }else{
+                    alert("注册失败，请重新提交")
+                }
+                //location.href="../user/enroll";
+            }
+        })
+    }
+
+    function search(){
+        var aa = $("#js_keyword").val();
+        location.href="../user/searchList?search="+aa;
+    }
+</script>
+
+
+<script type="text/javascript">
+    $.getScript('../kindeditor-4.1.7/kindeditor-all-min.js',
+        function() {
+            KindEditor.basePath = '../kindeditor-4.1.7/';
+            editor = KindEditor.create('#edittext', {
+                cssPath : '../kindeditor-4.1.7/plugins/code/prettify.css',
+                uploadJson : '../kindeditor-4.1.7/jsp/upload_json.jsp',
+                fileManagerJson : '../kindeditor-4.1.7/jsp/file_manager_json.jsp',
+                afterBlur:function(){this.sync();},//和ajax同步
+            });
+        })
+</script>
+</body>
+</html>

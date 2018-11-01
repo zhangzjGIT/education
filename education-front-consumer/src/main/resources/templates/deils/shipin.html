@@ -6,6 +6,7 @@
     <meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″ />
     <link rel="stylesheet" href="../video/css/Dvideo.css">
     <link rel="stylesheet" href="../video/font-icon/style.css">
+    <script type="text/javascript" src="../js/jquery.min.js" ></script>
     <style>
         body,html{
             margin: 0;
@@ -68,11 +69,12 @@
     </style>
 </head>
 <body>
+<input type="hidden" id="getVideo" th:value="${couInfo}">
+<input type="hidden" id="getVideoName" th:value="${infoName}">
 <div class="centerInfo">
-    <!--<input type="hidden" id="getVideo" th:text="${couInfo.couInfo}">-->
     <h3 class="title"></h3>
     <div id="testVideo"></div>
-    <div class="ctrl-c" style="user-select:none">
+    <!--<div class="ctrl-c" style="user-select:none">
         <span class="btn" style="background: #B42828" onClick="setFullScreen()">点击全屏</span>
         <span class="btn" style="background: #95487B" onClick="play()">播放 space</span>
         <span class="btn" style="background: #4D5DA6" onClick="pause()">暂停 space</span>
@@ -89,17 +91,28 @@
         <span class="btn" style="background: #4F1B60" onClick="showTopBottomCtrl()">显示菜单自动关闭</span>
         <span class="btn" style="background: #4F1B60" onClick="hideTopBottomCtrl()">固定时间后自动关闭</span>
         <span class="btn" style="background: #4F1B60" onClick="setVideoSize()">设置宽720 高480</span>
-    </div>
+    </div>-->
+    <!--<div>
+        <embed width="1024px" height="576px" src="C:\Users\dell\Desktop\复仇者联盟4（预告片）.mp4">
+    </div>-->
+    <!--<object height="200" width="200" data="C:\Users\dell\Desktop\复仇者联盟4（预告片）.mp4"></object>-->
+    <!--<EMBED align=middle src=http://player.youku.com/player.php/sid/XMzQ1OTAwNjI4/v.swf
+            width=700 height=550 type=application/x-shockwave-flash wmode="opaque" flashvars
+                    ="isAutoPlay=true" allowscriptaccess="sameDomain" quality="high">
+
+    </EMBED>-->
 </div>
 </body>
 <script src="../video/js/Dvideo.js"></script>
 <script>
     // window.onload = function () {
+    var videoUrl = $('#getVideo').val();
+    var videoName = $('#getVideoName').val();
     var videoWrap = document.getElementById('testVideo')
     var fullScreen = document.getElementById('getFullScreen')
     var video = new Dvideo ({
         ele: '#testVideo',
-        title: 'Pneumatic Tokyo - EnV',
+        title: videoName,
         nextVideoExtend: function () {
             alert('您点击了下一页')
         },

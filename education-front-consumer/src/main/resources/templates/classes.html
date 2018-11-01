@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset=utf-8"UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>金科课堂 在线教育</title>
+    <script>var T = {page_start: Date.now()};</script>
+    <link rel="dns-prefetch" href="//7.url.cn">
+    <link rel="dns-prefetch" href="//8.url.cn">
+    <link rel="dns-prefetch" href="//9.url.cn">
+    <link rel="stylesheet" href="//7.url.cn/edu/user/index_87d1ccfce071f024bf1348bcfed03a9b.css">
+    <script src="../EasyUI/jquery.min.js"></script>
+    <!--开发模式下不注入badjs-->
+    <!--[if lt IE 9]>
+    <script>var a =\'header footer section aside nav article hgroup main time\'.split(\' \');while(a.length){document.createElement(a.pop());}</script>
+    <![endif]-->
+    <script>T.page_css_ready = Date.now();</script>
+</head>
+<body class="l-aside-left l-min">
+<!--包含头部进来-->
+<header class="header-index" id="js_main_nav">
+    <div class="header-index-inner clearfix">
+        <a href="../user/tomain"  report-tdw="action=rainbow-logo-clk" title="金科在线教育平台"><img src="../images/logo.jpg" width="250px" height="100px"></a>
+        <div class="header-index-category  " report-hover="obj1=cates">
+        </div>
+        <div class="header-index-search" id="js-searchbox">
+            <div class="mod-search">
+                <a class="mod-search-dropdown">
+                    <span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程</span>
+                </a>
+                <!-- 默认搜索词 -->
+                <input type="text" id="js_keyword" maxlength="38" class="mod-search__input" placeholder="金科教育 精学课堂">
+                <a id="search" href="javascript:search()" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
+            </div>
+        </div>
+        <div class="header-index-text">
+            <!-- 登录相关组件 -->
+            <div id="js-mod-header-login" class="mod-header__wrap-login mod-header__wrap-logined">
+                <!-- 新版登录 个人 -->
+                <div class="mod-header_wrap-user dropdown-wrap" id="logout" style="display: none;">
+                    <p class="mod-header__user-name dropdown-tt">
+                        <a href="/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
+                            <img th:src="${user.img}" alt="头像" class="mod-header__user-avatar js-avatar" onerror="this.src='../images/b2.jpg';this.onerror=null">
+                            <span class="mod-header__user-operation-title js-username" th:title="${user.userName}" th:text="${user.userName}"></span>
+                        </a>
+                    </p>
+                    <ul class="mod-header__user-operations dropdown-list">
+                        <li><a href="../user/toClasses" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
+                        <li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+                        <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
+                    </ul>
+                </div>
+                <div class="mod-header_wrap-user dropdown-wrap"   id="show" style="display: block;">
+                    <input type="hidden" th:value="${codes}" id="codes">
+                    <a onclick="agLogin()">登录</a>
+                </div>
+                <!-- 新版登录 机构 -->
+            </div>
+        </div>
+    </div>
+</header>
+<div id="react-body">
+    <center>
+    <section class="inner-center clearfix">
+        <main class="main">
+            <div class="order-component">
+                <div class="flex-list">
+                    <div class="flex-list-header">
+                        <div class="flex-row">
+                            <div class="flex-cell first">课程订单</div>
+                            <div class="flex-cell">价格</div>
+                            <div class="flex-cell">状态</div>
+                            <div class="flex-cell">操作</div>
+                        </div>
+                    </div>
+                    <div class="flex-list-item" th:each="mes:${mes}">
+                        <div class="flex-row head">
+                            <div class="time">
+                                <span title="购买时间" th:text="${#dates.format(mes.createTime, 'yyyy-MM-dd')}"></span>
+                            </div>
+                            <div class="agent-name">
+                                <a href="//ktmaster.ke.qq.com" class="link" target="_blank">
+                                    <span title="腾讯课堂大师班" th:text="${mes.teacherName}"></span>
+                                </a>
+                            </div>
+                            <a href="javascript:void(0);" class="link icon comment" data="[object Object]"></a>
+                        </div>
+                        <div class="flex-row content">
+                            <div class="flex-cell first cover">
+                                <a href="//ke.qq.com/course/299817" class="link" target="_blank">
+                                    <img th:src="${mes.priImg}" alt="课程封面">
+                                    <div class="title">
+                                        <span title="腾讯课堂大师班" th:text="${mes.couState+'|'}"></span>
+                                        <span title="腾讯课堂大师班" th:text="${mes.infoName}"></span>
+                                        <div class="sub">
+                                            <span th:text="${mes.couTitle}"></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="flex-cell price">
+                                <span class="line-cell item-price free" th:if="${mes.couPrice} eq '0'">免费</span>
+                                <span class="line-cell item-price" th:if="${mes.couPrice} gt '0'" th:text="'￥'+${mes.couPrice}+'.00'"></span>
+                            </div>
+                            <div class="flex-cell wording">
+                                <div class="black">报名成功</div>
+                            </div>
+                            <div class="flex-cell operating">
+                                <a href="javascript:void(0);" class="link operating-btn" opid="button_cancel"
+                                   data="[object Object]" priority="13">取消报名</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <footer class="footer"><span title="腾讯课堂_专业的在线教育平台" class="im-icon icon-font i-logo"></span>
+        <p>Copyright © 2018 Tencent. All Rights Reserved.</p>
+        <p>深圳市腾讯计算机系统有限公司 版权所有 |
+            <a href="//ke.qq.com/proService.html" target="_blank" rel="nofollow">腾讯课堂服务协议</a>
+            | <a href="//ke.qq.com/sitemap.html" target="_blank">站点地图</a>
+        </p>
+    </footer>
+    </center>
+</div>
+
+<script>"use strict";
+!function () {
+    var t = document.createElement("script"), s = window.location.protocol.split(":")[0];
+    t.src = "https" === s ? "https://zz.bdstatic.com/linksubmit/push.js" : "http://push.zhanzhang.baidu.com/push.js";
+    var e = document.getElementsByTagName("script")[0];
+    e.parentNode.insertBefore(t, e)
+}();</script>
+<script>T.page_js_ready = Date.now();</script>
+
+<script>
+    $(function(){
+        var codes = $("#codes").val();
+        if(codes == 1){
+            $("#logout").show();
+            $("#show").hide();
+
+        }else if(codes==2){
+            $("#logout").hide();
+            $("#show").show();
+        }
+    })
+
+    $("#out").click(function(){
+        $("#logout").hide();
+        $("#show").show();
+    });
+    function agLogin(){
+        location.href="../user/agLogin";
+    }
+    function search(){
+        var aa = $("#js_keyword").val();
+        location.href="../user/searchList?search="+aa;
+    }
+</script>
+</body>
+</html>

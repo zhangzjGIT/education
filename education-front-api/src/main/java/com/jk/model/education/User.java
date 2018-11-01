@@ -16,6 +16,16 @@ public class User {
 
     private String img;
 
+    private Integer userType;
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
+    }
+
     public String getImg() {
         return img;
     }

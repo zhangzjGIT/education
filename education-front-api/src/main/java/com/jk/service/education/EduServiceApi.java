@@ -1,9 +1,7 @@
 package com.jk.service.education;
 
+import com.jk.model.education.*;
 import com.jk.model.education.MessageBean;
-import com.jk.model.education.MessageBean;
-import com.jk.model.education.TypeBean;
-import com.jk.model.education.User;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,4 +57,16 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/getBuyInfo",method = RequestMethod.POST)
     MessageBean getBuyInfo(@RequestParam(value="couId")String couId);
+
+    @RequestMapping(value = "/queryTeacherById",method = RequestMethod.POST)
+    Teacher queryTeacherById(@RequestParam(value="teaId") String teaId);
+
+    @RequestMapping(value = "/addTeacher",method = RequestMethod.POST)
+    void addTeacher(@RequestBody Teacher teacher);
+
+    @RequestMapping(value = "/getMesByUserId",method = RequestMethod.GET)
+    List<MessageBean> getMesByUserId(@RequestParam(value="id") String id);
+
+    @RequestMapping(value = "/addClassUser",method = RequestMethod.POST)
+    void addClassUser(@RequestParam(value="couId") String couId,@RequestParam(value="id") String id);
 }

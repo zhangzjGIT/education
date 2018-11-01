@@ -18,10 +18,7 @@
 	   select * from x_user
       where phoneNumber = #{phone}
     </select>
-    <select id="queryUserOne" parameterType="String" resultType="com.jk.model.education.User">
-	   select * from x_user
-      where phoneNumber = #{phoneNumber}
-    </select>
+
     <select id="queryHotList"  resultType="com.jk.model.education.MessageBean">
 	   select * from t_message where status = 2 order by allCount
      limit 0,2
@@ -63,6 +60,7 @@
     <select id="querydeils" resultType="com.jk.model.education.MessageBean">
       select * from t_message where couId=#{couId}
     </select>
+
     <select id="queryuser" resultType="com.jk.model.education.User">
         select * from x_user where id=#{userId}
     </select>
@@ -70,4 +68,33 @@
     <select id="getBuyInfo" resultType="com.jk.model.education.MessageBean">
         select * from t_message where couId=#{couId}
     </select>
+
+    <select id="queryTeacherById" resultType="com.jk.model.education.Teacher">
+        select * from t_teacher where teacherId =#{teaId}
+    </select>
+
+    <select id="queryMessageCountById" resultType="int">
+        select count(*) from t_message where teaId =#{teaId}
+    </select>
+
+    <insert id="addTeacher" parameterType="com.jk.model.education.Teacher">
+        insert into t_teacher
+            (teacherId,teacherName,idcard,school,career,teacherTime,
+            address,email,status,createTime,teaSex,teaInfo)
+        values
+          (#{teacherId},#{teacherName},#{idcard},#{school},#{career},#{teacherTime},
+          #{address},#{email},1,now(),#{teaSex},#{teaInfo})
+    </insert>
+
+    <select id="getMesByUserId" resultType="com.jk.model.education.MessageBean">
+        select m.*,t.teacherName teacherName,u.buyTime createTime ,u.userMesId userMesId from t_message m ,t_user_mes u , t_teacher t
+        where m.teaId = t.teacherId and m.couId = u.mesId and u.userId = #{id}
+    </select>
+
+    <insert id="addClassUser">
+      insert t_user_mes ( mesId,userId,buyTime)
+      values (#{couId},#{id},now())
+    </insert>
+
+
 </mapper>

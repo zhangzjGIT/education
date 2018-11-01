@@ -1,9 +1,7 @@
 package com.jk.mapper.education;
 
+import com.jk.model.education.*;
 import com.jk.model.education.MessageBean;
-import com.jk.model.education.MessageBean;
-import com.jk.model.education.TypeBean;
-import com.jk.model.education.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -34,8 +32,6 @@ public interface EduMapper {
 
     void adduser(@Param("user")User user);
 
-    User queryUserOne(@Param("phoneNumber")String phoneNumber);
-
     MessageBean querydeils(MessageBean messageBean);
 
     void updateCollect(String courseId);
@@ -47,4 +43,14 @@ public interface EduMapper {
     List<MessageBean> queryHotList();
 
     MessageBean getBuyInfo(String couId);
+
+    Teacher queryTeacherById(String teaId);
+
+    Integer queryMessageCountById(String teaId);
+
+    void addTeacher(Teacher teacher);
+
+    List<MessageBean> getMesByUserId(String id);
+
+    void addClassUser(@Param("couId")String couId,@Param("id")String id);
 }

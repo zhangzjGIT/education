@@ -3,10 +3,8 @@ package com.jk.service.education;
 import com.jk.mapper.education.EduMapper;
 
 
+import com.jk.model.education.*;
 import com.jk.model.education.MessageBean;
-import com.jk.model.education.MessageBean;
-import com.jk.model.education.TypeBean;
-import com.jk.model.education.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -116,6 +114,33 @@ public class EduServiceImpl implements EduServiceApi {
     @RequestMapping(value="getBuyInfo")
     public MessageBean getBuyInfo(@RequestParam(value="couId") String couId) {
         return eduMapper.getBuyInfo(couId);
+    }
+
+    @Override
+    @RequestMapping(value="queryTeacherById")
+    public Teacher queryTeacherById(@RequestParam(value="teaId") String teaId) {
+        Teacher teacher = eduMapper.queryTeacherById(teaId);
+        Integer messageCount = eduMapper.queryMessageCountById(teaId);
+        teacher.setMessageCount(messageCount);
+        return teacher;
+    }
+
+    @Override
+    @RequestMapping(value="addTeacher")
+    public void addTeacher(@RequestBody Teacher teacher) {
+        eduMapper.addTeacher(teacher);
+    }
+
+    @Override
+    @RequestMapping(value="getMesByUserId")
+    public List<MessageBean> getMesByUserId(@RequestParam(value="id") String id) {
+        return eduMapper.getMesByUserId(id);
+    }
+
+    @Override
+    @RequestMapping(value="addClassUser")
+    public void addClassUser(@RequestParam(value="couId") String couId,@RequestParam(value="id") String id) {
+        eduMapper.addClassUser(couId,id);
     }
 
 

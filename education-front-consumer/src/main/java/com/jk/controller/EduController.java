@@ -8,6 +8,7 @@ import com.jk.ConstantsConf;
 import com.jk.OSSClientUtil;
 import com.jk.config.AlipayConfig;
 import com.jk.model.education.MessageBean;
+import com.jk.model.education.Teacher;
 import com.jk.model.education.TypeBean;
 import com.jk.model.education.User;
 import com.jk.service.EduService;
@@ -183,6 +184,9 @@ public class EduController {
         md.put("mesList", mesList);
         md.put("typelist", typelist);
         User user = (User) request.getSession().getAttribute("userInfo");
+        String teaId = user.getId();
+        Teacher teacher = eduService.queryTeacherById(teaId);
+        md.put("tea", teacher);
         if (user != null) {
             md.put("codes", 1);
             md.put("user", user);
@@ -264,8 +268,6 @@ public class EduController {
     @ResponseBody
     public Map<String, Object> addusername(User user, HttpServletRequest request, String numPhone) {
         HashMap<String, Object> result = new HashMap<String, Object>();
-     /* User userone = eduService.queryUserOne(user.getPhoneNumber());
-        if(userone==null){*/
         String password = user.getPassword();
         if (password == null || password == "") {
             result.put("code", 1);
@@ -295,6 +297,9 @@ public class EduController {
     public String querydeils(MessageBean messageBean, ModelMap modelMap, HttpServletRequest request) {
         MessageBean cl = eduService.querydeils(messageBean);
         modelMap.put("cl", cl);
+        String teaId = cl.getTeaId();
+        Teacher teacher = eduService.queryTeacherById(teaId);
+        modelMap.put("teacher", teacher);
         User user = (User) request.getSession().getAttribute("userInfo");
         User us = eduService.queryuser(user.getId());
         if (user != null) {
@@ -346,6 +351,7 @@ public class EduController {
         return map;
     }
 
+    //跳转到发布课程页面
     @RequestMapping("toPersonal")
     public String toPersonal(ModelMap modelMap,HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("userInfo");
@@ -355,6 +361,7 @@ public class EduController {
         return "deils/personal";
     }
 
+    //发布课程
     @RequestMapping("addCourse")
     @ResponseBody
     public Boolean addCourse(MessageBean messageBean, HttpServletRequest request) {
@@ -383,6 +390,9 @@ public class EduController {
     @RequestMapping(value = "/goAlipay", produces = "text/html; charset=UTF-8")
     @ResponseBody
     public String goAlipay(String couId, HttpServletRequest request, HttpServletRequest response) throws Exception {
+        //购买前新增数据到课程用户关联表
+        User user = (User) request.getSession().getAttribute("userInfo");
+        eduService.addClassUser(couId,user.getId());
 
         MessageBean buyInfo = eduService.getBuyInfo(couId);
 
@@ -419,10 +429,63 @@ public class EduController {
         return result;
     }
 
+    //跳转到播放视频页面
     @RequestMapping("showVideo")
-    public String showVideo(String couInfo, ModelMap modelMap) {
+    public String showVideo(String couInfo,String couId,String infoName, ModelMap modelMap,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("userInfo");
+        eduService.addClassUser(couId,user.getId());
         modelMap.put("couInfo", couInfo);
+        modelMap.put("infoName", infoName);
         return "deils/shipin";
     }
+
+    //跳转到直播页面
+    @RequestMapping("toZhibo")
+    public String toZhibo(String couInfo, ModelMap modelMap) {
+        modelMap.put("couInfo", couInfo);
+        return "deils/zhibo";
+    }
+
+    //跳转到教师信息注册页面
+    @RequestMapping("toRegiTeacher")
+    private String toRegiTeacher(HttpServletRequest request,ModelMap mm){
+        User user = (User) request.getSession().getAttribute("userInfo");
+        mm.put("users",user);
+        return "deils/regiTeacher";
+    }
+
+    //教师信息注册
+    @RequestMapping("addTeacher")
+    @ResponseBody
+    public Boolean addTeacher(Teacher teacher,String userId){
+        try {
+            teacher.setTeacherId(userId);
+            eduService.addTeacher(teacher);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @RequestMapping("toClasses")
+    public String toClasses(HttpServletRequest request, ModelMap md){
+        User user = (User) request.getSession().getAttribute("userInfo");
+        if (user != null) {
+            List<MessageBean> mes = eduService.getMesByUserId(user.getId());
+            md.put("codes", 1);
+            md.put("user", user);
+            md.put("mes",mes);
+            return "classes";
+
+        } else {
+            User uu = new User();
+            md.put("codes", 2);
+            md.put("user", uu);
+            return "index";
+        }
+    }
+
+
 
 }

@@ -1,5 +1,10 @@
 package com.jk.model.education;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class MessageBean {
 
     private String couId;
@@ -9,8 +14,6 @@ public class MessageBean {
     private Integer couType;
 
     private Integer couClass;
-
-    private Integer couPro;
 
     private String couPrice;
 
@@ -27,8 +30,17 @@ public class MessageBean {
     private String allCount;
 
     private Integer status;
+
+    private String teaId;
+
     //业务字段
     private String teacherName;
+
+    private Integer teacherId;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createTime;
 
     public String getTeacherName() {
         return teacherName;
@@ -36,6 +48,30 @@ public class MessageBean {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getTeaId() {
+        return teaId;
+    }
+
+    public void setTeaId(String teaId) {
+        this.teaId = teaId;
     }
 
     public String getStuCount() {
@@ -84,14 +120,6 @@ public class MessageBean {
 
     public void setCouClass(Integer couClass) {
         this.couClass = couClass;
-    }
-
-    public Integer getCouPro() {
-        return couPro;
-    }
-
-    public void setCouPro(Integer couPro) {
-        this.couPro = couPro;
     }
 
     public String getCouPrice() {

@@ -66,8 +66,8 @@
             <div class="header-index-join dropdown-wrap"  report-hover="module=join&position=cooperate" report-attr="module=join&position=cooperate">
                 <p class="join-tt dropdown-tt">开课/合作</p>
                 <ul class="join-list dropdown-list">
-                    <li><a href="../user/toPersonal" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
-                    <li><a href="/agency/join/index.html" title="机构开课" target="_blank" report-attr="module=join&position=institution">机构开课</a></li>
+                    <li><a th:onclick="'toAddClass(\''+${user.userType}+'\','+${tea.status}+')'" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
+                    <!--<li><a href="/agency/join/index.html" title="机构开课" target="_blank" report-attr="module=join&position=institution">机构开课</a></li>-->
                 </ul>
             </div>
             <!-- 登录相关组件 -->
@@ -82,8 +82,8 @@
                         </a>
                     </p>
                     <ul class="mod-header__user-operations dropdown-list">
-                        <li><a href="/user/index/index.html#sid=plan" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-                        <li><a href="../user/contact" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+                        <li><a href="../user/toClasses" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
+                        <li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
                         <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
                     </ul>
                 </div>
@@ -547,9 +547,27 @@
 
 </script>
 <script>
+    function toAddClass(userType,status){
+        var codes = $("#codes").val();
+        if(codes == 1){
+            if(userType == 1){
+                alert("请先注册成为讲师");
+                location.href="../user/toRegiTeacher";
+            }else if(userType == 2 && status == 1){
+                alert("讲师资质正在审核中，请耐心等待！！！");
+            }else if(userType == 2 && status == 2){
+                location.href="../user/toPersonal";
+            }
+        }else{
+            alert("请先登录");
+            location.href="../user/toLogin";
+        }
+    }
+</script>
+
+<script>
     $(function(){
         var codes = $("#codes").val();
-
         if(codes == 1){
             $("#logout").show();
             $("#show").hide();
@@ -561,7 +579,6 @@
     })
 
     $("#out").click(function(){
-
         $("#logout").hide();
         $("#show").show();
     });
