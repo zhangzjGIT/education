@@ -36,11 +36,19 @@ public class MessageBean {
     //业务字段
     private String teacherName;
 
-    private Integer teacherId;
+    private Integer userMesId;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date createTime;
+
+    public Integer getUserMesId() {
+        return userMesId;
+    }
+
+    public void setUserMesId(Integer userMesId) {
+        this.userMesId = userMesId;
+    }
 
     public String getTeacherName() {
         return teacherName;
@@ -48,14 +56,6 @@ public class MessageBean {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
-    }
-
-    public Integer getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
     }
 
     public Date getCreateTime() {

@@ -69,4 +69,7 @@ public interface EduServiceApi {
 
     @RequestMapping(value = "/addClassUser",method = RequestMethod.POST)
     void addClassUser(@RequestParam(value="couId") String couId,@RequestParam(value="id") String id);
+
+    @RequestMapping(value = "/deleteUserMes",method = RequestMethod.POST)
+    void deleteUserMes(@RequestParam(value="userMesId") Integer userMesId);
 }

@@ -67,7 +67,7 @@
                 <p class="join-tt dropdown-tt">开课/合作</p>
                 <ul class="join-list dropdown-list">
                     <li><a th:onclick="'toAddClass(\''+${user.userType}+'\','+${tea.status}+')'" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
-                    <!--<li><a href="/agency/join/index.html" title="机构开课" target="_blank" report-attr="module=join&position=institution">机构开课</a></li>-->
+                    <li><a href="../user/toZhibo" title="直播课堂" report-attr="module=join&position=institution">直播课堂</a></li>
                 </ul>
             </div>
             <!-- 登录相关组件 -->
@@ -83,7 +83,7 @@
                     </p>
                     <ul class="mod-header__user-operations dropdown-list">
                         <li><a href="../user/toClasses" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-                        <li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+                        <!--<li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>-->
                         <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
                     </ul>
                 </div>
@@ -105,13 +105,13 @@
 <!-- 轮播banner图模块 -->
 <section class="banner-slide banner-slide-special" data-report-module="banner">
     <div class="mod-entry">
-        <div class="mod-entry-user mod-entry-user--unlogin visible" id="js-mod-entry-index">
+        <!--<div class="mod-entry-user mod-entry-user&#45;&#45;unlogin visible" id="js-mod-entry-index">
             <div class="mod-entry-user-hover mod-entry-nologin">
                 <p class="mod-entry-nologin-tips">跟进你的学习进度</p>
                 <div class="mod-entry-nologin-img"></div>
             </div>
             <a href="javascript:void(0);" class="btn-default mod-entry-login js-login-op" data-hook="login" report-attr="module=login&amp;position=card">登录</a>
-        </div>
+        </div>-->
     </div>
     <div class="mod-category2">
 
@@ -129,7 +129,6 @@
                     </div>
                 </li>
 
--->
             </ul>
         </nav>
     </div>
@@ -229,21 +228,9 @@
 
                             <div class="screen-bd" data-taid="2665134581461747"><!-- style="background-image: url('//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLCdNBr520kvPNGcNy5abHtFGrib57XbXBzJC0erlj61zlYF99iat74wyU4ZlibC630eTY/')"-->
                                 <div class="screen-infos">
-                                    <div class="course-info">
-                                        <p class="teacher-info">
-                                            <img src="//10.url.cn/eth/ajNVdqHZLLCIgUe7QmgPibps3nDVKYMUYKu8Q0yP7qjUMDhm1KXd0JEdO19soD9icicq7Umo5Ua7Cs/" alt="老师头像">
-                                            <span class="teacher-name">齐论高级讲师-悟空</span>
-                                        </p>
-
-                                        <a href="//ke.qq.com/course/111347" target="_blank" class="course-link" title="【齐论教育】淘宝不刷单，如何快速累积宝贝权重迎战“双十一”"
-                                           data-cid="111347">
-                                            <span>来自课程：【齐论教育】淘宝不刷单，如何快速累积宝贝权重迎战“双十一”</span>
-                                            <i class="icon-font i-v-right"></i>
-                                        </a>
-                                    </div>
 
                                     <p class="course-name">
-                                        <a title="【齐论】数据模块化运营，小白单日访客破万"><!-- <i class="icon-font i-course-live"></i> -->【齐论】数据模块化运营，小白单日访客破万</a>
+                                        <font color="black"><span th:text="${tea.teacherName}"></span></font>
                                     </p>
 
                                     <div class="course-status">
@@ -255,7 +242,7 @@
                                     </div>
 
 
-                                    <a id="js-join-class" class="course-apply blue-btn" href="javascript:;" title="立即学习"
+                                    <a id="js-join-class" class="course-apply blue-btn" href="../user/toJoinZhibo" title="立即学习"
                                        data-classing="1" data-cid="111347">立即学习</a>
 
                                 </div>
@@ -277,63 +264,9 @@
                                             <span class="item-time item-time--classing">直播中</span>
                                             <div class="item-info">
                                                 <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">【齐论】数据模块化运营，小白单日访客破万</span>
+                                                <span class="item-name" th:text="${tea.teacherName}"></span>
                                             </div>
                                         </div>
-                                        <div class="item-time-icon-live"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2689164923521800">
-                                    <a class="item-link" title="【智源体验课】早知这些抠图技巧，早来学了" data-cid="150280"
-                                       target="_blank" href="//ke.qq.com/course/150280">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time item-time--classing">直播中</span>
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">【智源体验课】早知这些抠图技巧，早来学了</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="item-time-icon-live"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2704394877424081">
-                                    <a class="item-link" title="angularJs实现购物清单" data-cid="20945"
-                                       target="_blank" href="//ke.qq.com/course/20945">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time item-time--classing">直播中</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">angularJs实现购物清单</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-time-icon-live"></div>
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2533399344616406">
-                                    <a class="item-link" title="一节课了解抓包实战" data-cid="168918"
-                                       target="_blank" href="//ke.qq.com/course/168918">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time item-time--classing">直播中</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">一节课了解抓包实战</span>
-                                            </div>
-                                        </div>
-
                                         <div class="item-time-icon-live"></div>
 
                                     </a>
@@ -357,104 +290,6 @@
                                     </a>
                                 </li>
                                 <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2704399172391377">
-                                    <a class="item-link" title="angularJS常用指令介绍" data-cid="20945"
-                                       target="_blank" href="//ke.qq.com/course/20945">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time">10:30</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">angularJS常用指令介绍</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="item-time-point"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2533403639583702">
-                                    <a class="item-link" title="一节课了解抓包实战" data-cid="168918"
-                                       target="_blank" href="//ke.qq.com/course/168918">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time">10:30</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">一节课了解抓包实战</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="item-time-point"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2665143171396339">
-                                    <a class="item-link" title="【齐论】新品实操全解，教你7天访客破千" data-cid="111347"
-                                       target="_blank" href="//ke.qq.com/course/111347">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time">13:30</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">【齐论】新品实操全解，教你7天访客破千</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-time-point"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2665147466363635">
-                                    <a class="item-link" title="【齐论】没流量？没转化？教你7天访客破千" data-cid="111347"
-                                       target="_blank" href="//ke.qq.com/course/111347">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time">14:00</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">【齐论】没流量？没转化？教你7天访客破千</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="item-time-point"></div>
-
-                                    </a>
-                                </li>
-                                <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2765842974657288">
-                                    <a class="item-link" title="【智源VIP试听】我们的设计，运营不喜欢！" data-cid="150280"
-                                       target="_blank" href="//ke.qq.com/course/150280">
-                                        <div class="item-wrap">
-
-                                            <span class="item-time">14:00</span>
-
-
-                                            <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
-                                                <span class="item-name">【智源VIP试听】我们的设计，运营不喜欢！</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="item-time-point"></div>
-
-                                    </a>
-                                </li>
-
 
                             </ul>
 
@@ -504,16 +339,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container-1200">
-            <div class="mod-sub mod-all-courses" data-mod="all-courses">
-                <a class="mod-all-courses-link" href="https://ke.qq.com/course/list" title="精选推荐" target="_blank">
-
-                    <span>查看全部课程</span>
-
-                    <i class="icon-font i-v-right"></i>
-                </a>
             </div>
         </div>
     </div>

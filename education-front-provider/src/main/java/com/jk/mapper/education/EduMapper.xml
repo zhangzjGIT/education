@@ -88,13 +88,17 @@
 
     <select id="getMesByUserId" resultType="com.jk.model.education.MessageBean">
         select m.*,t.teacherName teacherName,u.buyTime createTime ,u.userMesId userMesId from t_message m ,t_user_mes u , t_teacher t
-        where m.teaId = t.teacherId and m.couId = u.mesId and u.userId = #{id}
+        where m.teaId = t.teacherId and m.couId = u.mesId and u.userId = #{id} GROUP BY couId
     </select>
 
     <insert id="addClassUser">
       insert t_user_mes ( mesId,userId,buyTime)
       values (#{couId},#{id},now())
     </insert>
+
+    <delete id="deleteUserMes">
+        delete from t_user_mes where userMesId = #{userMesId}
+    </delete>
 
 
 </mapper>

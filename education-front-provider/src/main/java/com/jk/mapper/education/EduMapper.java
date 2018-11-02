@@ -53,4 +53,6 @@ public interface EduMapper {
     List<MessageBean> getMesByUserId(String id);
 
     void addClassUser(@Param("couId")String couId,@Param("id")String id);
+
+    void deleteUserMes(Integer userMesId);
 }

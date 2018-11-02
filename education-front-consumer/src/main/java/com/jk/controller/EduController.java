@@ -439,11 +439,15 @@ public class EduController {
         return "deils/shipin";
     }
 
-    //跳转到直播页面
+    //讲师跳转到直播页面
     @RequestMapping("toZhibo")
-    public String toZhibo(String couInfo, ModelMap modelMap) {
-        modelMap.put("couInfo", couInfo);
+    public String toZhibo() {
         return "deils/zhibo";
+    }
+    //学生跳转到参与直播页面
+    @RequestMapping("toJoinZhibo")
+    public String toJoinZhibo() {
+        return "joinZhibo";
     }
 
     //跳转到教师信息注册页面
@@ -486,6 +490,17 @@ public class EduController {
         }
     }
 
+    //取消课程报名
+    @RequestMapping("deleteUserMes")
+    @ResponseBody
+    public Boolean deleteUserMes(Integer userMesId){
+        try {
+            eduService.deleteUserMes(userMesId);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 
 
 }

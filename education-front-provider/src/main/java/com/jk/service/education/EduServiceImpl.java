@@ -143,5 +143,11 @@ public class EduServiceImpl implements EduServiceApi {
         eduMapper.addClassUser(couId,id);
     }
 
+    @Override
+    @RequestMapping(value="deleteUserMes")
+    public void deleteUserMes(@RequestParam(value="userMesId") Integer userMesId) {
+        eduMapper.deleteUserMes(userMesId);
+    }
+
 
 }

@@ -48,7 +48,7 @@
                     </p>
                     <ul class="mod-header__user-operations dropdown-list">
                         <li><a href="../user/toClasses" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
-                        <li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>
+                        <!--<li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>-->
                         <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
                     </ul>
                 </div>
@@ -81,7 +81,7 @@
                                 <span title="购买时间" th:text="${#dates.format(mes.createTime, 'yyyy-MM-dd')}"></span>
                             </div>
                             <div class="agent-name">
-                                <a href="//ktmaster.ke.qq.com" class="link" target="_blank">
+                                <a class="link" target="_blank">
                                     <span title="腾讯课堂大师班" th:text="${mes.teacherName}"></span>
                                 </a>
                             </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="flex-row content">
                             <div class="flex-cell first cover">
-                                <a href="//ke.qq.com/course/299817" class="link" target="_blank">
+                                <a th:onclick="'queryClassById('+${mes.couId}+')'" class="link" target="_blank">
                                     <img th:src="${mes.priImg}" alt="课程封面">
                                     <div class="title">
                                         <span title="腾讯课堂大师班" th:text="${mes.couState+'|'}"></span>
@@ -108,8 +108,7 @@
                                 <div class="black">报名成功</div>
                             </div>
                             <div class="flex-cell operating">
-                                <a href="javascript:void(0);" class="link operating-btn" opid="button_cancel"
-                                   data="[object Object]" priority="13">取消报名</a>
+                                <a th:onclick="'deleteUserMes('+${mes.userMesId}+')'">取消报名</a>
                             </div>
                         </div>
                     </div>
@@ -117,16 +116,14 @@
             </div>
         </main>
     </section>
-    <footer class="footer"><span title="腾讯课堂_专业的在线教育平台" class="im-icon icon-font i-logo"></span>
-        <p>Copyright © 2018 Tencent. All Rights Reserved.</p>
-        <p>深圳市腾讯计算机系统有限公司 版权所有 |
-            <a href="//ke.qq.com/proService.html" target="_blank" rel="nofollow">腾讯课堂服务协议</a>
-            | <a href="//ke.qq.com/sitemap.html" target="_blank">站点地图</a>
-        </p>
-    </footer>
+<!--包含尾部进来-->
+<footer class="footer">
+    <i class="icon-font i-logo" title="腾讯课堂_专业的在线教育平台"></i>
+    <p>Copyright © 2018 SSXZ. All Rights Reserved.</p>
+    <p>金科在线教育教育有限公司@版权所有 | 金科教育服务协议</a> | <a  target="_blank">侵权投诉</a> | <a  rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="" target="_blank">帮助</a></p>
+</footer>
     </center>
 </div>
-
 <script>"use strict";
 !function () {
     var t = document.createElement("script"), s = window.location.protocol.split(":")[0];
@@ -159,6 +156,23 @@
     function search(){
         var aa = $("#js_keyword").val();
         location.href="../user/searchList?search="+aa;
+    }
+    function deleteUserMes(userMesId){
+        $.ajax({
+            url:"../user/deleteUserMes",
+            type:"post",
+            data:{
+                userMesId:userMesId
+            },
+            success:function(result){
+                if (result) {
+                    location.reload();
+                }
+            }
+        })
+    }
+    function queryClassById(couId){
+        location.href="../user/querydeils?couId="+couId;
     }
 </script>
 </body>
