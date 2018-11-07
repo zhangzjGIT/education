@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="renderer" content="webkit">
+
+
+    <script src="../jquery-1.9.1.min.js"></script>
+    <script src="../Highcharts-6.1.2/code/highcharts.js"></script>
+    <script src="../Highcharts-6.1.2/code/modules/variable-pie.js"></script>
+</head>
+<body >
+<div id="container">
+
+</div>
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url:"../user/queryTypeHigh",
+            dataType:"json",
+            type:"post",
+            success:function(data){
+                Highcharts.chart('container', {
+                    chart: {type: 'column'},
+                    subtitle:{
+                        text: '来源：金科在线教育网http://192.168.31.10:8082/user/queryTypeHigh'
+                    },
+                    title: {
+                        text: '课程分类柱状图'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        crosshair: true
+                    },
+                    yAxis: {
+                        tickInterval:2,
+                        min: 0,
+                        title: {
+                            text: '个数'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: '(个)'
+                    },
+                    plotOptions: {
+                        column: {
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: '课程个数',
+                        data:data
+                    }]
+                });
+            }
+        })
+    })
+    /*
+        $(function(){
+            $.ajax({
+                url:"../user/queryTypeHigh",
+                dataType:"json",
+                type:"post",
+                success:function(data){
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'variablepie'
+                        },
+                        title: {
+                            text: '课程分类状态图'
+                        },
+                        tooltip: {
+                            headerFormat: '',
+                            pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>'
+                        },
+                        series: [{
+                            minPointSize: 10,
+                            innerSize: '50%',
+                            zMin: 0,
+                            name: '课程分类',
+                            colorByPoint: true,
+                            data:data
+                        }]
+                    });
+                }
+            })
+        })
+    */
+
+</script>
+</body>
+</html>

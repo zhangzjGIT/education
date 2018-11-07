@@ -25,6 +25,7 @@ public class AdverServiceImpl implements AdverServiceApi {
 
 
     @Override
+    @RequestMapping(value = "user/queryadverPage")
     public Map<String, Object> queryadverPage(@RequestParam(value = "page")int page, @RequestParam(value = "limit") int limit) {
         int total=adverDao.queryadverTotal();
         //2.起始位置：（当前页 - 1） *  每页条数

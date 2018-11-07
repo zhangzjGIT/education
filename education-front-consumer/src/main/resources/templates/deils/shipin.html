@@ -2,108 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
     <meta http-equiv=”X-UA-Compatible” content=”IE=edge,chrome=1″ />
+    <title>金科在线教育</title>
+    <link rel="canonical" href="https://ke.qq.com/course/130952">
+    <link rel="stylesheet" href="../common.9d8f74fe.css"/>
+    <link rel="stylesheet" href="../course.7aed7816.css"/>
     <link rel="stylesheet" href="../video/css/Dvideo.css">
     <link rel="stylesheet" href="../video/font-icon/style.css">
     <script type="text/javascript" src="../js/jquery.min.js" ></script>
-    <style>
-        body,html{
-            margin: 0;
-            padding: 0;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            width: 100%;
-            height: 100%;
-            background-color: #171717;
-        }
-
-        .title{
-            font: 24px/1.5 weight;
-            color: #fff;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .centerInfo{
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        .getFullScreen{
-            position: absolute;
-            bottom:100px;
-            right: 100px;
-            z-index: 1111;
-        }
-        .ctrl-c{
-            width: 500px;
-            height: auto;
-            margin: 20px auto;
-        }
-
-        .btn{
-            padding: 6px 10px;
-            background: #5C96D8;
-            margin: 5px;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 4px;
-            display: inline-block;
-        }
-        #testVideo{
-            width: 520px;
-            height: auto;
-            margin: 0 auto;
-            outline:2px solid #ccc;
-        }
-        body,html{
-            font-size: 16px;
-        }
-        .btn{
-            font-size: 1rem;
-            background: rgba(0,0,0,0.3)!important;
-        }
-    </style>
 </head>
 <body>
+<header class="header-index" id="js_main_nav">
+    <div class="header-index-inner clearfix">
+        <a href="../user/tomain"  report-tdw="action=rainbow-logo-clk" title="金科在线教育平台"><img src="../images/logo.jpg" width="250px" height="100px"></a>
+    </div>
+</header>
 <input type="hidden" id="getVideo" th:value="${couInfo}">
 <input type="hidden" id="getVideoName" th:value="${infoName}">
-<div class="centerInfo">
-    <h3 class="title"></h3>
-    <div id="testVideo"></div>
-    <!--<div class="ctrl-c" style="user-select:none">
-        <span class="btn" style="background: #B42828" onClick="setFullScreen()">点击全屏</span>
-        <span class="btn" style="background: #95487B" onClick="play()">播放 space</span>
-        <span class="btn" style="background: #4D5DA6" onClick="pause()">暂停 space</span>
-        <span class="btn" style="background: #488BAD" onClick="playpause()">播放暂停</span>
-        <span class="btn" style="background: #359961" onClick="setVolume(1)">100的音量大小 up</span>
-        <span class="btn" style="background: #547046" onClick="setVolume(0.3)">30的音量大小 down</span>
-        <span class="btn" style="background: #767030" onClick="setBackRate(3)">2.0的语速</span>
-        <span class="btn" style="background: #B2662E" onClick="setBackRate(1)">正常的语速</span>
-        <span class="btn" style="background: #977074" onClick="setVideoRewind(10)">快退 left</span>
-        <span class="btn" style="background: #4F1B60" onClick="setVideoForward(10)">快进 right</span>
-        <span class="btn" style="background: #4F1B60" onClick="showLoading()">显示进度信息</span>
-        <span class="btn" style="background: #4F1B60" onClick="showTopBottomCtrlNotClose()">显示上下菜单且不自动关闭</span>
-        <span class="btn" style="background: #4F1B60" onClick="hideTopBottomCtrlLi()">立刻关闭上下菜单</span>
-        <span class="btn" style="background: #4F1B60" onClick="showTopBottomCtrl()">显示菜单自动关闭</span>
-        <span class="btn" style="background: #4F1B60" onClick="hideTopBottomCtrl()">固定时间后自动关闭</span>
-        <span class="btn" style="background: #4F1B60" onClick="setVideoSize()">设置宽720 高480</span>
-    </div>-->
-    <!--<div>
-        <embed width="1024px" height="576px" src="C:\Users\dell\Desktop\复仇者联盟4（预告片）.mp4">
-    </div>-->
-    <!--<object height="200" width="200" data="C:\Users\dell\Desktop\复仇者联盟4（预告片）.mp4"></object>-->
-    <!--<EMBED align=middle src=http://player.youku.com/player.php/sid/XMzQ1OTAwNjI4/v.swf
-            width=700 height=550 type=application/x-shockwave-flash wmode="opaque" flashvars
-                    ="isAutoPlay=true" allowscriptaccess="sameDomain" quality="high">
 
-    </EMBED>-->
+<div  style="height:420px; width:1400px;">
+    <div style="height:420px; width:40px;float:left"></div>
+    <div id="testVideo" style="height:420px; width:800px;float:left"></div>
+    <div style="height:420px; width:5px;float:left"></div>
+    <div style="height:420px; width:500px;float:left;background:url('../images/1f17.jpg')" >
+
+              &nbsp;&nbsp;&nbsp;给自己起个昵称吧:
+        <input id="uaerNameTxt" type="text"  style="width:160px;height:13px"/>
+        <input id="upDownBtn" type="button" value="应用" onclick="upLine()" style="background: #ff9900;width:10%;height:30px"/>
+        <span id="uuidLab"></span><br/>
+
+               <textarea id="contentArea" name="contentArea"
+                                          disabled="disabled"
+                                          style="width:500px;height:200px;background:transparent;border-style:none;"></textarea>
+
+            <textarea id="sendContent" style="width:500px;height:120px;padding:0px;margin:0px; font-size:30px;"></textarea>
+
+
+
+                   <center> <input type="button" onclick="sendTalk()" value="发送"
+                      style="width:20%;height:40px;margin:0px;border:0px;padding:0px;background: #ff9900" /></center>
+
+    </div>
 </div>
 </body>
 <script src="../video/js/Dvideo.js"></script>
+<script type="text/javascript" src="/sockjs.js"></script>
+<script type="text/javascript" src="/stomp.js"></script>
+<script type="text/javascript">
+    var nowUUID = "";
+    var stompClient = null;
+
+    window.onload = function() {
+
+        //连接服务器
+        var socket = new SockJS("/endpointWisely");
+        stompClient = Stomp.over(socket);
+        //响应事件监听
+        stompClient.connect({}, function(frame) {
+            //监听刷新当前登录人列表
+            stompClient.subscribe("/refreshloginlist", function(respnose) {
+                var serverObj = JSON.parse(respnose.body);//返回是一个当前登录人数组
+                var nameArrStr = "";
+                for (var i = 0; i < serverObj.length; i++) {
+                    nameArrStr = nameArrStr + serverObj[i].name + "\n";
+                }
+                console.log(nameArrStr);
+                userList.value = nameArrStr;
+            });
+
+            //监听刷新聊天窗口
+            stompClient.subscribe("/refreshchatwindow", function(respnose) {
+                var serverObj = JSON.parse(respnose.body);//返回是一个当前登录人数组
+                var contentArea = document.getElementById("contentArea");
+                var val = contentArea.value;
+                var returnText = serverObj.sendUser+" "+serverObj.date+":\n "+"  "+serverObj.content+"\n ";
+                contentArea.value = val + returnText;
+                contentArea.scrollTop = contentArea.scrollHeight;
+            });
+
+
+            //刷新当前登录用户列表
+            stompClient.send("/refreshLoginList", {}, {});
+        });
+
+
+        //键盘事件注册
+        document.onkeydown = function(event) {
+            //ctrl+enter发送消息
+            if (window.event.ctrlKey && window.event.keyCode == 13) {
+                sendTalk();
+            }
+        };
+    }
+
+    //上下线
+    function upLine() {
+        var upDownBtn = document.getElementById("upDownBtn");
+        var uaerNameTxt = document.getElementById("uaerNameTxt");
+        var uuidLab = document.getElementById("uuidLab");
+        var userList = document.getElementById("userList");
+        if (uaerNameTxt.value == "") {
+            alert("请输入名称！");
+            return;
+        }
+        if (upDownBtn.value == "应用") {
+            upDownBtn.value = "退出";
+            uaerNameTxt.readOnly = true;
+            nowUUID = guid();
+            uuidLab.innerText=nowUUID;
+            //上线完成，添加用户
+            var myObj = new Object();
+            myObj.uuid = nowUUID;
+            myObj.name = uaerNameTxt.value;
+            var json_data = JSON.stringify(myObj);
+            stompClient.send("/upLine", {}, json_data);
+            $('#uuidLab').hide();
+        } else {
+            upDownBtn.value = "应用";
+            uaerNameTxt.readOnly = false;
+            //下线完成，删除用户jhkl,./.,
+            var myObj = new Object();
+            myObj.uuid = nowUUID;
+            var json_data = JSON.stringify(myObj);
+            stompClient.send("/downLine", {}, json_data);
+            nowUUID = "";
+            uuidLab.innerText=nowUUID;
+        }
+    }
+
+    //发言
+    function sendTalk() {
+        var upDownBtn = document.getElementById("upDownBtn");
+        if (upDownBtn.value == "应用") {
+            alert("请填写昵称,开启你的学习交流！");
+            return;
+        }
+        var userName = document.getElementById("uaerNameTxt").value;
+        var sendContent = document.getElementById("sendContent");
+        //往服务器发消息
+        var myObj = new Object();
+        myObj.sendUser = userName;
+        myObj.content = sendContent.value;
+        var json_data = JSON.stringify(myObj);
+        stompClient.send("/talk", {}, json_data);
+        sendContent.value = "";
+        sendContent.focus();
+    }
+
+    //浏览器关闭事件 发起删除登录人消息
+    window.onbeforeunload = onbeforeunload_handler;
+    function onbeforeunload_handler() {
+        //下线完成，删除用户
+        var myObj = new Object();
+        myObj.uuid = nowUUID;
+        var json_data = JSON.stringify(myObj);
+        stompClient.send("/downLine", {}, json_data);
+    }
+
+    //生成uuid
+    function guid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+            function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r
+                    : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+    }
+</script>
 <script>
     // window.onload = function () {
     var videoUrl = $('#getVideo').val();
@@ -117,9 +182,9 @@
             alert('您点击了下一页')
         },
         showNext: true,
-        width: '580px',
-        height: '292px',
-        src: 'https://yangjianguang.oss-cn-beijing.aliyuncs.com/education/1540386709369.mp4?Expires=1540537509&OSSAccessKeyId=TMP.AQH7z0Ll8ujckO80lZizAGVYs6pB6GuqkaHiqj0inmvavLYK6leUM9leZqwwADAtAhRO_RLTLLguzOfhoCuP_lXUqGEQvgIVAN_WE4NqC0gsAiDZyN5ks3_ZARcM&Signature=TWR0dan17w6TB3O5vAw6nhDDusc%3D',
+        width: '800px',
+        height: '420px',
+        src: 'https://yangjianguang.oss-cn-beijing.aliyuncs.com/education/1540386709369.mp4?Expires=1541410653&OSSAccessKeyId=TMP.AQHFmas5xFLocSDJd4ViFtQGsx_pH8cLoonQLXJzgTNWQC6CLcvfTHBSfHvgADAtAhRFsGvgHBFfCDIvgeI1Cf7jd0Sr8wIVAPA4TE87j0FpW1rYSxR1-eoVxKan&Signature=b1rRgCSrpLbbx%2BwNZpdtALkvXy8%3D',
         autoplay: true,
         setVideoDefinition: function (type, e, current) {
             if (type === '0') {
@@ -203,5 +268,11 @@
     function setVideoSize () {
         video.updateVideoSize(720,480)
     }
+
 </script>
+<!--包含尾部进来-->
+<footer class="footer">
+    <p>Copyright © 2018 SSXZ. All Rights Reserved.</p>
+    <p>金科在线教育教育有限公司@版权所有 | 金科教育服务协议</a> | <a href="" target="_blank">侵权投诉</a> | <a href="" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="" target="_blank">帮助</a></p>
+</footer>
 </html>

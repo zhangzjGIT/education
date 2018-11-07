@@ -57,8 +57,11 @@
                 </a>
                 <input type="text" id="js_keyword" maxlength="38" class="mod-search__input"
                        placeholder="金科教育 精学课堂"
-                       data-sync="1" />
-                <a id="js_search" href="javascript:void(0)" class="mod-search__btn-search"><i class="icon-font i-search-bold"></i></a>
+                       data-sync="1" autocomplete="off"
+                       onkeydown="javascript:if(event.keyCode==13) search('js_keyword');"/>
+                <a id="js_search" href="javascript:search()" class="mod-search__btn-search"><i
+                        class="icon-font i-search-bold"></i></a>
+
             </div>
 
         </div>
@@ -226,7 +229,8 @@
 
                             <div class="screen-mask"></div>
 
-                            <div class="screen-bd" data-taid="2665134581461747"><!-- style="background-image: url('//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLCdNBr520kvPNGcNy5abHtFGrib57XbXBzJC0erlj61zlYF99iat74wyU4ZlibC630eTY/')"-->
+                            <div class="screen-bd" data-taid="2665134581461747">
+                                <!-- style="background-image: url('//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLCdNBr520kvPNGcNy5abHtFGrib57XbXBzJC0erlj61zlYF99iat74wyU4ZlibC630eTY/')"-->
                                 <div class="screen-infos">
 
                                     <p class="course-name">
@@ -242,7 +246,8 @@
                                     </div>
 
 
-                                    <a id="js-join-class" class="course-apply blue-btn" href="../user/toJoinZhibo" title="立即学习"
+                                    <a id="js-join-class" class="course-apply blue-btn" href="../user/toJoinZhibo"
+                                       title="立即学习"
                                        data-classing="1" data-cid="111347">立即学习</a>
 
                                 </div>
@@ -258,7 +263,7 @@
                                 <!-- 任务项 -->
                                 <li class="list-item task-item" data-taid="2665134581461747">
                                     <a class="item-link" title="【齐论】数据模块化运营，小白单日访客破万" data-cid="111347"
-                                       target="_blank" href="//ke.qq.com/course/111347">
+                                        href="../user/toJoinZhibo">
                                         <div class="item-wrap">
 
                                             <span class="item-time item-time--classing">直播中</span>
@@ -272,23 +277,23 @@
                                     </a>
                                 </li>
                                 <!-- 任务项 -->
-                                <li class="list-item task-item" data-taid="2665138876429043">
+                                <!--<li class="list-item task-item" data-taid="2665138876429043">
                                     <a class="item-link" title="【齐论】数据模块化运营，小白访客破三万" data-cid="111347"
-                                       target="_blank" href="//ke.qq.com/course/111347">
+                                       target="_blank" href="">
                                         <div class="item-wrap">
 
                                             <span class="item-time">10:30</span>
 
 
                                             <div class="item-info">
-                                                <!-- <i class="icon-font i-course-live"></i> -->
+                                                &lt;!&ndash; <i class="icon-font i-course-live"></i> &ndash;&gt;
                                                 <span class="item-name">【齐论】数据模块化运营，小白访客破三万</span>
                                             </div>
                                         </div>
                                         <div class="item-time-point"></div>
 
                                     </a>
-                                </li>
+                                </li>-->
                                 <!-- 任务项 -->
 
                             </ul>
@@ -325,13 +330,13 @@
                                         <img th:src="${mes.priImg}"  class="item-img" width="220" height="124">
                                     </a>
                                     <h4 class="item-tt">
-                                        <a  th:onclick="'queryClassById('+${mes.couId}+')'" target="_blank" class="item-tt-link" cors-name="course" th:text="${mes.couState}"></a>
+                                        <a  th:onclick="'queryClassById('+${mes.couId}+')'" target="_blank" class="item-tt-link" cors-name="course" th:text="${mes.couTitle}"></a>
                                     </h4>
                                     <div class="item-line item-line--bottom">
                                         <span class="line-cell item-price free" th:if="${mes.couPrice} eq '0'">免费</span>
                                         <span class="line-cell item-price" th:if="${mes.couPrice} gt '0'" th:text="'￥'+${mes.couPrice}+'.00'"></span>
                                         <span class="item-source">
-                                                <a  target="_blank" class="item-source-link" title="动脑学院" rel="nofollow" th:text="${mes.infoName}"></a>
+                                                <a  target="_blank" class="item-source-link" title="动脑学院" rel="nofollow" th:text="${mes.couState}"></a>
                                             </span>
                                     </div>
                                 </li>
@@ -389,6 +394,14 @@
         }
     }
 </script>
+
+<script>
+    function search() {
+        var aa = $("#js_keyword").val();
+        location.href = "../mess/search?q=" + aa;
+    }
+</script>
+
 
 <script>
     $(function(){

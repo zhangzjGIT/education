@@ -1,10 +1,13 @@
 package com.jk.model.course;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class MessageBean {
 
-    private Integer couId;
-
-    private String couState;// 课程说名
+    private String couId;
 
     private String couTitle;
 
@@ -12,28 +15,39 @@ public class MessageBean {
 
     private Integer couClass;
 
-    private Integer couPrice;
+    private String couPrice;
 
-    private String prilmg;  //方面
+    private String couState;
 
-    private String coulnfo; //视频
+    private String priImg;
 
-    private String infoName; //视频名称
+    private String couInfo;
 
-    private Integer teaId;
+    private String infoName;
 
-    private String allCount; //总数量
+    private String stuCount;
 
-    private String stuCount; //学生数
+    private String allCount;
 
+    private Integer status;
+
+    private String teaId;
+
+    //业务字段
     private String teacherName;
 
-    public String getCouState() {
-        return couState;
+    private Integer userMesId;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createTime;
+
+    public Integer getUserMesId() {
+        return userMesId;
     }
 
-    public void setCouState(String couState) {
-        this.couState = couState;
+    public void setUserMesId(Integer userMesId) {
+        this.userMesId = userMesId;
     }
 
     public String getTeacherName() {
@@ -44,12 +58,20 @@ public class MessageBean {
         this.teacherName = teacherName;
     }
 
-    public String getAllCount() {
-        return allCount;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setAllCount(String allCount) {
-        this.allCount = allCount;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getTeaId() {
+        return teaId;
+    }
+
+    public void setTeaId(String teaId) {
+        this.teaId = teaId;
     }
 
     public String getStuCount() {
@@ -60,19 +82,19 @@ public class MessageBean {
         this.stuCount = stuCount;
     }
 
-    public Integer getTeaId() {
-        return teaId;
+    public String getAllCount() {
+        return allCount;
     }
 
-    public void setTeaId(Integer teaId) {
-        this.teaId = teaId;
+    public void setAllCount(String allCount) {
+        this.allCount = allCount;
     }
 
-    public Integer getCouId() {
+    public String getCouId() {
         return couId;
     }
 
-    public void setCouId(Integer couId) {
+    public void setCouId(String couId) {
         this.couId = couId;
     }
 
@@ -100,28 +122,36 @@ public class MessageBean {
         this.couClass = couClass;
     }
 
-    public Integer getCouPrice() {
+    public String getCouPrice() {
         return couPrice;
     }
 
-    public void setCouPrice(Integer couPrice) {
+    public void setCouPrice(String couPrice) {
         this.couPrice = couPrice;
     }
 
-    public String getPrilmg() {
-        return prilmg;
+    public String getCouState() {
+        return couState;
     }
 
-    public void setPrilmg(String prilmg) {
-        this.prilmg = prilmg;
+    public void setCouState(String couState) {
+        this.couState = couState;
     }
 
-    public String getCoulnfo() {
-        return coulnfo;
+    public String getPriImg() {
+        return priImg;
     }
 
-    public void setCoulnfo(String coulnfo) {
-        this.coulnfo = coulnfo;
+    public void setPriImg(String priImg) {
+        this.priImg = priImg;
+    }
+
+    public String getCouInfo() {
+        return couInfo;
+    }
+
+    public void setCouInfo(String couInfo) {
+        this.couInfo = couInfo;
     }
 
     public String getInfoName() {
@@ -131,4 +161,13 @@ public class MessageBean {
     public void setInfoName(String infoName) {
         this.infoName = infoName;
     }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 }
+

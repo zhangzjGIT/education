@@ -1,8 +1,13 @@
 package com.jk.model.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class MessageBean {
 
-    private Integer couId;
+    private String couId;
 
     private String couTitle;
 
@@ -10,9 +15,7 @@ public class MessageBean {
 
     private Integer couClass;
 
-    private Integer couPro;
-
-    private Integer couPrice;
+    private String couPrice;
 
     private String couState;
 
@@ -27,8 +30,25 @@ public class MessageBean {
     private String allCount;
 
     private Integer status;
-//业务字段
+
+    private String teaId;
+
+    //业务字段
     private String teacherName;
+
+    private Integer userMesId;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private Date createTime;
+
+    public Integer getUserMesId() {
+        return userMesId;
+    }
+
+    public void setUserMesId(Integer userMesId) {
+        this.userMesId = userMesId;
+    }
 
     public String getTeacherName() {
         return teacherName;
@@ -36,6 +56,22 @@ public class MessageBean {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getTeaId() {
+        return teaId;
+    }
+
+    public void setTeaId(String teaId) {
+        this.teaId = teaId;
     }
 
     public String getStuCount() {
@@ -54,11 +90,11 @@ public class MessageBean {
         this.allCount = allCount;
     }
 
-    public Integer getCouId() {
+    public String getCouId() {
         return couId;
     }
 
-    public void setCouId(Integer couId) {
+    public void setCouId(String couId) {
         this.couId = couId;
     }
 
@@ -86,19 +122,11 @@ public class MessageBean {
         this.couClass = couClass;
     }
 
-    public Integer getCouPro() {
-        return couPro;
-    }
-
-    public void setCouPro(Integer couPro) {
-        this.couPro = couPro;
-    }
-
-    public Integer getCouPrice() {
+    public String getCouPrice() {
         return couPrice;
     }
 
-    public void setCouPrice(Integer couPrice) {
+    public void setCouPrice(String couPrice) {
         this.couPrice = couPrice;
     }
 

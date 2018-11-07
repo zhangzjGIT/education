@@ -84,6 +84,7 @@ public class ShiroConfig {
         //anon  放过权限拦截过滤器 不需要权限也能访问的资源
         filterChainDefinitionMap.put("/EasyUI/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/login/**", "anon");
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/layui/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico","anon");

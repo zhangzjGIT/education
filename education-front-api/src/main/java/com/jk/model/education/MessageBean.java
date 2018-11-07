@@ -15,7 +15,7 @@ public class MessageBean {
 
     private Integer couClass;
 
-    private String couPrice;
+    private Integer couPrice;
 
     private String couState;
 
@@ -122,11 +122,11 @@ public class MessageBean {
         this.couClass = couClass;
     }
 
-    public String getCouPrice() {
+    public Integer getCouPrice() {
         return couPrice;
     }
 
-    public void setCouPrice(String couPrice) {
+    public void setCouPrice(Integer couPrice) {
         this.couPrice = couPrice;
     }
 

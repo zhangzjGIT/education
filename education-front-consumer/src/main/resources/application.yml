@@ -1,9 +1,11 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://localhost:8090/eureka/
 server:
   port: 8092
+  max-http-header-size: 4048576
+
 spring:
   application:
     name: front-comsumer
@@ -16,6 +18,8 @@ spring:
 ribbon:
   eureka:
     enabled: true
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
 redis:
   host: 127.0.0.1
   maxActive: 600
@@ -24,6 +28,8 @@ redis:
   pass: ''
   port: 6379
   testOnBorrow: true
+
+
 #feign:
 #  hystrix:
 #    enabled: true

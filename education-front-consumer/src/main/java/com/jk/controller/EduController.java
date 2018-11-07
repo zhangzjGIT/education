@@ -407,7 +407,8 @@ public class EduController {
         //商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no = couId;
         //付款金额，必填
-        String total_amount = buyInfo.getCouPrice();
+        String price = buyInfo.getCouPrice().toString();
+        String total_amount = price;
         //订单名称，必填
         String subject = buyInfo.getInfoName();
         //商品描述，可空

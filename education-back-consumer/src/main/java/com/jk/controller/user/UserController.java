@@ -51,6 +51,7 @@ public class UserController {
     //跳转到shiro登录页面
     @RequestMapping("/toLogin2")
     public String toLogin2(){
+        //return "login/loginSnow";
         return "login/login2";
     }
 
@@ -475,5 +476,9 @@ public class UserController {
         return "{}";
     }
 
+    @RequestMapping("tohigh")
+    public String tohigh(){
+        return "adver/high";
+    }
 
 }

@@ -1,0 +1,313 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>登录</title>
+
+
+
+    <link rel="stylesheet" href="../login/css/normalize.css">
+    <link rel="stylesheet" href="../login/css/login.css">
+    <link rel="stylesheet" href="../login/css/sign-up-login.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../login/css/inputEffect.css" />
+    <link rel="stylesheet" href="../login/css/tooltips.css" />
+    <link rel="stylesheet" href="../login/css/spop.min.css" />
+
+    <script src="../login/js/jquery.min.js"></script>
+    <script src="../login/js/jquery.pure.tooltips.js"></script>
+    <script src="../login/js/spop.min.js"></script>
+    <script>
+        (function() {
+            // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+            if (!String.prototype.trim) {
+                (function() {
+                    // Make sure we trim BOM and NBSP
+                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                    String.prototype.trim = function() {
+                        return this.replace(rtrim, '');
+                    };
+                })();
+            }
+
+            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                // in case the input is already filled..
+                if( inputEl.value.trim() !== '' ) {
+                    classie.add( inputEl.parentNode, 'input--filled' );
+                }
+
+                // events:
+                inputEl.addEventListener( 'focus', onInputFocus );
+                inputEl.addEventListener( 'blur', onInputBlur );
+            } );
+
+            function onInputFocus( ev ) {
+                classie.add( ev.target.parentNode, 'input--filled' );
+            }
+
+            function onInputBlur( ev ) {
+                if( ev.target.value.trim() === '' ) {
+                    classie.remove( ev.target.parentNode, 'input--filled' );
+                }
+            }
+        })();
+
+        $(function() {
+            $('#login #login-password').focus(function() {
+                $('.login-owl').addClass('password');
+            }).blur(function() {
+                $('.login-owl').removeClass('password');
+            });
+            $('#login #register-password').focus(function() {
+                $('.register-owl').addClass('password');
+            }).blur(function() {
+                $('.register-owl').removeClass('password');
+            });
+            $('#login #register-repassword').focus(function() {
+                $('.register-owl').addClass('password');
+            }).blur(function() {
+                $('.register-owl').removeClass('password');
+            });
+            $('#login #forget-password').focus(function() {
+                $('.forget-owl').addClass('password');
+            }).blur(function() {
+                $('.forget-owl').removeClass('password');
+            });
+        });
+
+        function goto_register(){
+            $("#register-username").val("");
+            $("#register-password").val("");
+            $("#register-repassword").val("");
+            $("#register-code").val("");
+            $("#tab-2").prop("checked",true);
+        }
+
+        function goto_login(){
+            $("#login-username").val("");
+            $("#login-password").val("");
+            $("#tab-1").prop("checked",true);
+        }
+
+        function goto_forget(){
+            $("#forget-username").val("");
+            $("#forget-password").val("");
+            $("#forget-code").val("");
+            $("#tab-3").prop("checked",true);
+        }
+
+    </script>
+    <style type="text/css">
+        html{width: 100%; height: 100%;}
+
+        body {
+
+            background-repeat: no-repeat;
+
+            background-position: center center #2D0F0F;
+
+            background-color: #00BDDC;
+
+            background-image: url(../login/images/snow.jpg);
+            margin:0px;overflow:hidden;
+            background-size: 100% 100%;
+        }
+
+    </style>
+</head>
+<body onLoad="init()">
+<script type="text/javascript" src="../login/js/ThreeCanvas.js"></script>
+<script type="text/javascript" src="../login/js/Snow.js"></script>
+<script type="text/javascript">
+
+    var SCREEN_WIDTH = window.innerWidth ;
+    var SCREEN_HEIGHT = window.innerHeight ;
+
+    var container;
+
+    var particle;
+
+    var camera;
+    var scene;
+    var renderer;
+
+    var mouseX = 0;
+    var mouseY = 0;
+
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2 ;
+
+    var particles = [];
+    var particleImage = new Image();//THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
+    particleImage.src = '../login/images/ParticleSmoke.png';
+
+   function init() {
+
+        container = document.createElement('div');
+        document.body.appendChild(container);
+
+        camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+        scene.add(camera);
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        var material = new THREE.ParticleBasicMaterial( { map: new THREE.Texture(particleImage) } );
+
+        for (var i = 0; i < 500; i++) {
+
+            particle = new Particle3D( material);
+            particle.position.x = Math.random() * 2000 - 1000;
+            particle.position.y = Math.random() * 2000 - 1000;
+            particle.position.z = Math.random() * 2000 - 1000;
+            particle.scale.x = particle.scale.y =  1;
+            scene.add( particle );
+
+            particles.push(particle);
+        }
+
+        container.appendChild( renderer.domElement );
+
+
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+        document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+
+        setInterval( loop, 1000 / 60 );
+
+    }
+
+    function onDocumentMouseMove( event ) {
+
+        mouseX = event.clientX - windowHalfX;
+        mouseY = event.clientY - windowHalfY;
+    }
+
+    function onDocumentTouchStart( event ) {
+
+        if ( event.touches.length == 1 ) {
+
+            event.preventDefault();
+
+            mouseX = event.touches[ 0 ].pageX - windowHalfX;
+            mouseY = event.touches[ 0 ].pageY - windowHalfY;
+        }
+    }
+
+    function onDocumentTouchMove( event ) {
+
+        if ( event.touches.length == 1 ) {
+
+            event.preventDefault();
+
+            mouseX = event.touches[ 0 ].pageX - windowHalfX;
+            mouseY = event.touches[ 0 ].pageY - windowHalfY;
+        }
+    }
+
+    //
+
+    function loop() {
+
+        for(var i = 0; i<particles.length; i++)
+        {
+
+            var particle = particles[i];
+            particle.updatePhysics();
+
+            with(particle.position)
+            {
+                if(y<-1000) y+=2000;
+                if(x>1000) x-=2000;
+                else if(x<-1000) x+=2000;
+                if(z>1000) z-=2000;
+                else if(z<-1000) z+=2000;
+            }
+        }
+
+        camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+        camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+        camera.lookAt(scene.position);
+
+        renderer.render( scene, camera );
+
+
+    }
+
+</script>
+<div id="login" style="text-align:center;clear:both" >
+    <input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+    <input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+    <input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+    <div class="wrapper">
+        <!-- 登录页面 -->
+        <div class="login sign-in-htm">
+            <form class="container offset1 loginform">
+                <!-- 猫头鹰控件 -->
+                <div id="owl-login" class="login-owl">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad input-container">
+                    <section class="content">
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="text" id="login-username"
+                                       autocomplete="off" placeholder="请输入用户名" tabindex="1" maxlength="15" />
+								<label class="input__label input__label--hideo" for="login-username">
+									<i class="fa fa-fw fa-user icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+                        <span class="input input--hideo">
+								<input class="input__field input__field--hideo" type="password" id="login-password" placeholder="请输入密码" tabindex="2" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="login-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+                    </section>
+                </div>
+                <div class="form-actions">
+                    <a tabindex="4" class="btn pull-left btn-link text-muted" onClick="goto_forget()">忘记密码?</a>
+                    <a tabindex="5" class="btn btn-link text-muted" onClick="goto_register()">注册</a>
+                    <input class="btn btn-primary" type="button" tabindex="3"  id="toUserLogin" value="登录"
+                           style="color:white;"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#toUserLogin").click(function(){
+        //var loginNames = document.getElementsByName("loginName")[0].value;
+        //var passwords = document.getElementsByName("password")[0].value;
+        var loginNames = $("#login-username").val();
+
+        var passwords = $("#login-password").val();
+
+        $.ajax({
+            url:"../user/userlogin",
+            type:"post",
+            dataType:"json",
+            data:{
+                userName:loginNames,
+                password:passwords
+            },
+            success:function(d){
+                if(d['message']=="SUCCESS"){
+                    location.href='../user/toMain';
+                }else{
+                    document.getElementById("info").innerText=d['message'];
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

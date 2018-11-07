@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset=utf-8"UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <link rel="shortcut icon" href="//8.url.cn/edu/edu_modules/edu-ui/img/nohash/favicon.ico"/>
+    <link rel="dns-prefetch" href="//7.url.cn">
+    <link rel="dns-prefetch" href="//8.url.cn">
+    <link rel="dns-prefetch" href="//9.url.cn">
+    <script src="../EasyUI/jquery.min.js"></script>
+    <meta name="keywords" content="腾讯课堂,腾讯教育,远程教育,公开课,网络公开课,在线学习,在线教育,在线培训,在线课堂,名师讲堂,视频课程"/>
+    <meta name="description" itemprop="description" content="腾讯课堂-腾讯推出的专业在线教育平台，聚合大量优质教育机构和名师，下设职业培训、公务员考试、托福雅思、考证考级、英语口语、中小学教育等众多在线学习精品课程，打造老师在线上课教学、学生及时互动学习的课堂。腾讯课堂，学习成就梦想！"/>
+    <meta itemprop="name" content="腾讯课堂">
+    <meta itemprop="image" content="http://9.url.cn/edu/edu_modules/edu-ui/img/nohash/logo_pc_rich.png"/>
+    <meta name="baidu-site-verification" content="5g1RnHcPLq" />
+    <title>金科在线教育</title>
+    <script>window.TRecord=window.TRecord||function(){var e={core:{grandDetail:"1565-1-17",indexNew:"7832-96-24",index:"7832-96-1",courseList:"7832-96-2",courseDetail:"7832-96-3",coursePackage:"7832-96-4",agencyIndex:"7832-96-7",agencyIndexNew:"7832-96-8",agencyTeacher:"7832-96-9",agencyServiceHelp:"7832-96-10",agencyRenzheng:"7832-96-11",404:"7832-96-12",personIndex:"7832-96-13",cateCommonTpl:"7832-96-23",topo:"7832-96-14",topoCourseList:"7832-96-15",searchAgency:"7832-96-16",applySuccess:"7832-96-17",acceptCoupon:"7832-96-18",faq:"7832-96-19",downloadTeacher:"7832-96-20",downloadApp:"7832-96-21",sale:"7832-96-27",next:"1565-1-21"},agency:{applyAgency:"7832-98-1",applyPersonal:"7832-98-2",applyPersonalIntro:"7832-98-3",agencyAdmin:"7832-98-4",billing:"7832-98-5",cdkey:"7832-98-6",graph:"7832-98-7",installDetail:"7832-98-8",installment:"7832-98-9",level:"7832-98-10",mailbox:"7832-98-11",notice:"7832-98-12",orderdetails:"7832-98-13",profile:"7832-98-14",publish:"7832-98-15",publishpacks:"7832-98-16",research:"7832-98-17",schedule:"7832-98-18",serve:"7832-98-19",settlement:"7832-98-20",sign:"7832-98-21",serveReceive:"7832-98-22",scheduleTask:"7832-98-23"},user:{user:"7832-99-1",task:"7832-99-2",comment:"7832-99-3",schedule:"7832-99-4"}},n={url:""},a={};return{cfg:n,maps:e,push:function(e,n){a[e]=n||new Date-0},getCachedData:function(){return{cfg:n,speedPoints:a}}}}(),window.T=window.T||[+new Date],window.TAuto=!0;;</script>
+    <script>
+        // for 跳转
+        function getQueryValue(n) {
+            var m = window.location.search.match(new RegExp("(\\?|&)" + n + "=([^&]*)(&|$)"));
+            return !m ? "" : decodeURIComponent(m[2]);
+        }
+        function getTuinStr() {
+            var tuin = getQueryValue('tuin');
+            if (tuin) {
+                return 'tuin=' + tuin;
+            }
+            return '';
+        }
+    </script>
+    <link rel="canonical" href="https://ke.qq.com/" />
+    <link rel="stylesheet" href='//8.url.cn/edu/edu_modules/edu-ui/css/common.9d8f74fe.css' />
+    <link rel="stylesheet" href='//8.url.cn/edu/modules/indexNew/index.8dc0ab86.css' />
+    <script>TRecord.push('page_css_ready');</script>
+    <!--[if lt IE 9]><script>var a ='header footer section aside nav article hgroup main time'.split(' ');while(a.length){document.createElement(a.pop());}</script><![endif]--><script>window.__DEBUG_STR__ = function(){return ''};window.__DIST_MODE__ = 'dist';</script>
+
+</head>
+<body >
+<h1 class="hide">腾讯课堂</h1>
+<!-- qzone的头部模块 -->
+
+<!-- 首页头部模块 -->
+<header class="header-index" id="js_main_nav">
+    <div class="header-index-inner clearfix">
+        <a href="../user/tomain"  report-tdw="action=rainbow-logo-clk" title="金科在线教育平台"><img src="../images/logo.jpg" width="250px" height="100px"></a>
+        <div class="header-index-category  " report-hover="obj1=cates">
+        </div>
+        <div class="header-index-search" id="js-searchbox">
+            <div class="mod-search">
+                <a class="mod-search-dropdown">
+                    <span class="mod-search-dropdown-item mod-search-dropdown-item-selected" data-type="course">课程</span>
+                </a>
+                <input type="text" id="js_keyword" maxlength="38" class="mod-search__input"
+                       placeholder="金科教育 精学课堂"
+                       data-sync="1" autocomplete="off"
+                       onkeydown="javascript:if(event.keyCode==13) search('js_keyword');"/>
+                <a id="js_search" href="javascript:search()" class="mod-search__btn-search"><i
+                        class="icon-font i-search-bold"></i></a>
+
+            </div>
+
+        </div>
+        <div class="header-index-text">
+            <div class="header-index-join dropdown-wrap"  report-hover="module=join&position=cooperate" report-attr="module=join&position=cooperate">
+                <p class="join-tt dropdown-tt">开课/合作</p>
+                <ul class="join-list dropdown-list">
+                    <li><a th:onclick="'toAddClass(\''+${user.userType}+'\','+${tea.status}+')'" title="个人开课" target="_blank" report-attr="module=join&position=personal">个人开课</a></li>
+                    <li><a href="../user/toZhibo" title="直播课堂" report-attr="module=join&position=institution">直播课堂</a></li>
+                </ul>
+            </div>
+            <!-- 登录相关组件 -->
+            <div id="js-mod-header-login" class="mod-header__wrap-login mod-header__wrap-logined">
+                <!-- 新版登录 个人 -->
+                <div class="mod-header_wrap-user dropdown-wrap" id="logout" style="display: none;">
+                    <p class="mod-header__user-name dropdown-tt">
+                        <a href="/user/index/index.html" class="mod-header__user-operation" rel="nofollow" report-hover="module=personalcenter&amp;position=nickname" report-attr="module=personalcenter&amp;position=nickname">
+                            <img th:src="${user.img}" alt="头像" class="mod-header__user-avatar js-avatar" onerror="this.src='../images/b2.jpg';this.onerror=null">
+
+                            <span class="mod-header__user-operation-title js-username" th:title="${user.userName}" th:text="${user.userName}"></span>
+                        </a>
+                    </p>
+                    <ul class="mod-header__user-operations dropdown-list">
+                        <li><a href="../user/toClasses" class="mod-header__user-operation" rel="nofollow" report-attr="module=personalcenter&amp;position=class_schedule&amp;ver1=topbar">课程表</a></li>
+                        <!--<li><a href="../user/toZhibo" class="mod-header__user-operation js-userinfo" rel="nofollow" report-attr="module=personalcenter&amp;position=userinfo&amp;ver1=topbar">个人信息</a></li>-->
+                        <li><a href="javascript:void(0)" id="out"  >退出登录</a></li>
+                    </ul>
+                </div>
+                <div class="mod-header_wrap-user dropdown-wrap"   id="show" style="display: block;">
+                    <input type="hidden" th:value="${codes}" id="codes">
+                    <a onclick="agLogin()">登录</a>
+                </div>
+                <!-- 新版登录 机构 -->
+
+            </div>
+            <!-- <div class="header-index-tips hide" id="js-header-sale-tips">
+                转发即可赚钱！分享课程赚佣金
+                <a href="javascript:void(0);" class="js-close-sale-tips"><i class="icon-font i-close-s" title="不再提醒"></i></a>
+            </div> -->
+        </div>
+    </div>
+</header>
+
+<!-- 轮播banner图模块 -->
+<section class="banner-slide banner-slide-special" data-report-module="banner">
+    <div class="mod-entry">
+        <!--<div class="mod-entry-user mod-entry-user&#45;&#45;unlogin visible" id="js-mod-entry-index">
+            <div class="mod-entry-user-hover mod-entry-nologin">
+                <p class="mod-entry-nologin-tips">跟进你的学习进度</p>
+                <div class="mod-entry-nologin-img"></div>
+            </div>
+            <a href="javascript:void(0);" class="btn-default mod-entry-login js-login-op" data-hook="login" report-attr="module=login&amp;position=card">登录</a>
+        </div>-->
+    </div>
+    <div class="mod-category2">
+
+        <nav class="mod-nav">
+            <ul class="mod-nav__list" jump-end="true">
+
+
+                <li class="mod-nav__li no-border js-mod-category " th:each="type:${typelist}" >
+                    <div class="mod-nav__wrap-nav-first" style="text-align:center">
+                        <h3 class="mod-nav__link-nav-first">
+                            <a  th:onclick="'queryAll('+${type.typeId}+')'" class="mod-nav__link-nav-first-link" >
+                                <span th:text="${type.typeName}" ></span><i class="icon-font i-v-right"></i>
+                            </a>
+                        </h3>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <section>
+        <a href="javascript:void(0);" class="banner-slide-prev"><span class="opacity-bg"></span><i class="icon-font i-v-left"></i></a>
+        <a href="javascript:void(0);" class="banner-slide-next"><span class="opacity-bg"></span><i class="icon-font i-v-right"></i></a>
+        <ul class="banner-slide-list" id="js-sliderbox">
+
+            <li data-report-position="1">
+                <a href="https://ke.qq.com/course/333035?tuin=4d3ac724?from=800002155#paysource=1" data-link="https://ke.qq.com/course/333035?tuin=4d3ac724?from=800002155&reportId=shixianjin0913"
+                   class="banner-slide-link" title="考研 在线精品课程" target="_blank" style="background-color: #e4eef0">
+                    <img src="//p.qpic.cn/qqconadmin/0/5974e91a5049468d99931e847552211c/0" alt="考研 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="2">
+                <a href="https://ke.qq.com/course/208513?from=800001591#paysource=1" data-link="https://ke.qq.com/course/208513?from=800001591&reportId=enweike-9.13"
+                   class="banner-slide-link" title="环境艺术设计 在线精品课程" target="_blank" style="background-color: #4b82e6">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/7b26cd5be7764f12a65a4564916f50a8/0" alt="环境艺术设计 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="3">
+                <a href="https://ke.qq.com/course/326133?from=800000939#paysource=1" data-link="https://ke.qq.com/course/326133?from=800000939&reportId=chenlu823"
+                   class="banner-slide-link" title="高中 在线精品课程" target="_blank" style="background-color: #b9d7b1">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/50ff7001ba084f5c8e2aa82901e10921/0" alt="高中 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="4">
+                <a href="https://ke.qq.com/course/155653#paysource=1" data-link="https://ke.qq.com/course/155653?reportId=baiyi0913"
+                   class="banner-slide-link" title="游戏动画设计 在线精品课程" target="_blank" style="background-color: #a4a4a4">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/28ebe46625f142e2a30997dec57c369a/0" alt="游戏动画设计 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="5">
+                <a href="https://ke.qq.com/next_detail/index.html?id=4" data-link="https://ke.qq.com/next_detail/index.html?id=4&reportId=next1009"
+                   class="banner-slide-link" title="前端开发 在线精品课程" target="_blank" style="background-color: #010413">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/0d9413d36cc54a77adb49a025b5ca10b/0" alt="前端开发 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="6">
+                <a href="https://ke.qq.com/course/282299?from=800001452#paysource=1" data-link="https://ke.qq.com/course/282299?from=800001452&reportId=youxijianmo"
+                   class="banner-slide-link" title="游戏设计 在线精品课程" target="_blank" style="background-color: #000000">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/92e3079c08f746aa9ea6e7631fdeae62/0" alt="游戏设计 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="7">
+                <a href="//ke.qq.com/huodong/jsboom1010_pc/index.html?_wv=1025&from=800002079" data-link="//ke.qq.com/huodong/jsboom1010_pc/index.html?_wv=1025&from=800002079&reportId=jieshibangkk"
+                   class="banner-slide-link" title="平面设计 在线精品课程" target="_blank" style="background-color: #000000">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/aeaf0df60078434a8877faef4a85548e/0" alt="平面设计 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+            <li data-report-position="8">
+                <a href="https://ke.qq.com/course/339618?tuin=5b727a4b&_bid=167&_wv=1&from=800002194#paysource=1" data-link="https://ke.qq.com/course/339618?tuin=5b727a4b&_bid=167&_wv=1&from=800002194&reportId=big1016"
+                   class="banner-slide-link" title="UI设计 在线精品课程" target="_blank" style="background-color: #1f0334">
+                    <img lazy-src="//p.qpic.cn/qqconadmin/0/937acd3eb60f421ca6229c4d7ae85271/0" alt="UI设计 在线精品课程" class="banner-slide-img"  width="1200" />
+                </a>
+            </li>
+
+        </ul>
+    </section>
+</section>
+
+<div class="loading-container hide" id="loading-container">
+    <div class="loading-container-cnt">
+        <img src="//8.url.cn/edu/edu_modules/edu-ui/img/nohash/loading.gif" alt="加载动画">
+        <p>正在加载</p>
+    </div>
+</div>
+<section class="cat-content" id="cat-content">
+
+
+    <!-- 页面主体内容 -->
+    <div class="container clearfix">
+        <div class="container-1200">
+            <div class="mod-sub "
+                 data-mod="live-courses"
+                 data-order="1">
+                <h2>精选直播课</h2>
+
+                <div class="js-live-courses mod-live">
+                    <div class="live-schedule">
+                        <div class="live-schedule-screen">
+                            <!-- 首屏渲染 start -->
+                            <img class="screen-img"
+                                 alt="课程封面"
+                                 title="课程封面"
+                                 onerror="this.src='//9.url.cn/edu/edu_modules/edu-ui/img/nohash/img-err2.png';this.onerror=null;"
+                                 src="//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLCdNBr520kvPNGcNy5abHtFGrib57XbXBzJC0erlj61zlYF99iat74wyU4ZlibC630eTY/510">
+
+                            <div class="screen-mask"></div>
+
+                            <div class="screen-bd" data-taid="2665134581461747">
+                                <!-- style="background-image: url('//10.url.cn/qqcourse_logo_ng/ajNVdqHZLLCdNBr520kvPNGcNy5abHtFGrib57XbXBzJC0erlj61zlYF99iat74wyU4ZlibC630eTY/')"-->
+                                <div class="screen-infos">
+
+                                    <p class="course-name">
+                                        <font color="black"><span th:text="${tea.teacherName}"></span></font>
+                                    </p>
+
+                                    <div class="course-status">
+                                        <p class="text">
+
+                                            <i class="icon-live"></i>正在上课
+
+                                        </p>
+                                    </div>
+
+
+                                    <a id="js-join-class" class="course-apply blue-btn" href="../user/toJoinZhibo"
+                                       title="立即学习"
+                                       data-classing="1" data-cid="111347">立即学习</a>
+
+                                </div>
+                            </div>
+
+                            <!-- 首屏渲染 end -->
+                        </div>
+
+                        <div class="live-schedule-list nano">
+                            <!-- 时间轴 -->
+                            <div class="time-axis"></div>
+                            <ul class="nano-content">
+                                <!-- 任务项 -->
+                                <li class="list-item task-item" data-taid="2665134581461747">
+                                    <a class="item-link" title="【齐论】数据模块化运营，小白单日访客破万" data-cid="111347"
+                                        href="../user/toJoinZhibo">
+                                        <div class="item-wrap">
+
+                                            <span class="item-time item-time--classing">直播中</span>
+                                            <div class="item-info">
+                                                <!-- <i class="icon-font i-course-live"></i> -->
+                                                <span class="item-name" th:text="${tea.teacherName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="item-time-icon-live"></div>
+
+                                    </a>
+                                </li>
+                                <!-- 任务项 -->
+                                <!--<li class="list-item task-item" data-taid="2665138876429043">
+                                    <a class="item-link" title="【齐论】数据模块化运营，小白访客破三万" data-cid="111347"
+                                       target="_blank" href="">
+                                        <div class="item-wrap">
+
+                                            <span class="item-time">10:30</span>
+
+
+                                            <div class="item-info">
+                                                &lt;!&ndash; <i class="icon-font i-course-live"></i> &ndash;&gt;
+                                                <span class="item-name">【齐论】数据模块化运营，小白访客破三万</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-time-point"></div>
+
+                                    </a>
+                                </li>-->
+                                <!-- 任务项 -->
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选课中心 -->
+        <div class="js-select-course select-course mod-sub" th:each="type:${typelist}">
+            <div class="container-1200">
+                <div class="select-course-hd">
+                    <h2>
+                        <span  th:text="${type.typeName}"></span>
+                        <a class="js-course-more btn-more"
+                           th:onclick="'queryAll('+${type.typeId}+')'"  target="_blank">更多<i class="icon-font i-v-right"></i></a>
+                    </h2>
+                    <div class="select-course-desc"></div>
+                </div>
+
+            </div>
+
+            <div class="hover-expand">
+                <div class="container-1200">
+                    <div class="select-course-bd">
+                        <div class="course-wrap js-course-list">
+
+                            <ul class="course-card-list" auto-test="">
+
+                                <li class="course-card-item" data-report-position="" th:each="mes:${mesList}"  th:if=" ${type.typeId} eq ${mes.couClass}">
+                                    <a  th:onclick="'queryClassById('+${mes.couId}+')'" target="_blank" class="item-img-link" data-id="130952" data-index="2" report-tdw="action=Coursecard_Coursecover-clk&amp;ver1=130952&amp;ver3=select-courses.IT互联网.2.2" cors-name="course">
+                                        <img th:src="${mes.priImg}"  class="item-img" width="220" height="124">
+                                    </a>
+                                    <h4 class="item-tt">
+                                        <a  th:onclick="'queryClassById('+${mes.couId}+')'" target="_blank" class="item-tt-link" cors-name="course" th:utext="${mes.couTitle}"></a>
+                                    </h4>
+                                    <div class="item-line item-line--bottom">
+                                        <span class="line-cell item-price free" th:if="${mes.couPrice} eq 0">免费</span>
+                                        <span class="line-cell item-price" th:if="${mes.couPrice} gt 0" th:text="'￥'+${mes.couPrice}+'.00'"></span>
+                                        <span class="item-source">
+                                                <a  target="_blank" class="item-source-link" title="动脑学院" rel="nofollow" th:text="${mes.couState}"></a>
+                                            </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--包含尾部进来-->
+<footer class="footer">
+    <i class="icon-font i-logo" title="腾讯课堂_专业的在线教育平台"></i>
+    <p>Copyright © 2018 SSXZ. All Rights Reserved.</p>
+    <p>金科在线教育教育有限公司@版权所有 | 金科教育服务协议</a> | <a href="" target="_blank">侵权投诉</a> | <a href="" rel="nofollow" report-tdw="action=Feedback" target="_blank">问题反馈</a> | <a href="" target="_blank">帮助</a></p>
+</footer>
+
+<script>window.TInline=+new Date();TRecord.push('page_render_fp');</script>
+<script>var require,define;window.__loadModjsOuter=1,function(e){function r(e,r){if("/"===e)return(e+r).replace(/\/\//g,"/");var n=e.split("/"),t=r.split("/");""!==n[n.length-1]&&n.pop();for(var o=0,i=t.length;i>o;o++)if("."!==t[o]){if(".."!==t[o]){n=n.concat(t.slice(o));break}n.pop()}return n.join("/")}function n(e,n){var t;return t="/"!==e[0]?r(n,e):e,/\.js$/i.test(t)?t:t+".js"}if(!require||!define){var t=(document.getElementsByTagName("head")[0],{}),o={},i={},u={},a={},c={},s={},d=["require","module","exports"],l=!1,f=function(e,r){for(var n=e.length-1;n>=0;n--)if(e[n]===r)return n;return-1},p="/";l&&(window.r={modulesMap:a,aliasMap:c,factoryMap:o,scriptsMap:t,resMap:i,pkgMap:u,loadedMap:s}),define=function(e,r,t){return t||(t=r,r=null),e&&e.splice&&(e=n("",p),r=e),"string"!=typeof e?void("undefined"!=typeof window.BJ_REPORT&&BJ_REPORT.info&&BJ_REPORT.info("define_error:"+e+r)):(e=e.replace(/\.js$/i,""),r&&"string"==typeof r&&(r=[r]),void(o[e]={factory:t,deps:r}))},define.amd=!0,require=function(n){if(n&&n.splice)return require.async.apply(e,arguments);if(-1!==f(d,n))return require;if(n=require.alias(n),a[n])return a[n].exports;var t=a[n]={exports:{}},i=function(t){"."===t[0]&&(t=r(n,t));var o=Array.prototype.slice.call(arguments);return o[0]=t,require.apply(e,o)};for(var u in require)i[u]=require[u];var c=[i,t.exports,t],p={require:c[0],module:c[2],exports:c[1]};if(p[n])return p[n];var m=o[n];if(!m)return s[n]?l&&void 0:require.async(n);if("function"!=typeof m.factory)return t.exports=m.factory,t.exports;if(m.deps){c=[];for(var h=0,q=m.deps.length;q>h;h++){var v=m.deps[h];/^\.{1,2}\//.test(v)&&(v=r(n,v)),c.push(p[v]?p[v]:require(v))}}return t.exports=m.factory.apply(e,c)||t.exports||{},t.exports},require.async=function(r,t,a,l){"string"==typeof r&&(r=[r]);var h=r.concat([]),q=0,v=function(){"function"==typeof l&&l();for(var r=[],n=0,o=h.length;o>n;n++)r.push(require(h[n]));t&&t.apply(e,r)},g=function(e){if(c[e])return c[e];var t=i[e]||i[e+".js"]||{},o=t.pkg;if(o)return u[o].url;if(t.deps)for(var a=0;a<t.deps.length;a++)-1===f(r,t.deps[a])&&r.push(t.deps[a]);var s=t.url||n(e,p);return s},y=function(e){var r=require.alias(e),n=g(r);s[r]=!0,m(n,require.cdns||[],function(){q--,_()},a,require.variableFn)},_=function(){for(;r.length;){var e=r.shift();q++,-1!==f(d,e)?q--:o[e]?q--:y(e)}0>=q&&v()};_()},require.loadCss=function(e){if(e.content){var r=document.createElement("style");r.type="text/css",r.styleSheet?r.styleSheet.cssText=e.content:r.innerHTML=e.content,document.getElementsByTagName("head")[0].appendChild(r)}else if(e.url){var n=document.createElement("link");n.href=e.url,n.rel="stylesheet",n.type="text/css",document.getElementsByTagName("head")[0].appendChild(n)}},require.loadJs=function(e,r,n,o){if(e in t)return r?r(e):"";t[e]=!0;var i=document.createElement("script"),u=null,a=function(){u&&(clearTimeout(u),u=null,"onload"in i&&(i.onload=null),"onerror"in i&&(i.onerror=null),"onreadystatechange"in i&&(i.onreadystatechange=null))},c=function(){a(),require.onerror&&require.onerror(e),n&&n(e)};if(n&&"onerror"in i&&(i.onerror=c),r&&(i["onload"in i?"onload":"onreadystatechange"]=function(){var n="function"==typeof o?o(e):!0;this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState||(!n&&/MSIE 8\./i.test(navigator.userAgent)?(c(),require.on404&&require.on404(e)):(a(),require.onsuccess&&require.onsuccess(e),r(e)))}),u=setTimeout(c,require.timeout),i.type="text/javascript",i.src=e,require.attrs)for(var s in require.attrs)i.setAttribute(s,require.attrs[s]);return document.getElementsByTagName("head")[0].appendChild(i),i};var m=function(e,r,n,t,o){var i=r?Array.prototype.slice.call(r):[];require.loadJs((i.shift()||"")+e,n,function(r){i.length>0?m(e,i,n,t,o):t&&t(r)},function(){return"function"==typeof o?o(e):!0})};require.resourceMap=function(e){var r,n;n=e.res;for(r in n)n.hasOwnProperty(r)&&(i[r]=n[r]);n=e.pkg;for(r in n)n.hasOwnProperty(r)&&(u[r]=n[r])},require.alias=function(e){return e.replace(/\.js$/i,"")},require.timeout=5e3,require.cdns=[],require.onerror=null,require.onsuccess=null,require.variableFn=function(){return!0},require.scriptsMap=t,window.__loadModjsInner=1}}(this),window.__loadModjs=window.define?"HasDefine":"NoDefined",require.timeout=5e3,require.test=1,require.badjsUrl="//badjs.qq.com/badjs";var __reportBadjs=function(e,r){setTimeout(function(){(new Image).src=require.badjsUrl+"?id=1162&uin="+parseInt((document.cookie.match(/\buin=\D+(\d+)/)||[])[1],10)+"&from="+encodeURIComponent(location.href)+"&msg[0]="+encodeURIComponent(e)+"&ext[0]=%7B%22msid%22%3A"+r+"%7D&level[0]=1&count=1&_t="+(new Date-0)},10)},__reportMonitor=function(e,r){r=r||"",setTimeout(function(){(new Image).src="//cgi.connect.qq.com/report/report_vm?monitors=["+e+"]&_="+r+"&t="+(new Date-0)},10)};window.__DIST_MODE__&&"dist"===window.__DIST_MODE__?(/QQBrowser/.test(navigator.userAgent)&&Math.random()<.1?(require.cdns=["//ke.qq.com"],require.isGreyUser=!0):require.cdns=["//7.url.cn/edu","//ke.qq.com"],require.onsuccess=function(e){__reportMonitor(/\/\/ke\.qq\.com/.test(e)?"2487030":"2138181")},require.onerror=function(e){__reportBadjs("scripterror:"+e,/\/\/ke\.qq\.com/.test(e)?"2415405":"2138182")},require.on404=function(e){__reportBadjs("script404:"+e,/\/\/ke\.qq\.com/.test(e)?"2487031":"2487032")},"undefined"==typeof window.Nohost&&(require.attrs={crossOrigin:"anonymous"}),function(){var e=window.__loadjscache={};window.__loadJs=function(r,n){e[r]=e[r]||{},e[r][n]=(new Date).getTime()},require.variableFn=function(r){return r.indexOf("ckeditor")?!0:e[r]&&e[r][2]}}()):(require.cdns=["//7.url.cn/edu"],localStorage.__debug__&&(require.cdns=[])),function(){function e(){var e=0;return e="2"===(document.cookie.match(/\buid_type=(\d+)/)||[])[1]?(document.cookie.match(/\buid_uin=(\d+)/)||[])[1]:parseInt((document.cookie.match(/\buin=\D+(\d+)/)||[])[1],10)||0}function r(r,n){var n=n||0;(new Image).src="//badjs.qq.com/badjs?id=1162&uin="+e()+"&from="+encodeURIComponent(location.href)+"&msg[0]="+encodeURIComponent(r)+"&ext[0]=%7B%22msid%22%3A"+n+"%7D&level[0]=1&count=1&_t="+(new Date-0)}function n(e){return document.getElementById(e)}function t(e){for(var r=5381,n=0,t=e.length;t>n;++n)r+=(r<<5)+e.charAt(n).charCodeAt();return 2147483647&r}function o(e){var e=e.split("/edu/")[1],r=e.split(".");r.length=r.length-2;var n=t(r.join("."));return n}function i(e){var r=e.match(/.*\:\/\/([^\/]*).*/);return r[1]}function u(){for(var e=[],r=[].concat.apply([],document.getElementsByTagName("LINK")),n=0,t=r.length;t>n;n++){var i=r[n];"stylesheet"==i.rel&&-1!=i.href.indexOf("8.url.cn/edu/")&&(i.relNodeId="_"+o(i.href),i.oriUrl=i.href,e.push(i))}return e}function a(e){return window.getComputedStyle?window.getComputedStyle(e,null).display:e.currentStyle.display}function c(e){return"none"==a(n(e.relNodeId))}function s(e){var r=document.createElement("DIV");return r.id=e,r.style.cssText="position:absolute;height:0;width:0;overflow:hidden",r}function d(e){var r=n(e);r&&r.parentNode.removeChild(r),r=null}function l(e){var r=e.href,n=i(r);e.href=r.replace(n+"/edu",location.host)}function f(){function e(){return new Date-v}function n(){p++;for(var o,u=i.length,a=u-1;a>-1;a--)o=i[a],c(o)?(r("CSS 主域拉取第"+p+"次成功："+o.href,2494598),i.splice(a,1)):r("CSS 主域拉取第"+p+"失败："+o.href,2494597);i.length>0&&e()<3e3?setTimeout(n,1e3):t()}function t(){for(var e=0,r=o.length;r>e;e++){var n=o[e];d(n.relNodeId),delete n.relNodeId,delete n.oriUrl}o=i=null}var o=u(),i=[],a=document.createDocumentFragment();for(f=0,m=o.length;m>f;f++)a.appendChild(s(o[f].relNodeId));document.body.appendChild(a),a=null;for(var f=0,m=o.length;m>f;f++){var h=o[f];c(h)?setTimeout(function(){(new Image).src="//cgi.connect.qq.com/report/report_vm?monitors=[2494596]&_=csssuccess&t="+(new Date-0)},10):(r("CSS CDN 拉取失败："+h.href,2494595),l(h),i.push(h))}var q=i.length,v=+new Date;q>0?setTimeout(n,1e3):t()}var p=0;window.__DIST_MODE__&&"dist"===window.__DIST_MODE__&&f()}();;</script>
+<script type="text/javascript">require.resourceMap({"res":{"edu_modules/edu-comb/comb.nowrap":{"url":"/edu_modules/edu-comb/comb.nowrap.81748ebf.js"},"edu_modules/edu-base/edu-base":{"url":"/edu_modules/edu-base/edu-base.a8fc28f6.js"},"comment/mod.main.base":{"url":"/modules/comment/mod.main.base.f127066b.js"},"download/js/mod.main":{"url":"/download/js/mod.main.d81ed563.js"},"download/js/mod.main.macapp":{"url":"/download/js/mod.main.macapp.001399eb.js"},"download/js/mod.main.pcapp":{"url":"/download/js/mod.main.pcapp.b6ee659d.js"},"download/js/mod.main.teacher":{"url":"/download/js/mod.main.teacher.9d62bf60.js"},"edu_modules/ckeditor.init/mod.main.ckeditor":{"url":"/edu_modules/ckeditor.init/mod.main.ckeditor.89e13bc3.js"},"mini_program/js/mod.main":{"url":"/mini_program/js/mod.main.759e9484.js"},"404/mod.main":{"url":"/modules/404/mod.main.33036a52.js"},"agencyIndex/mod.main.fallback":{"url":"/modules/agencyIndex/mod.main.fallback.7d7c47dc.js"},"agencyIndex/mod.mainNew":{"url":"/modules/agencyIndex/mod.mainNew.456639b8.js"},"applySuccess/mod.main":{"url":"/modules/applySuccess/mod.main.0307c685.js"},"category/design-revise/mod.main.channel":{"url":"/modules/category/design-revise/mod.main.channel.c7ad28c6.js"},"category/design-revise/mod.main.detail":{"url":"/modules/category/design-revise/mod.main.detail.8a90af86.js"},"category/mod.main.fallback":{"url":"/modules/category/mod.main.fallback.ce663397.js"},"category/mod.main":{"url":"/modules/category/mod.main.1f35cd31.js"},"comment/mod.main":{"url":"/modules/comment/mod.main.506d19a0.js"},"coupon/mod.main":{"url":"/modules/coupon/mod.main.2db81cdd.js"},"courseDetail/mod.main.fallback":{"url":"/modules/courseDetail/mod.main.fallback.dd239659.js"},"courseDetail/mod.main.live":{"url":"/modules/courseDetail/mod.main.live.4057d327.js"},"courseList/mod.main.fallback":{"url":"/modules/courseList/mod.main.fallback.77aab848.js"},"courseList/mod.main":{"url":"/modules/courseList/mod.main.d500ed4e.js"},"coursePackage/mod.main.fallback":{"url":"/modules/coursePackage/mod.main.fallback.3c142c9a.js"},"coursePackage/mod.main.new":{"url":"/modules/coursePackage/mod.main.new.befdb7f1.js"},"faq/mod.main.frame":{"url":"/modules/faq/mod.main.frame.d16153e8.js"},"faq/mod.main":{"url":"/modules/faq/mod.main.dff04508.js"},"grandDetail/mod.main.common":{"url":"/modules/grandDetail/mod.main.common.7b363267.js"},"grandDetail/mod.main.fallback":{"url":"/modules/grandDetail/mod.main.fallback.3207bc54.js"},"grandDetail/mod.main":{"url":"/modules/grandDetail/mod.main.a4fc3a55.js"},"groupResult/mod.main":{"url":"/modules/groupResult/mod.main.13baf484.js"},"indexNew/mod.main.fallback":{"url":"/modules/indexNew/mod.main.fallback.33927906.js"},"indexNew/mod.main":{"url":"/modules/indexNew/mod.main.1dcc2b87.js"},"joinQun/mod.main":{"url":"/modules/joinQun/mod.main.a796ac08.js"},"jump/mod.main":{"url":"/modules/jump/mod.main.c670438a.js"},"latelyCourse/mod.main.fallback":{"url":"/modules/latelyCourse/mod.main.fallback.66a309ae.js"},"latelyCourse/nowrap/mod.main.tc1.all":{"url":"/modules/latelyCourse/nowrap/mod.main.tc1.all.48625665.js"},"latelyCourse/nowrap/mod.main.jx.uiless.min":{"url":"/modules/latelyCourse/nowrap/mod.main.jx.uiless.min.0af31518.js"},"personIndex/mod.main":{"url":"/modules/personIndex/mod.main.73155fbd.js"},"renzheng/mod.main":{"url":"/modules/renzheng/mod.main.e22eb0f8.js"},"sale/mod.main":{"url":"/modules/sale/mod.main.d9e8c0ae.js"},"searchAgency/mod.main":{"url":"/modules/searchAgency/mod.main.d48d9b1b.js"},"serviceDetail/mod.main":{"url":"/modules/serviceDetail/mod.main.2313c7df.js"},"storageProxy/mod.main":{"url":"/modules/storageProxy/mod.main.779d3534.js"},"teacher/mod.main":{"url":"/modules/teacher/mod.main.8d9f5d10.js"},"topo_index/mod.main":{"url":"/modules/topo_index/mod.main.de09d6af.js"},"topo/mod.main":{"url":"/modules/topo/mod.main.0d8e2d4d.js"},"unsubscribeEmail/mod.main":{"url":"/modules/unsubscribeEmail/mod.main.a26d752f.js"},"next_detail/mod.main":{"url":"/next_detail/mod.main.d243fcb8.js"},"next/js/mod.main":{"url":"/next/js/mod.main.92016f82.js"},"views/teacher/mod.main":{"url":"/views/teacher/mod.main.5513724d.js"},"edu_modules/timing/timing":{"url":"/edu_modules/timing/timing.9ea9820c.js"},"edu_modules/edu-zoom/index":{"url":"/edu_modules/edu-zoom/index.80fc9e9c.js"},"edu_modules/ckeditor.init/src/addpic":{"url":"/edu_modules/ckeditor.init/src/addpic.11126fa2.js"},"edu_modules/ckeditor.init/src/addvideo":{"url":"/edu_modules/ckeditor.init/src/addvideo.ddf44208.js"},"edu_modules/ckeditor.init/src/addword":{"url":"/edu_modules/ckeditor.init/src/addword.e550b1c1.js"},"edu_modules/ckeditor.init/src/addlink":{"url":"/edu_modules/ckeditor.init/src/addlink.96f3e176.js"},"edu_modules/ckeditor.init/src/instruction":{"url":"/edu_modules/ckeditor.init/src/instruction.a7ed5a38.js"},"edu_modules/edu-pay-service/fusion_loader.nowrap":{"url":"/edu_modules/edu-pay-service/fusion_loader.nowrap.4e853145.js"},"edu_modules/edu-pay-service/cashier.nowrap":{"url":"/edu_modules/edu-pay-service/cashier.nowrap.563abb19.js"},"edu_modules/edu-top/index":{"url":"/edu_modules/edu-top/index.2fc28361.js"}}})</script>
+<script>
+    function queryAll(aa) {
+        location.href="../user/searchmany?search="+aa;
+    }
+</script>
+<script>
+    window.META_DATA={
+        CATE_MAP: {},
+        INTEREST_LIST: [2002,2011,2044,2032,2020,2037],
+        INTEREST_SOURCE: '',
+        LAST_SIGNIN_TIME: 0,
+        CATE_ID: '1000'
+    };
+    window.GLOBAL_DATA = window.GLOBAL_DATA || {};
+
+</script>
+<script>
+    function toAddClass(userType,status){
+        var codes = $("#codes").val();
+        if(codes == 1){
+            if(userType == 1){
+                alert("请先注册成为讲师");
+                location.href="../user/toRegiTeacher";
+            }else if(userType == 2 && status == 1){
+                alert("讲师资质正在审核中，请耐心等待！！！");
+            }else if(userType == 2 && status == 2){
+                location.href="../user/toPersonal";
+            }
+        }else{
+            alert("请先登录");
+            location.href="../user/toLogin";
+        }
+    }
+</script>
+<script>
+    function search() {
+        var aa = $("#js_keyword").val();
+
+        location.href = "../mess/search?q=" + aa;
+    }
+</script>
+
+<script>
+    $(function(){
+        var codes = $("#codes").val();
+        if(codes == 1){
+            $("#logout").show();
+            $("#show").hide();
+
+        }else if(codes==2){
+            $("#logout").hide();
+            $("#show").show();
+        }
+    })
+
+    $("#out").click(function(){
+        $("#logout").hide();
+        $("#show").show();
+    });
+    function agLogin(){
+        location.href="../user/agLogin";
+    }
+
+    function queryClassById(couId){
+        location.href="../user/querydeils?couId="+couId;
+    }
+</script>
+
+<script>TRecord.push('inline_script_run_time', T[0] + (new Date - TInline));</script>
+</body>
+</html>
